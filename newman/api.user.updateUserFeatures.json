@@ -1,0 +1,45 @@
+{
+	"id": "7b7b8309-b303-2945-510b-e1b35a57e81e",
+	"name": "api.user.updateUserFeatures",
+	"description": "",
+	"order": [
+		"448ebc04-ebf3-b2cd-02a4-5b39aaddfcc5"
+	],
+	"folders": [],
+	"folders_order": [],
+	"timestamp": 1510219311388,
+	"owner": "2696738",
+	"public": false,
+	"requests": [
+		{
+			"id": "448ebc04-ebf3-b2cd-02a4-5b39aaddfcc5",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://{{host}}:{{port}}/api/user/updateUserFeatures",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1513912430417,
+			"name": "api.user. updateUserFeatures",
+			"description": "",
+			"collectionId": "7b7b8309-b303-2945-510b-e1b35a57e81e",
+			"responses": [],
+			"rawModeData": "{\n\t\"token\":\"{{token}}\",\n\t\"userId\":2,\n\t\"features\":[\n\t\t{\n\t\t\t\"id\": 4,\n\t\t\t\"status\": 1\n\t\t}\n\t]\n}"
+		}
+	]
+}

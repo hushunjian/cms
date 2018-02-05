@@ -1,0 +1,32 @@
+{
+	"id": "61738c25-1ef1-f5b5-94db-311cfd95f01d",
+	"name": "api.kingdom.getLotterySearch",
+	"description": "",
+	"order": [
+		"41de2c57-bd4c-573c-32c6-6ee2250563dd"
+	],
+	"folders": [],
+	"timestamp": 1513418077588,
+	"owner": "3117500",
+	"remoteLink": "",
+	"public": false,
+	"requests": [
+		{
+			"id": "41de2c57-bd4c-573c-32c6-6ee2250563dd",
+			"url": "http://{{host}}:{{port}}/api/kingdom/getLotterySearch?token=99999999-9999-9999-9999-999999999999&pageIndex=1&pageSize=10&topicName=&lotteryName=这",
+			"method": "GET",
+			"headers": "",
+			"data": null,
+			"dataMode": "params",
+			"tests": null,
+			"preRequestScript": null,
+			"currentHelper": "normal",
+			"pathVariables": {},
+			"version": 2,
+			"name": "http://{{host}}:{{port}}/api/kingdom/getLotterySearch?token=99999999-9999-9999-9999-999999999999&pageIndex=1&pageSize=10&topicName=&lotteryName=这",
+			"description": "",
+			"descriptionFormat": "html",
+			"collectionId": "61738c25-1ef1-f5b5-94db-311cfd95f01d"
+		}
+	]
+}

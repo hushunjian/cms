@@ -1,0 +1,30 @@
+[
+  {
+    "id": 1,
+    "name": "广告1",
+    "cover": "",
+    "positionId": 2,
+    "positionName": "广告位1",
+    "probability": 100,
+    "coverWidth": 600,
+    "coverHeight": 400,
+    "type": 0,
+    "topicId": "432d3",
+    "url": "",
+    "createdAt": "2017-09-05 02:26:34"
+  },
+  {
+    "id": 2,
+    "name": "广告2",
+    "cover": "",
+    "positionId": 2,
+    "positionName": "广告位2",
+    "probability": 100,
+    "coverWidth": 600,
+    "coverHeight": 400,
+    "type": 0,
+    "topicId": "432d3",
+    "url": "",
+    "createdAt": "2017-09-05 02:26:34"
+  }
+]

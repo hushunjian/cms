@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.m2m.mapper.ExtTagExhibitionMapper">
+    <insert id="append">
+        insert into tmp_topic_exhibition(tag_id, topic_id, topic_image_id, type, content_type, fragment, created_at)
+        select
+        tlti.tag_id,
+        ti.topic_id,
+        tlti.topic_image_id,
+        IF(tf.id is null,0,tf.type) as type,
+        IF(tf.id is null,1,tf.content_type) as content_type,
+        tf.fragment,
+        now() as created_at
+        from tmp_latest_tag_image tlti
+        join topic_image ti
+        on tlti.topic_image_id = ti.id
+        left join topic_fragment tf
+        on tf.id = ti.fid
+        where 1=1  
+        order by ti.create_time desc
+    </insert>
+
+    <select id="getMaxCreatedAt" resultType="java.util.Date">
+        select max(t.created_at)
+        from tmp_topic_exhibition t
+    </select>
+
+    <delete id="clear" parameterType="java.util.Date">
+        delete from tmp_topic_exhibition
+        where created_at &lt; #{date}
+    </delete>
+</mapper>

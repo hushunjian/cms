@@ -1,0 +1,33 @@
+{
+	"id": "16340916-619c-370c-f579-196718aae1b0",
+	"name": "api.kingdom.getKingdomValueSearch",
+	"description": "",
+	"order": [
+		"92abedc5-6916-f0f4-8e64-651558b82c47"
+	],
+	"folders": [],
+	"timestamp": 1513418032068,
+	"owner": "3117500",
+	"remoteLink": "",
+	"public": false,
+	"requests": [
+		{
+			"id": "92abedc5-6916-f0f4-8e64-651558b82c47",
+			"url": "http://{{host}}:{{port}}/api/kingdom/getKingdomValueSearch",
+			"method": "POST",
+			"headers": "Content-Type: application/json\n",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"preRequestScript": null,
+			"currentHelper": "normal",
+			"pathVariables": {},
+			"version": 2,
+			"name": "http://{{host}}:{{port}}/api/kingdom/getKingdomValueSearch",
+			"description": "",
+			"descriptionFormat": "html",
+			"collectionId": "16340916-619c-370c-f579-196718aae1b0",
+			"rawModeData": "  { \r\n      \"token\":\"99999999-9999-9999-9999-999999999999\",\r\n      \"pageIndex\":1,\r\n      \"pageSize\":10,\r\n      \"topicName\":\"\",\r\n      \"orderParam\":\"createdAt\",\r\n      \"order\":\"desc\"\r\n    }"
+		}
+	]
+}

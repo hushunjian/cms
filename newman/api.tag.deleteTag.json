@@ -1,0 +1,33 @@
+{
+	"id": "29640a55-1fd8-b1e6-d812-ad03b95e7fd9",
+	"name": "api.tag.deleteTag",
+	"description": "",
+	"order": [
+		"ba14c7e1-a5e0-3a7f-de8f-352847a355a2"
+	],
+	"folders": [],
+	"timestamp": 1512960734770,
+	"owner": "3117500",
+	"remoteLink": "",
+	"public": false,
+	"requests": [
+		{
+			"id": "ba14c7e1-a5e0-3a7f-de8f-352847a355a2",
+			"url": "http://{{host}}:{{port}}/api/tag/deleteTag",
+			"method": "POST",
+			"headers": "Content-Type: application/json\n",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"preRequestScript": null,
+			"currentHelper": "normal",
+			"pathVariables": {},
+			"version": 2,
+			"name": "http://{{host}}:{{port}}/api/tag/deleteTag",
+			"description": "",
+			"descriptionFormat": "html",
+			"collectionId": "29640a55-1fd8-b1e6-d812-ad03b95e7fd9",
+			"rawModeData": "{\n     \"token\":\"99999999-9999-9999-9999-999999999999\",\n     \"tagId\":92\n}"
+		}
+	]
+}

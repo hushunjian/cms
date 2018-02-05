@@ -1,0 +1,33 @@
+{
+	"id": "e6294066-00ee-af7c-2d3f-c0b72108a79c",
+	"name": "api.listRank.addListRank",
+	"description": "",
+	"order": [
+		"d7a66981-cdfe-b968-4742-819299a16e71"
+	],
+	"folders": [],
+	"timestamp": 1514001149925,
+	"owner": "3117500",
+	"remoteLink": "",
+	"public": false,
+	"requests": [
+		{
+			"id": "d7a66981-cdfe-b968-4742-819299a16e71",
+			"url": "http://{{host}}:{{port}}/api/listRank/addListRank",
+			"method": "POST",
+			"headers": "Content-Type: application/json\n",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"preRequestScript": null,
+			"currentHelper": "normal",
+			"pathVariables": {},
+			"version": 2,
+			"name": "http://{{host}}:{{port}}/api/listRank/addListRank",
+			"description": "",
+			"descriptionFormat": "html",
+			"collectionId": "e6294066-00ee-af7c-2d3f-c0b72108a79c",
+			"rawModeData": "{\n    \"token\":\"a3fd6d23-edfd-4f70-ab16-bbaa94403024\",\n    \"pageIndex\":1,\n    \"pageSize\":10,\n    \"name\":\"postman测试手动\",\n    \"mode\":0,\n    \"type\":3\n}"
+		}
+	]
+}

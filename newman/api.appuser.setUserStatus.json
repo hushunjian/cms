@@ -1,0 +1,33 @@
+{
+	"id": "a23e7296-3ac4-2966-86f6-41a18a0b5523",
+	"name": "api.appuser.setUserStatus",
+	"description": "",
+	"order": [
+		"ea63bffe-83a1-3baf-4d0f-f1a95ad1e13f"
+	],
+	"folders": [],
+	"timestamp": 1513417726690,
+	"owner": "3117500",
+	"remoteLink": "",
+	"public": false,
+	"requests": [
+		{
+			"id": "ea63bffe-83a1-3baf-4d0f-f1a95ad1e13f",
+			"url": "http://{{host}}:{{port}}/api/appuser/setUserStatus",
+			"method": "POST",
+			"headers": "Content-Type: application/json\n",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"preRequestScript": null,
+			"currentHelper": "normal",
+			"pathVariables": {},
+			"version": 2,
+			"name": "http://{{host}}:{{port}}/api/appuser/setUserStatus",
+			"description": "",
+			"descriptionFormat": "html",
+			"collectionId": "a23e7296-3ac4-2966-86f6-41a18a0b5523",
+			"rawModeData": "  { \r\n      \"token\":\"99999999-9999-9999-9999-999999999999\",\r\n      \"uid\": 204595,\r\n      \"status\":1\r\n    }"
+		}
+	]
+}

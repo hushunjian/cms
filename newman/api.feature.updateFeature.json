@@ -1,0 +1,47 @@
+{
+  "id": "b9ed111e-f7a5-9359-2659-462e24069428",
+  "name": "api.feature.updateFeature",
+  "description": "",
+  "order": [
+    "9cf8099c-916e-32d1-ea46-1ee33f599459"
+  ],
+  "folders": [],
+  "folders_order": [],
+  "timestamp": 1510302352250,
+  "owner": 0,
+  "public": false,
+  "hasRequests": true,
+  "requests": [
+    {
+      "id": "9cf8099c-916e-32d1-ea46-1ee33f599459",
+      "headers": "Content-Type: application/json\n",
+      "headerData": [
+        {
+          "key": "Content-Type",
+          "value": "application/json",
+          "description": "",
+          "enabled": true
+        }
+      ],
+      "url": "http://{{host}}:{{port}}/api/feature/addFeature",
+      "queryParams": [],
+      "preRequestScript": null,
+      "pathVariables": {},
+      "pathVariableData": [],
+      "method": "POST",
+      "data": [],
+      "dataMode": "raw",
+      "version": 2,
+      "tests": null,
+      "currentHelper": "normal",
+      "helperAttributes": {},
+      "time": 1510302089381,
+      "name": "api.role. updateFeature",
+      "description": "",
+      "collectionId": "b9ed111e-f7a5-9359-2659-462e24069428",
+      "responses": [],
+      "collection_id": "b9ed111e-f7a5-9359-2659-462e24069428",
+      "rawModeData": "{\n    \"token\":\"{{token}}\",\n    \"name\": \"feature4test\"\n}"
+    }
+  ]
+}

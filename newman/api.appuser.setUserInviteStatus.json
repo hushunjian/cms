@@ -1,0 +1,33 @@
+{
+	"id": "f630dadc-8e8d-9f32-c0ff-4a9d5946949d",
+	"name": "api.appuser.setUserInviteStatus",
+	"description": "",
+	"order": [
+		"ab6043ff-2526-3d83-3db0-811a4d17edaa"
+	],
+	"folders": [],
+	"timestamp": 1513417699253,
+	"owner": "3117500",
+	"remoteLink": "",
+	"public": false,
+	"requests": [
+		{
+			"id": "ab6043ff-2526-3d83-3db0-811a4d17edaa",
+			"url": "http://{{host}}:{{port}}/api/appuser/setUserInviteStatus",
+			"method": "POST",
+			"headers": "Content-Type: application/json\n",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"preRequestScript": null,
+			"currentHelper": "normal",
+			"pathVariables": {},
+			"version": 2,
+			"name": "http://{{host}}:{{port}}/api/appuser/setUserInviteStatus",
+			"description": "",
+			"descriptionFormat": "html",
+			"collectionId": "f630dadc-8e8d-9f32-c0ff-4a9d5946949d",
+			"rawModeData": "  { \r\n      \"token\":\"99999999-9999-9999-9999-999999999999\",\r\n      \"uid\": 204595,\r\n      \"isInvited\":1\r\n    }"
+		}
+	]
+}

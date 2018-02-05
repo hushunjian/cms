@@ -1,0 +1,33 @@
+{
+	"id": "be887290-96ac-3722-1eda-78b5f5eb633a",
+	"name": "api.advertisement.updateAdvertisementPosition",
+	"description": "",
+	"order": [
+		"6d2646b9-889c-6fbb-7521-b0cd5cc6eb90"
+	],
+	"folders": [],
+	"timestamp": 1513417409302,
+	"owner": "3117500",
+	"remoteLink": "",
+	"public": false,
+	"requests": [
+		{
+			"id": "6d2646b9-889c-6fbb-7521-b0cd5cc6eb90",
+			"url": "http://{{host}}:{{port}}/api/advertisement/updateAdvertisementPosition",
+			"method": "POST",
+			"headers": "Content-Type: application/json\n",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"preRequestScript": null,
+			"currentHelper": "normal",
+			"pathVariables": {},
+			"version": 2,
+			"name": "http://{{host}}:{{port}}/api/advertisement/updateAdvertisementPosition",
+			"description": "",
+			"descriptionFormat": "html",
+			"collectionId": "be887290-96ac-3722-1eda-78b5f5eb633a",
+			"rawModeData": "    {\r\n      \"token\":\"99999999-9999-9999-9999-999999999999\",\r\n      \"id\":26,\r\n      \"name\":\"test\", \r\n      \"position\":\"4-3\",\r\n      \"height\":20,\r\n      \"width\":48,\r\n      \"type\":0\r\n    }"
+		}
+	]
+}

@@ -1,0 +1,32 @@
+{
+	"id": "ed9d5f81-8524-1f6f-8d73-c9db98332ea6",
+	"name": "api.kingdom.getPendingListedKingdomSearch",
+	"description": "",
+	"order": [
+		"37abe1dd-23e9-9203-b03b-577f246776bc"
+	],
+	"folders": [],
+	"timestamp": 1513650740972,
+	"owner": "3117500",
+	"remoteLink": "",
+	"public": false,
+	"requests": [
+		{
+			"id": "37abe1dd-23e9-9203-b03b-577f246776bc",
+			"url": "http://{{host}}:{{port}}/api/kingdom/getPendingListedKingdomSearch?token=99999999-9999-9999-9999-999999999999&pageIndex=1&pageSize=10&topicName=烧",
+			"method": "GET",
+			"headers": "",
+			"data": null,
+			"dataMode": "params",
+			"tests": null,
+			"preRequestScript": null,
+			"currentHelper": "normal",
+			"pathVariables": {},
+			"version": 2,
+			"name": "http://{{host}}:{{port}}/api/kingdom/getPendingListedKingdomSearch?token=99999999-9999-9999-9999-999999999999&pageIndex=1&pageSize=10&topicName=烧",
+			"description": "",
+			"descriptionFormat": "html",
+			"collectionId": "ed9d5f81-8524-1f6f-8d73-c9db98332ea6"
+		}
+	]
+}

@@ -1,0 +1,33 @@
+{
+	"id": "00ed9fed-9bf3-cd59-6615-151ebe0b0c22",
+	"name": "api.gift.deleteGift",
+	"description": "",
+	"order": [
+		"3d8f3878-f5a0-ecac-2f88-898eaa71dae9"
+	],
+	"folders": [],
+	"timestamp": 1513417931184,
+	"owner": "3117500",
+	"remoteLink": "",
+	"public": false,
+	"requests": [
+		{
+			"id": "3d8f3878-f5a0-ecac-2f88-898eaa71dae9",
+			"url": "http://{{host}}:{{port}}/api/gift/deleteGift",
+			"method": "POST",
+			"headers": "Content-Type: application/json\n",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"preRequestScript": null,
+			"currentHelper": "normal",
+			"pathVariables": {},
+			"version": 2,
+			"name": "http://{{host}}:{{port}}/api/gift/deleteGift",
+			"description": "",
+			"descriptionFormat": "html",
+			"collectionId": "00ed9fed-9bf3-cd59-6615-151ebe0b0c22",
+			"rawModeData": "  { \r\n      \"token\":\"99999999-9999-9999-9999-999999999999\",\r\n      \"giftId\":26\r\n    }"
+		}
+	]
+}

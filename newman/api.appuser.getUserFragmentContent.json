@@ -1,0 +1,32 @@
+{
+	"id": "a59c03b8-d3c2-dc9f-ddfa-a348dbd3106c",
+	"name": "api.appuser.getUserFragmentContent",
+	"description": "",
+	"order": [
+		"c80d7f88-d8fe-0460-fc34-240f7250f001"
+	],
+	"folders": [],
+	"timestamp": 1513417614281,
+	"owner": "3117500",
+	"remoteLink": "",
+	"public": false,
+	"requests": [
+		{
+			"id": "c80d7f88-d8fe-0460-fc34-240f7250f001",
+			"url": "http://{{host}}:{{port}}/api/appuser/getUserFragmentContent?token=99999999-9999-9999-9999-999999999999&uid=204498&pageIndex=1&pageSize=10",
+			"method": "GET",
+			"headers": "",
+			"data": null,
+			"dataMode": "params",
+			"tests": null,
+			"preRequestScript": null,
+			"currentHelper": "normal",
+			"pathVariables": {},
+			"version": 2,
+			"name": "http://{{host}}:{{port}}/api/appuser/getUserFragmentContent?token=99999999-9999-9999-9999-999999999999&uid=204498&pageIndex=1&pageSize=10",
+			"description": "",
+			"descriptionFormat": "html",
+			"collectionId": "a59c03b8-d3c2-dc9f-ddfa-a348dbd3106c"
+		}
+	]
+}

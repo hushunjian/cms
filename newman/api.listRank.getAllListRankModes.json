@@ -1,0 +1,32 @@
+{
+	"id": "375b873d-ad98-4ddf-f8ca-774ff50bc00d",
+	"name": "api.listRank.getAllListRankModes",
+	"description": "",
+	"order": [
+		"6b16f140-d379-8975-ecf1-fabd988cd15e"
+	],
+	"folders": [],
+	"timestamp": 1513665820388,
+	"owner": "3117500",
+	"remoteLink": "",
+	"public": false,
+	"requests": [
+		{
+			"id": "6b16f140-d379-8975-ecf1-fabd988cd15e",
+			"url": "http://{{host}}:{{port}}/api/listRank/getAllListRankModes?token=99999999-9999-9999-9999-999999999999&pageIndex=1&pageSize=10",
+			"method": "GET",
+			"headers": "",
+			"data": null,
+			"dataMode": "params",
+			"tests": null,
+			"preRequestScript": null,
+			"currentHelper": "normal",
+			"pathVariables": {},
+			"version": 2,
+			"name": "http://{{host}}:{{port}}/api/listRank/getAllListRankModes?token=99999999-9999-9999-9999-999999999999&pageIndex=1&pageSize=10",
+			"description": "",
+			"descriptionFormat": "html",
+			"collectionId": "375b873d-ad98-4ddf-f8ca-774ff50bc00d"
+		}
+	]
+}

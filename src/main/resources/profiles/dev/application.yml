@@ -1,0 +1,41 @@
+logging:
+  config: classpath:logback-spring.xml
+mybatis:
+  config: classpath:mybatis-config.xml
+spring:
+  datasource:
+    driverClassName: com.mysql.jdbc.Driver
+    url: jdbc:mysql://192.168.89.80:3306/apps?useUnicode=true&characterEncoding=utf-8&useSSL=false
+    username: me2me
+    password: Sp@Metro#79
+  redis:
+    host: 192.168.89.80
+    port: 6379
+    database: 0
+server:
+  port: 9090
+h5: 
+  kingdom:
+    url: https://testwebapp.me-to-me.com/ld
+im: 
+  app: 
+    key: c9kqb3rdcv91j
+    secret: dSPWbJVHlNjrN
+proxy:
+  status: disabled
+  host: 0.0.0.0
+  port: 0
+mail:
+  account: dev@mail.me-to-me.com
+  receivers: hushunjian@mail.me-to-me.com
+  password: ZAQ!2wsx
+  proxySet: false
+  socksProxyHost: 0.0.0.0
+  socksProxyPort: 0
+task:
+  TagInHomeTask:
+    execute: 0 0 0 * * *
+  TopicExhibitionTask:
+    execute: 0 0 0 * * *
+  DailyActiveUserTask:
+    execute: 0 0 0 * * *

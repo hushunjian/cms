@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.m2m.mapper.ExtCmsFeatureMapper">
+    <resultMap id="ExtCmsFeatureGroup" type="com.m2m.entity.ExtCmsFeatureGroup">
+        <id column="group_id" jdbcType="BIGINT" property="groupId"/>
+        <result column="group_name" jdbcType="VARCHAR" property="groupName"/>
+        <collection property="features" ofType="com.m2m.entity.ExtCmsFeature">
+            <id property="id" column="id"/>
+            <result property="name" jdbcType="VARCHAR"  column="name"/>
+            <result property="status" jdbcType="TINYINT" column="status"/>
+        </collection>
+    </resultMap>
+    <resultMap id="ExtCmsFeature" type="com.m2m.entity.ExtCmsFeature">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="name" jdbcType="VARCHAR" property="name"/>
+    </resultMap>
+    <resultMap id="CmsFeature" type="com.m2m.domain.CmsFeature">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="name" jdbcType="VARCHAR" property="name"/>
+        <result column="feature_group_id" jdbcType="BIGINT" property="featureGroupId"/>
+    </resultMap>
+    <resultMap id="CmsRole" type="com.m2m.domain.CmsRole">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="name" jdbcType="VARCHAR" property="name"/>
+    </resultMap>
+    <select id="findAllFeatures" resultMap="ExtCmsFeatureGroup">
+        select
+        t1.feature_group_id group_id,
+        t2.name group_name,
+        t1.id,
+        t1.name
+        from cms_feature t1, cms_feature_group t2
+        where t1.feature_group_id = t2.id
+    </select>
+    <select id="findByRoleId" parameterType="java.lang.Integer" resultMap="ExtCmsFeature">
+        select
+        t2.id,
+        t2.name
+        from cms_role_feature t1, cms_feature t2
+        where t1.feature_id = t2.id
+        and t1.role_id = #{id,jdbcType=BIGINT}
+    </select>
+    <insert id="addFeatures" parameterType="com.m2m.entity.ExtRoleFeature">
+        insert into cms_role_feature (role_id, feature_id)
+        values
+        <foreach collection="featureIds" item="item" index="index" separator=",">
+            (#{roleId},#{item})
+        </foreach>
+    </insert>
+    <select id="getUserFeatures" parameterType="java.lang.Integer" resultMap="ExtCmsFeatureGroup">
+        SELECT t.group_id,
+               t.group_name,
+               t.id,
+               t.name,
+               1 as status
+        FROM
+            ( SELECT t1.feature_group_id group_id,
+                     t2.name group_name,
+                     t1.id,
+                     t1.name,
+                     1 AS status
+             FROM cms_feature t1,
+                  cms_feature_group t2,
+                  cms_user_role t3,
+                  cms_role_feature t4
+             WHERE t1.feature_group_id = t2.id
+                 AND t1.id = t4.feature_id
+                 AND t3.user_id = #{userId,jdbcType=BIGINT}
+                 AND t3.role_id = t4.role_id
+             UNION SELECT t1.feature_group_id group_id,
+                          t2.name group_name,
+                          t1.id,
+                          t1.name,
+                          t3.status - 1
+             FROM cms_feature t1,
+                  cms_feature_group t2,
+                  cms_user_feature t3
+             WHERE t1.feature_group_id = t2.id
+                 AND t1.id = t3.feature_id
+                 AND t3.user_id = #{userId,jdbcType=BIGINT} ) t
+        GROUP BY t.group_id,
+                 t.group_name,
+                 t.id,
+                 t.name
+        HAVING sum(t.status) >= 0
+    </select>
+    <select id="getFeature" parameterType="com.m2m.entity.ExtFeatureQuery" resultMap="ExtCmsFeatureGroup">
+        SELECT t.group_id,
+               t.group_name,
+               t.id,
+               t.name,
+               1 as status
+        FROM
+          ( SELECT t1.feature_group_id group_id,
+                   t2.name group_name,
+                   t1.id,
+                   t1.name,
+                   1 AS status
+           FROM cms_feature t1,
+                cms_feature_group t2,
+                cms_user_role t3,
+                cms_role_feature t4
+           WHERE t1.feature_group_id = t2.id
+             AND t1.id = t4.feature_id
+             AND t3.user_id = #{userId,jdbcType=BIGINT}
+             AND t3.role_id = t4.role_id
+             AND t1.id = #{featureId,jdbcType=BIGINT}
+           UNION SELECT t1.feature_group_id group_id,
+                        t2.name group_name,
+                        t1.id,
+                        t1.name,
+                        t3.status - 1
+           FROM cms_feature t1,
+                cms_feature_group t2,
+                cms_user_feature t3
+           WHERE t1.feature_group_id = t2.id
+             AND t1.id = t3.feature_id
+             AND t3.user_id = #{userId,jdbcType=BIGINT}
+             AND t1.id = #{featureId,jdbcType=BIGINT} ) t
+        GROUP BY t.group_id,
+                 t.group_name,
+                 t.id,
+                 t.name
+        HAVING sum(t.status) >= 0
+    </select>
+    <select id="getUserRoles" parameterType="java.lang.Integer" resultMap="CmsRole">
+        select t1.id,
+        t1.name
+        from cms_role t1, cms_user_role t2
+        where t2.user_id=#{0}
+        and t1.id= t2.role_id
+    </select>
+</mapper>

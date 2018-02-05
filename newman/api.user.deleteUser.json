@@ -1,0 +1,45 @@
+{
+  "id": "2c5823e0-f40a-8816-5aeb-6dab18f22dd8",
+  "name": "api.user.deleteUser",
+  "description": "",
+  "order": [
+    "4f9b16ff-733d-db55-653a-91ecbc5c6e0e"
+  ],
+  "folders": [],
+  "folders_order": [],
+  "timestamp": 1510218764249,
+  "owner": "2696738",
+  "public": false,
+  "requests": [
+    {
+      "id": "4f9b16ff-733d-db55-653a-91ecbc5c6e0e",
+      "headers": "Content-Type: application/json\n",
+      "headerData": [
+        {
+          "key": "Content-Type",
+          "value": "application/json",
+          "description": "",
+          "enabled": true
+        }
+      ],
+      "url": "http://{{host}}:{{port}}/api/user/deleteUser",
+      "queryParams": [],
+      "preRequestScript": null,
+      "pathVariables": {},
+      "pathVariableData": [],
+      "method": "POST",
+      "data": [],
+      "dataMode": "raw",
+      "version": 2,
+      "tests": null,
+      "currentHelper": "normal",
+      "helperAttributes": {},
+      "time": 1510218823894,
+      "name": "api.user. deleteUser",
+      "description": "",
+      "collectionId": "2c5823e0-f40a-8816-5aeb-6dab18f22dd8",
+      "responses": [],
+      "rawModeData": "{\n\t\"id\":2\n}"
+    }
+  ]
+}

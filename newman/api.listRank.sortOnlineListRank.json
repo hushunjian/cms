@@ -1,0 +1,33 @@
+{
+	"id": "cd98f267-1f77-0b91-9e0e-ee8778bf9d5d",
+	"name": "api.listRank.sortOnlineListRank",
+	"description": "",
+	"order": [
+		"03303284-41af-9638-b4a1-52c0d3ba763d"
+	],
+	"folders": [],
+	"timestamp": 1514007963555,
+	"owner": "3117500",
+	"remoteLink": "",
+	"public": false,
+	"requests": [
+		{
+			"id": "03303284-41af-9638-b4a1-52c0d3ba763d",
+			"url": "http://{{host}}:{{port}}/api/listRank/sortOnlineListRank",
+			"method": "POST",
+			"headers": "Content-Type: application/json\n",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"preRequestScript": null,
+			"currentHelper": "normal",
+			"pathVariables": {},
+			"version": 2,
+			"name": "http://{{host}}:{{port}}/api/listRank/sortOnlineListRank",
+			"description": "",
+			"descriptionFormat": "html",
+			"collectionId": "cd98f267-1f77-0b91-9e0e-ee8778bf9d5d",
+			"rawModeData": "{\n    \"token\":\"99999999-9999-9999-9999-999999999999\",\n    \"targetData\": [\n          {\n            \"id\": 8,\n            \"sort\": 0\n          }, \n          {\n            \"id\": 7,\n            \"sort\": 1\n          }, \n          {\n            \"id\": 10,\n            \"sort\": 2\n          },\n          {\n            \"id\": 1,\n            \"sort\": 3\n          }, \n          {\n            \"id\": 14,\n            \"sort\": 11\n          }, \n          {\n            \"id\": 23,\n            \"sort\": 12\n          },\n          {\n            \"id\": 22,\n            \"sort\": 13\n          }, \n          {\n            \"id\": 24,\n            \"sort\": 14\n          }, \n          {\n            \"id\": 27,\n            \"sort\": 15\n          },\n          {\n            \"id\": 31,\n            \"sort\": 17\n          }, \n          {\n            \"id\": 34,\n            \"sort\": 16\n          }\n      ]\n}"
+		}
+	]
+}

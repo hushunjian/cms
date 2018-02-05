@@ -1,0 +1,33 @@
+{
+	"id": "df679fce-9bb7-1fbd-076a-7cd50f4c3f62",
+	"name": "api.gift.updateGift",
+	"description": "",
+	"order": [
+		"c410fea5-fece-2135-e265-acf6e4352fd4"
+	],
+	"folders": [],
+	"timestamp": 1513417919537,
+	"owner": "3117500",
+	"remoteLink": "",
+	"public": false,
+	"requests": [
+		{
+			"id": "c410fea5-fece-2135-e265-acf6e4352fd4",
+			"url": "http://{{host}}:{{port}}/api/gift/updateGift",
+			"method": "POST",
+			"headers": "Content-Type: application/json\n",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"preRequestScript": null,
+			"currentHelper": "normal",
+			"pathVariables": {},
+			"version": 2,
+			"name": "http://{{host}}:{{port}}/api/gift/updateGift",
+			"description": "",
+			"descriptionFormat": "html",
+			"collectionId": "df679fce-9bb7-1fbd-076a-7cd50f4c3f62",
+			"rawModeData": "  { \r\n      \"token\":\"99999999-9999-9999-9999-999999999999\",\r\n      \"giftId\":26,\r\n      \"name\":\"sss帐篷sss\",\r\n        \"image\":\"\",\r\n        \"imageWidth\":10,\r\n        \"imageHeight\":10,\r\n        \"price\": 10,\r\n        \"addPrice\":10,\r\n        \"gifImage\":\"\",\r\n        \"duration\": 10000,\r\n        \"sortNumber\": 1\r\n    }"
+		}
+	]
+}

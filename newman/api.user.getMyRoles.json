@@ -1,0 +1,46 @@
+{
+  "id": "f0c2bd2a-6ce3-bdbd-9da5-b601cfc184e5",
+  "name": "api.user.getMyRoles",
+  "description": "",
+  "order": [
+    "8e38d972-9bc0-1a22-08b7-e9aceb268e19"
+  ],
+  "folders": [],
+  "folders_order": [],
+  "timestamp": 1510553026843,
+  "owner": "2696738",
+  "public": false,
+  "requests": [
+    {
+      "id": "8e38d972-9bc0-1a22-08b7-e9aceb268e19",
+      "headers": "",
+      "headerData": [],
+      "url": "http://{{host}}:{{port}}/api/user/getMyRoles?token={{token}}",
+      "queryParams": [
+        {
+          "key": "token",
+          "value": "{{token}}",
+          "equals": true,
+          "description": "",
+          "enabled": true
+        }
+      ],
+      "preRequestScript": null,
+      "pathVariables": {},
+      "pathVariableData": [],
+      "method": "GET",
+      "data": [],
+      "dataMode": "raw",
+      "version": 2,
+      "tests": null,
+      "currentHelper": "normal",
+      "helperAttributes": {},
+      "time": 1510645069634,
+      "name": "api.user. getMyRoles",
+      "description": "",
+      "collectionId": "f0c2bd2a-6ce3-bdbd-9da5-b601cfc184e5",
+      "responses": [],
+      "rawModeData": "{\n    \"token\":\"{{token}}\",\n    \"password\": \"s3cret\",\n    \"newPassword\":\"s3cret\"\n}"
+    }
+  ]
+}

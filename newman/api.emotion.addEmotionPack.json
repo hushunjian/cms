@@ -1,0 +1,33 @@
+{
+	"id": "a4383d12-b14d-96ad-16c8-da70604c203f",
+	"name": "api.emotion.addEmotionPack",
+	"description": "",
+	"order": [
+		"b7667bd6-f1ae-ebf3-9e7b-48b9d9cacfbd"
+	],
+	"folders": [],
+	"timestamp": 1513417768451,
+	"owner": "3117500",
+	"remoteLink": "",
+	"public": false,
+	"requests": [
+		{
+			"id": "b7667bd6-f1ae-ebf3-9e7b-48b9d9cacfbd",
+			"url": "http://{{host}}:{{port}}/api/emotion/addEmotionPack",
+			"method": "POST",
+			"headers": "Content-Type: application/json\n",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"preRequestScript": null,
+			"currentHelper": "normal",
+			"pathVariables": {},
+			"version": 2,
+			"name": "http://{{host}}:{{port}}/api/emotion/addEmotionPack",
+			"description": "",
+			"descriptionFormat": "html",
+			"collectionId": "a4383d12-b14d-96ad-16c8-da70604c203f",
+			"rawModeData": "  { \r\n      \"token\":\"99999999-9999-9999-9999-999999999999\",\r\n      \"name\":\"中表情\",\r\n      \"cover\":\"\",\r\n      \"type\": 1,\r\n      \"isValid\": 1,\r\n      \"packVersion\": 1,\r\n      \"analyVersion\": 3,\r\n      \"order\": 4,\r\n      \"extra\": 1\r\n    }"
+		}
+	]
+}

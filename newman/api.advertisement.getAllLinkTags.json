@@ -1,0 +1,32 @@
+{
+	"id": "a1064a0b-103a-6d6c-9861-bbed98c15d05",
+	"name": "api.advertisement.getAllLinkTags",
+	"description": "",
+	"order": [
+		"a91a43cb-34a5-f85e-ef46-5156a922f122"
+	],
+	"folders": [],
+	"timestamp": 1513417379544,
+	"owner": "3117500",
+	"remoteLink": "",
+	"public": false,
+	"requests": [
+		{
+			"id": "a91a43cb-34a5-f85e-ef46-5156a922f122",
+			"url": "http://{{host}}:{{port}}/api/advertisement/getAllLinkTags?token=99999999-9999-9999-9999-999999999999&positionId=22",
+			"method": "GET",
+			"headers": "",
+			"data": null,
+			"dataMode": "params",
+			"tests": null,
+			"preRequestScript": null,
+			"currentHelper": "normal",
+			"pathVariables": {},
+			"version": 2,
+			"name": "http://{{host}}:{{port}}/api/advertisement/getAllLinkTags?token=99999999-9999-9999-9999-999999999999&positionId=22",
+			"description": "",
+			"descriptionFormat": "html",
+			"collectionId": "a1064a0b-103a-6d6c-9861-bbed98c15d05"
+		}
+	]
+}

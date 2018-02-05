@@ -1,0 +1,33 @@
+{
+	"id": "215b567d-78df-f28e-0c97-daecf87dfb3c",
+	"name": "api.emotion.addEmotion",
+	"description": "",
+	"order": [
+		"475f6e2a-cac1-0ddf-8339-eb1b02b67599"
+	],
+	"folders": [],
+	"timestamp": 1513417794143,
+	"owner": "3117500",
+	"remoteLink": "",
+	"public": false,
+	"requests": [
+		{
+			"id": "475f6e2a-cac1-0ddf-8339-eb1b02b67599",
+			"url": "http://{{host}}:{{port}}/api/emotion/addEmotion",
+			"method": "POST",
+			"headers": "Content-Type: application/json\n",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"preRequestScript": null,
+			"currentHelper": "normal",
+			"pathVariables": {},
+			"version": 2,
+			"name": "http://{{host}}:{{port}}/api/emotion/addEmotion",
+			"description": "",
+			"descriptionFormat": "html",
+			"collectionId": "215b567d-78df-f28e-0c97-daecf87dfb3c",
+			"rawModeData": "  { \r\n      \"token\":\"99999999-9999-9999-9999-999999999999\",\r\n      \"packId\": 18,\r\n      \"name\":\"伤心\",\r\n      \"cover\":\"\",\r\n      \"order\": 4,\r\n      \"extra\": 1,\r\n      \"width\": 2,\r\n      \"height\": 2\r\n    }"
+		}
+	]
+}

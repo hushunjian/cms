@@ -1,0 +1,33 @@
+{
+	"id": "a1455ab1-f1af-53d2-8772-d22fd851217c",
+	"name": "api.advertisement.unlinkLinkTag",
+	"description": "",
+	"order": [
+		"fe08b03e-0ebc-2259-6746-5ac284ac7cf0"
+	],
+	"folders": [],
+	"timestamp": 1513417361292,
+	"owner": "3117500",
+	"remoteLink": "",
+	"public": false,
+	"requests": [
+		{
+			"id": "fe08b03e-0ebc-2259-6746-5ac284ac7cf0",
+			"url": "http://{{host}}:{{port}}/api/advertisement/unlinkLinkTag",
+			"method": "POST",
+			"headers": "Content-Type: application/json\n",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"preRequestScript": null,
+			"currentHelper": "normal",
+			"pathVariables": {},
+			"version": 2,
+			"name": "http://{{host}}:{{port}}/api/advertisement/unlinkLinkTag",
+			"description": "",
+			"descriptionFormat": "html",
+			"collectionId": "a1455ab1-f1af-53d2-8772-d22fd851217c",
+			"rawModeData": " {\r\n      \"token\":\"99999999-9999-9999-9999-999999999999\",\r\n      \"id\":16,\r\n      \"positionId\":22\r\n    }"
+		}
+	]
+}

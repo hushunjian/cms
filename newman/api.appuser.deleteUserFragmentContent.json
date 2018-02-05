@@ -1,0 +1,33 @@
+{
+	"id": "1541e457-3f66-0cb8-52f9-77969e8a34ea",
+	"name": "api.appuser.deleteUserFragmentContent",
+	"description": "",
+	"order": [
+		"b2d02207-7a75-c2b4-5f93-81d5fceb2169"
+	],
+	"folders": [],
+	"timestamp": 1513417627594,
+	"owner": "3117500",
+	"remoteLink": "",
+	"public": false,
+	"requests": [
+		{
+			"id": "b2d02207-7a75-c2b4-5f93-81d5fceb2169",
+			"url": "http://{{host}}:{{port}}/api/appuser/deleteUserFragmentContent",
+			"method": "POST",
+			"headers": "Content-Type: application/json\n",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"preRequestScript": null,
+			"currentHelper": "normal",
+			"pathVariables": {},
+			"version": 2,
+			"name": "http://{{host}}:{{port}}/api/appuser/deleteUserFragmentContent",
+			"description": "",
+			"descriptionFormat": "html",
+			"collectionId": "1541e457-3f66-0cb8-52f9-77969e8a34ea",
+			"rawModeData": "{ \r\n      \"token\":\"99999999-9999-9999-9999-999999999999\",\r\n      \"id\": 869560\r\n    }"
+		}
+	]
+}

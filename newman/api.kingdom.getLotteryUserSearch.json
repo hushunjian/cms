@@ -1,0 +1,33 @@
+{
+	"id": "1c7d7df1-f0da-aacb-cb77-7a72d8bcbbf7",
+	"name": "api.kingdom.getLotteryUserSearch",
+	"description": "",
+	"order": [
+		"f8c35fe0-329c-c93b-435f-203eb04594b6"
+	],
+	"folders": [],
+	"timestamp": 1513418112215,
+	"owner": "3117500",
+	"remoteLink": "",
+	"public": false,
+	"requests": [
+		{
+			"id": "f8c35fe0-329c-c93b-435f-203eb04594b6",
+			"url": "http://{{host}}:{{port}}/api/kingdom/getLotteryUserSearch",
+			"method": "POST",
+			"headers": "Content-Type: application/json\n",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"preRequestScript": null,
+			"currentHelper": "normal",
+			"pathVariables": {},
+			"version": 2,
+			"name": "http://{{host}}:{{port}}/api/kingdom/getLotteryUserSearch",
+			"description": "",
+			"descriptionFormat": "html",
+			"collectionId": "1c7d7df1-f0da-aacb-cb77-7a72d8bcbbf7",
+			"rawModeData": "  { \r\n      \"token\":\"99999999-9999-9999-9999-999999999999\",\r\n      \"pageIndex\":1,\r\n      \"pageSize\":10,\r\n      \"lotteryId\":5,\r\n      \"userNick\":\"c\",\r\n      \"isAppoint\":0\r\n    }"
+		}
+	]
+}

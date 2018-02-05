@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.m2m.mapper.ExtTagMapper">
+
+    <select id="getAllTagsTotal" resultType="java.lang.Long">
+        select count(1) as total
+        from
+        (select
+        t.id AS tagId,
+        t.tag as tagName,
+        t.pid as parentTagId,
+        IF(t.pid is NULL,NULL,(SELECT tag FROM topic_tag WHERE id = t.pid)) AS parentTagName,
+        t.create_time as createdAt,
+        t.is_sys as isSystem,
+        t.is_rec as isRecommend,
+        t.status as status,
+        count(d.topic_id) as topicCount,
+        t.order_num as sortNumber,
+        t.cover_img as coverImage,
+        t.user_hobby_ids AS userHobbyIds
+        from topic_tag t
+        left join
+        topic_tag_detail d
+        on t.id=d.tag_id
+        and d.status=0 where 1=1
+        group by t.id
+        ) m
+    </select>
+
+    <select id="getAllTagsByPage" resultType="com.m2m.entity.ExtTagTemp">
+        select
+        t.id AS tagId,
+        t.tag as tagName,
+        t.pid as parentTagId,
+        IF(t.pid is NULL,NULL,(SELECT tag FROM topic_tag WHERE id = t.pid)) AS parentTagName,
+        t.create_time as createdAt,
+        t.is_sys as isSystem,
+        t.is_rec as isRecommend,
+        t.status as status,
+        count(d.topic_id) as topicCount,
+        t.order_num as sortNumber,
+        t.cover_img as coverImage,
+        t.user_hobby_ids AS userHobbyIds
+        from topic_tag t
+        left join
+        topic_tag_detail d
+        on t.id=d.tag_id
+        and d.status=0 where 1=1
+        group by t.id order by createdAt desc,t.id
+        LIMIT #{start},#{pageSize}
+    </select>
+
+    <select id="getAllParentTags" resultType="com.m2m.entity.ExtParentTag">
+        select id as parentTagId,tag as parentTagName from topic_tag where is_sys=1
+    </select>
+
+    <select id="getTagKingdomCountByTagId" resultType="java.lang.Long">
+        select count(1) as total from topic_tag_detail d,topic t where d.topic_id=t.id and d.status=0 and d.tag_id=#{tagId}
+    </select>
+
+
+    <select id="getAllTagKingdomByTagIdAndPage" resultType="com.m2m.entity.ExtTagKing">
+        select t.id as topicId,t.title as topicName,d.tag_id as tagId,d.tag as tagName,t.create_time as createdAt,t.update_time as updatedAt
+        from topic_tag_detail d,topic t where d.topic_id=t.id and d.status=0 and d.tag_id=#{tagId} order by d.create_time desc limit #{start},#{pageSize}
+    </select>
+
+    <select id="getAllUserHobbies" resultType="com.m2m.entity.ExtUserHobby">
+        select id as userHobbyId,value as userHobbyName from dictionary where tid=3
+    </select>
+
+    <select id="getTagSearchCountByCondition" parameterType="com.m2m.entity.ExtTagSearchQuery"
+            resultType="java.lang.Long">
+        select count(1) as total
+        from
+        (select
+        t.id AS tagId,
+        t.tag as tagName,
+        t.pid as parentTagId,
+        IF(t.pid is NULL,NULL,(SELECT tag FROM topic_tag WHERE id = t.pid)) AS parentTagName,
+        t.create_time as createdAt,
+        t.is_sys as isSystem,
+        t.is_rec as isRecommend,
+        t.status as status,
+        count(d.topic_id) as topicCount,
+        t.order_num as sortNumber,
+        t.cover_img as coverImage,
+        t.user_hobby_ids AS userHobbyIds
+        from topic_tag t
+        left join
+        topic_tag_detail d
+        on t.id=d.tag_id
+        and d.status=0 where 1=1
+        <if test="tagName!=null">
+            and t.tag like CONCAT('%',#{tagName},'%')
+        </if>
+        <if test="startTime!=null">
+            and DATE_FORMAT(t.create_time,'%Y-%m-%d') &gt;= #{startTime}
+        </if>
+        <if test="endTime!=null">
+            and DATE_FORMAT(t.create_time,'%Y-%m-%d') &lt;= #{endTime}
+        </if>
+        <if test="isSystem!=null and isSystem!=-1">
+            and t.is_sys = #{isSystem}
+        </if>
+        <if test="isRecommend!=null and isRecommend!=-1">
+            and t.is_rec = #{isRecommend}
+        </if>
+        <if test="parentTagId!=null and parentTagId!=-1">
+            and t.pid = #{parentTagId}
+        </if>
+        <if test="noParentTag!=null and noParentTag==1">
+            and t.pid is null
+        </if>
+
+        group by t.id
+        <choose>
+            <when test="topicCountStart!=null and topicCountEnd!=null">
+                having topicCount &gt;= #{topicCountStart} and topicCount &lt;= #{topicCountEnd}
+            </when>
+            <otherwise>
+                <if test="topicCountStart!=null">
+                    having topicCount &gt;= #{topicCountStart}
+                </if>
+                <if test="topicCountEnd!=null">
+                    having topicCount &lt;= #{topicCountEnd}
+                </if>
+            </otherwise>
+        </choose>
+        ) m
+    </select>
+
+    <select id="getTagSearchListByCondition" parameterType="com.m2m.entity.ExtTagSearchQuery"
+            resultType="com.m2m.entity.ExtTagTemp">
+        select
+        t.id AS tagId,
+        t.tag as tagName,
+        t.pid as parentTagId,
+        IF(t.pid is NULL,NULL,(SELECT tag FROM topic_tag WHERE id = t.pid)) AS parentTagName,
+        t.create_time as createdAt,
+        t.is_sys as isSystem,
+        t.is_rec as isRecommend,
+        t.status as status,
+        count(d.topic_id) as topicCount,
+        t.order_num as sortNumber,
+        t.cover_img as coverImage,
+        t.user_hobby_ids AS userHobbyIds
+        from topic_tag t
+        left join
+        topic_tag_detail d
+        on t.id=d.tag_id
+        and d.status=0 where 1=1
+        <if test="tagName!=null">
+            and t.tag like CONCAT('%',#{tagName},'%')
+        </if>
+        <if test="startTime!=null">
+            and DATE_FORMAT(t.create_time,'%Y-%m-%d') &gt;= #{startTime}
+        </if>
+        <if test="endTime!=null">
+            and DATE_FORMAT(t.create_time,'%Y-%m-%d') &lt;= #{endTime}
+        </if>
+        <if test="isSystem!=null and isSystem!=-1">
+            and t.is_sys = #{isSystem}
+        </if>
+        <if test="isRecommend!=null and isRecommend!=-1">
+            and t.is_rec = #{isRecommend}
+        </if>
+        <if test="parentTagId!=null and parentTagId!=-1">
+            and t.pid = #{parentTagId}
+        </if>
+        <if test="noParentTag!=null and noParentTag==1">
+            and t.pid is null
+        </if>
+
+        group by t.id
+        <choose>
+            <when test="topicCountStart!=null and topicCountEnd!=null">
+                having topicCount &gt;= #{topicCountStart} and topicCount &lt;= #{topicCountEnd}
+            </when>
+            <otherwise>
+                <if test="topicCountStart!=null">
+                    having topicCount &gt;= #{topicCountStart}
+                </if>
+                <if test="topicCountEnd!=null">
+                    having topicCount &lt;= #{topicCountEnd}
+                </if>
+            </otherwise>
+        </choose>
+        order by createdAt desc,t.id
+        LIMIT ${(pageIndex-1)*pageSize},#{pageSize}
+    </select>
+
+    <select id="buildTopicTagDetailByTopicIdListAndTagId" resultType="com.m2m.domain.TopicTagDetail">
+        SELECT t1.id as topicId, t1.uid, t2.id as tagId,t2.tag FROM topic t1,topic_tag t2 WHERE t1.id in
+        <foreach collection="topicIdList" index="index" item="item" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+        and t2.id = #{tagId}
+    </select>
+
+
+    <insert id="addTopicTagDetailBatch" useGeneratedKeys="true" keyProperty="id" parameterType="java.util.List">
+        INSERT INTO topic_tag_detail(topic_id,uid,tag_id,tag) VALUES
+        <foreach collection="list" item="item" index="index" separator=",">
+            (#{item.topicId},#{item.uid},#{item.tagId},#{item.tag})
+        </foreach>
+    </insert>
+    
+    <select id="testExcel" parameterType="com.m2m.request.TestExcelRequest" resultType="com.m2m.entity.ExtTagTemp">
+    	select
+        t.id AS tagId,
+        t.tag as tagName,
+        t.pid as parentTagId,
+        IF(t.pid is NULL,NULL,(SELECT tag FROM topic_tag WHERE id = t.pid)) AS parentTagName,
+        t.create_time as createdAt,
+        t.is_sys as isSystem,
+        t.is_rec as isRecommend,
+        t.status as status,
+        count(d.topic_id) as topicCount,
+        t.order_num as sortNumber,
+        t.cover_img as coverImage,
+        t.user_hobby_ids AS userHobbyIds
+        from topic_tag t
+        left join
+        topic_tag_detail d
+        on t.id=d.tag_id
+        and d.status=0 where 1=1
+        <if test="tagName!=null">
+            and t.tag like CONCAT('%',#{tagName},'%')
+        </if>
+        <if test="startTime!=null">
+            and DATE_FORMAT(t.create_time,'%Y-%m-%d') &gt;= #{startTime}
+        </if>
+        <if test="endTime!=null">
+            and DATE_FORMAT(t.create_time,'%Y-%m-%d') &lt;= #{endTime}
+        </if>
+        <if test="isSystem!=null and isSystem!=-1">
+            and t.is_sys = #{isSystem}
+        </if>
+        <if test="isRecommend!=null and isRecommend!=-1">
+            and t.is_rec = #{isRecommend}
+        </if>
+        <if test="parentTagId!=null and parentTagId!=-1">
+            and t.pid = #{parentTagId}
+        </if>
+        <if test="noParentTag!=null and noParentTag==1">
+            and t.pid is null
+        </if>
+
+        group by t.id
+        <choose>
+            <when test="topicCountStart!=null and topicCountEnd!=null">
+                having topicCount &gt;= #{topicCountStart} and topicCount &lt;= #{topicCountEnd}
+            </when>
+            <otherwise>
+                <if test="topicCountStart!=null">
+                    having topicCount &gt;= #{topicCountStart}
+                </if>
+                <if test="topicCountEnd!=null">
+                    having topicCount &lt;= #{topicCountEnd}
+                </if>
+            </otherwise>
+        </choose>
+        order by createdAt desc,t.id
+    </select>
+</mapper>

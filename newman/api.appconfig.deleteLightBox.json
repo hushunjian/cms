@@ -1,0 +1,33 @@
+{
+	"id": "a33af4e9-8049-cf87-8ecd-914c2087a403",
+	"name": "api.appconfig.deleteLightBox",
+	"description": "",
+	"order": [
+		"176a6a00-32a7-55df-dbb1-df1f88fbf544"
+	],
+	"folders": [],
+	"timestamp": 1513417487819,
+	"owner": "3117500",
+	"remoteLink": "",
+	"public": false,
+	"requests": [
+		{
+			"id": "176a6a00-32a7-55df-dbb1-df1f88fbf544",
+			"url": "http://{{host}}:{{port}}/api/appconfig/deleteLightBox",
+			"method": "POST",
+			"headers": "Content-Type: application/json\n",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"preRequestScript": null,
+			"currentHelper": "normal",
+			"pathVariables": {},
+			"version": 2,
+			"name": "http://{{host}}:{{port}}/api/appconfig/deleteLightBox",
+			"description": "",
+			"descriptionFormat": "html",
+			"collectionId": "a33af4e9-8049-cf87-8ecd-914c2087a403",
+			"rawModeData": "{\r\n      \"token\":\"99999999-9999-9999-9999-999999999999\",\r\n      \"id\":11\r\n    }"
+		}
+	]
+}

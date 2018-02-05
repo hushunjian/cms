@@ -1,0 +1,33 @@
+{
+	"id": "7b555c9b-a9e2-4829-246a-fb4b5d6933c8",
+	"name": "api.emotion.deleteEmotion",
+	"description": "",
+	"order": [
+		"c63e1ec2-ca4c-d281-1449-681d4bfe1db4"
+	],
+	"folders": [],
+	"timestamp": 1513417808462,
+	"owner": "3117500",
+	"remoteLink": "",
+	"public": false,
+	"requests": [
+		{
+			"id": "c63e1ec2-ca4c-d281-1449-681d4bfe1db4",
+			"url": "http://{{host}}:{{port}}/api/emotion/deleteEmotion",
+			"method": "POST",
+			"headers": "Content-Type: application/json\n",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"preRequestScript": null,
+			"currentHelper": "normal",
+			"pathVariables": {},
+			"version": 2,
+			"name": "http://{{host}}:{{port}}/api/emotion/deleteEmotion",
+			"description": "",
+			"descriptionFormat": "html",
+			"collectionId": "7b555c9b-a9e2-4829-246a-fb4b5d6933c8",
+			"rawModeData": "  { \r\n      \"token\":\"99999999-9999-9999-9999-999999999999\",\r\n      \"packId\": 18,\r\n      \"id\": 24\r\n    }"
+		}
+	]
+}

@@ -1,0 +1,33 @@
+{
+	"id": "edba469f-24c1-0e4c-bcaa-6cbfccf0fb7e",
+	"name": ".api.advertisement.addLinkTag",
+	"description": "",
+	"order": [
+		"aca15db6-17a4-42f6-4b89-4a519827842e"
+	],
+	"folders": [],
+	"timestamp": 1513417282547,
+	"owner": "3117500",
+	"remoteLink": "",
+	"public": false,
+	"requests": [
+		{
+			"id": "aca15db6-17a4-42f6-4b89-4a519827842e",
+			"url": "http://{{host}}:{{port}}/api/advertisement/addLinkTag",
+			"method": "POST",
+			"headers": "Content-Type: application/json\n",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"preRequestScript": null,
+			"currentHelper": "normal",
+			"pathVariables": {},
+			"version": 2,
+			"name": "http://{{host}}:{{port}}/api/advertisement/addLinkTag",
+			"description": "",
+			"descriptionFormat": "html",
+			"collectionId": "edba469f-24c1-0e4c-bcaa-6cbfccf0fb7e",
+			"rawModeData": "{\r\n      \"token\":\"99999999-9999-9999-9999-999999999999\",\r\n      \"id\":21,\r\n      \"name\":\"test\", \r\n      \"position\":\"3\",\r\n      \"positionId\":3\r\n    }"
+		}
+	]
+}

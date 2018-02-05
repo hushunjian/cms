@@ -1,0 +1,33 @@
+{
+	"id": "ce004692-c545-a384-51ec-de32b74145df",
+	"name": "api.gift.addGift",
+	"description": "",
+	"order": [
+		"cccb92a6-eff3-8268-1a28-636f868ec928"
+	],
+	"folders": [],
+	"timestamp": 1513417907917,
+	"owner": "3117500",
+	"remoteLink": "",
+	"public": false,
+	"requests": [
+		{
+			"id": "cccb92a6-eff3-8268-1a28-636f868ec928",
+			"url": "http://{{host}}:{{port}}/api/gift/addGift",
+			"method": "POST",
+			"headers": "Content-Type: application/json\n",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"preRequestScript": null,
+			"currentHelper": "normal",
+			"pathVariables": {},
+			"version": 2,
+			"name": "http://{{host}}:{{port}}/api/gift/addGift",
+			"description": "",
+			"descriptionFormat": "html",
+			"collectionId": "ce004692-c545-a384-51ec-de32b74145df",
+			"rawModeData": "  { \r\n      \"token\":\"99999999-9999-9999-9999-999999999999\",\r\n      \"name\":\"sss帐篷\",\r\n        \"image\":\"\",\r\n        \"imageWidth\":10,\r\n        \"imageHeight\":10,\r\n        \"price\": 10,\r\n        \"addPrice\":10,\r\n        \"gifImage\":\"\",\r\n        \"duration\": 10000,\r\n        \"sortNumber\": 1\r\n    }"
+		}
+	]
+}

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+    <context id="MysqlTables" targetRuntime="MyBatis3">
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://192.168.89.80:3306/apps"
+                        userId="me2me"
+                        password="Sp@Metro#79">
+        </jdbcConnection>
+
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+
+        <javaModelGenerator targetPackage="com.m2m.domain" targetProject="./src/main/java">
+            <property name="enableSubPackages" value="true"/>
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+
+        <sqlMapGenerator targetPackage="com.m2m.mapper" targetProject="./src/main/resources">
+            <property name="enableSubPackages" value="true"/>
+        </sqlMapGenerator>
+
+        <javaClientGenerator type="MIXEDMAPPER" targetPackage="com.m2m.mapper" targetProject="./src/main/java">
+            <property name="enableSubPackages" value="true"/>
+        </javaClientGenerator>
+
+        <table tableName="ad_banner" domainObjectName="AdBanner"/>
+        <table tableName="ad_info" domainObjectName="AdInfo"/>
+        <table tableName="ad_tag" domainObjectName="AdTag"/>
+        <table tableName="app_config" domainObjectName="AppConfig"/>
+        <table tableName="app_lightbox_source" domainObjectName="AppLightboxSource"/>
+    	<table tableName="app_anchor" domainObjectName="AppAnchor"/>
+    	<table tableName="billboard_relation" domainObjectName="BillboardRelation"/>
+        <table tableName="billboard" domainObjectName="BillBoard"/>
+        <table tableName="billboard_details" domainObjectName="BillboardDetails"/>
+        <table tableName="cms_credential" domainObjectName="CmsCredential"/>
+        <table tableName="cms_feature" domainObjectName="CmsFeature"/>
+        <table tableName="cms_feature_group" domainObjectName="CmsFeatureGroup"/>
+        <table tableName="cms_role" domainObjectName="CmsRole"/>
+        <table tableName="cms_role_feature" domainObjectName="CmsRoleFeature"/>
+        <table tableName="cms_user" domainObjectName="CmsUser"/>
+        <table tableName="cms_user_role" domainObjectName="CmsUserRole"/>
+        <table tableName="cms_user_feature" domainObjectName="CmsUserFeature"/>
+        <table tableName="cms_user_log" domainObjectName="CmsUserLog"/>
+        <table tableName="content" domainObjectName="Content"/>
+        <table tableName="emotion_pack" domainObjectName="EmotionPack"/>
+        <table tableName="emotion_pack_detail" domainObjectName="EmotionPackDetail"/>
+        <table tableName="gift_info" domainObjectName="GiftInfo"/>
+        <table tableName="topic_tag" domainObjectName="TopicTag"/>
+    	<table tableName="topic" domainObjectName="Topic"/>
+    	<table tableName="topic_listed" domainObjectName="TopicListed"/>
+    	<table tableName="topic_fragment" domainObjectName="TopicFragment"/>
+        <table tableName="topic_tag" domainObjectName="TopicTag"/>
+        <table tableName="topic_tag_detail" domainObjectName="TopicTagDetail"/>
+    	<table tableName="topic_news" domainObjectName="TopicNews"/>
+        <table tableName="user" domainObjectName="User"/>
+        <table tableName="user_profile" domainObjectName="UserProfile"/>
+        <table tableName="user_token" domainObjectName="UserToken"/>
+    	<table tableName="user_no" domainObjectName="UserNo"/>
+    	<table tableName="user_industry" domainObjectName="UserIndustry"/>
+    	<table tableName="live_favorite" domainObjectName="LiveFavorite"/>
+        <table tableName="lottery_appoint" domainObjectName="LotteryAppoint"/>
+        <table tableName="kingdom_count_day" domainObjectName="KingdomCountDay"/>
+    	
+    </context>
+</generatorConfiguration>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.m2m.mapper.ExtCmsUserMapper">
+    <resultMap id="ExtCmsCredential" type="com.m2m.entity.ExtCmsCredential">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="token" jdbcType="VARCHAR" property="token"/>
+        <result column="name" jdbcType="VARCHAR" property="name"/>
+        <result column="mobile" jdbcType="VARCHAR" property="mobile"/>
+    </resultMap>
+    <select id="getCredential" parameterType="java.lang.String" resultMap="ExtCmsCredential">
+        select
+        t1.token,
+        t2.id,
+        t2.name,
+        t2.mobile
+        from cms_credential t1, cms_user t2
+        where t1.user_id = t2.id
+        and t1.token = #{token,jdbcType=VARCHAR}
+    </select>
+</mapper>

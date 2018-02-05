@@ -1,0 +1,45 @@
+{
+  "id": "d87de0f4-02b7-2ce6-994f-91d391a5ec0d",
+  "name": "api.role.updateRoleFeatures",
+  "description": "",
+  "order": [
+    "4ec62672-2fbf-0751-c538-162bff405558"
+  ],
+  "folders": [],
+  "folders_order": [],
+  "timestamp": 1510292342696,
+  "owner": "2696738",
+  "public": false,
+  "requests": [
+    {
+      "id": "4ec62672-2fbf-0751-c538-162bff405558",
+      "headers": "Content-Type: application/json\n",
+      "headerData": [
+        {
+          "key": "Content-Type",
+          "value": "application/json",
+          "description": "",
+          "enabled": true
+        }
+      ],
+      "url": "http://{{host}}:{{port}}/api/role/updateRoleFeatures",
+      "queryParams": [],
+      "preRequestScript": null,
+      "pathVariables": {},
+      "pathVariableData": [],
+      "method": "POST",
+      "data": [],
+      "dataMode": "raw",
+      "version": 2,
+      "tests": null,
+      "currentHelper": "normal",
+      "helperAttributes": {},
+      "time": 1510292424084,
+      "name": "api.role. updateRoleFeatures",
+      "description": "",
+      "collectionId": "d87de0f4-02b7-2ce6-994f-91d391a5ec0d",
+      "responses": [],
+      "rawModeData": "{\n    \"token\":\"{{token}}\",\n    \"roleId\": \"5\",\n    \"featureIds\": [1, 2, 3]\n}"
+    }
+  ]
+}

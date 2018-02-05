@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.m2m.mapper.ExtCmsUserFeatureMapper">
+    <insert id="addFeatures" parameterType="com.m2m.entity.ExtUserFeature">
+        insert into cms_user_feature (user_id, feature_id, status)
+        values
+        <foreach collection="features" item="item" index="index" separator=",">
+            <choose>
+                <when test="item.status">
+                    (#{userId}, #{item.id}, 1)
+                </when>
+                <otherwise>
+                    (#{userId}, #{item.id}, -1)
+                </otherwise>
+            </choose>
+        </foreach>
+    </insert>
+</mapper>

@@ -1,0 +1,33 @@
+{
+	"id": "1d6c6b3c-f773-4348-055c-c60ed018afbb",
+	"name": "api.kingdom.setLotteryAppoint",
+	"description": "",
+	"order": [
+		"e2ffa056-4a8e-ede0-474f-3fdcf8ad59e4"
+	],
+	"folders": [],
+	"timestamp": 1513418171458,
+	"owner": "3117500",
+	"remoteLink": "",
+	"public": false,
+	"requests": [
+		{
+			"id": "e2ffa056-4a8e-ede0-474f-3fdcf8ad59e4",
+			"url": "http://{{host}}:{{port}}/api/kingdom/setLotteryAppoint",
+			"method": "POST",
+			"headers": "Content-Type: application/json\n",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"preRequestScript": null,
+			"currentHelper": "normal",
+			"pathVariables": {},
+			"version": 2,
+			"name": "http://{{host}}:{{port}}/api/kingdom/setLotteryAppoint",
+			"description": "",
+			"descriptionFormat": "html",
+			"collectionId": "1d6c6b3c-f773-4348-055c-c60ed018afbb",
+			"rawModeData": "  { \r\n      \"token\":\"99999999-9999-9999-9999-999999999999\",\r\n      \"lotteryId\": 17,\r\n      \"userId\": 299,\r\n      \"isAppoint\":1\r\n    }"
+		}
+	]
+}

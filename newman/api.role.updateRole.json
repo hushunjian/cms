@@ -1,0 +1,45 @@
+{
+  "id": "e4b771e6-ee76-54b5-a172-1bb5afae0fa4",
+  "name": "api.role.updateRole",
+  "description": "",
+  "order": [
+    "9e482e21-bcdc-c972-f830-5668e6ebbe0d"
+  ],
+  "folders": [],
+  "folders_order": [],
+  "timestamp": 1510292220718,
+  "owner": "2696738",
+  "public": false,
+  "requests": [
+    {
+      "id": "9e482e21-bcdc-c972-f830-5668e6ebbe0d",
+      "headers": "Content-Type: application/json\n",
+      "headerData": [
+        {
+          "key": "Content-Type",
+          "value": "application/json",
+          "description": "",
+          "enabled": true
+        }
+      ],
+      "url": "http://{{host}}:{{port}}/api/role/updateRole",
+      "queryParams": [],
+      "preRequestScript": null,
+      "pathVariables": {},
+      "pathVariableData": [],
+      "method": "POST",
+      "data": [],
+      "dataMode": "raw",
+      "version": 2,
+      "tests": null,
+      "currentHelper": "normal",
+      "helperAttributes": {},
+      "time": 1510292287474,
+      "name": "api.role. updateRole",
+      "description": "",
+      "collectionId": "e4b771e6-ee76-54b5-a172-1bb5afae0fa4",
+      "responses": [],
+      "rawModeData": "{\n    \"token\":\"{{token}}\",\n    \"id\": \"5\",\n    \"name\": \"role_updated\"\n}"
+    }
+  ]
+}

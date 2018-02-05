@@ -1,0 +1,33 @@
+{
+	"id": "e4f1b2f0-f59e-cd41-9e8e-c31b4d3a344d",
+	"name": "api.tag.removeTagTopic",
+	"description": "",
+	"order": [
+		"d1b6ad00-1586-fa8b-c694-4e3d90c5465a"
+	],
+	"folders": [],
+	"timestamp": 1512960978208,
+	"owner": "3117500",
+	"remoteLink": "",
+	"public": false,
+	"requests": [
+		{
+			"id": "d1b6ad00-1586-fa8b-c694-4e3d90c5465a",
+			"url": "http://{{host}}:{{port}}/api/tag/removeTagTopic",
+			"method": "POST",
+			"headers": "Content-Type: application/json\n",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"preRequestScript": null,
+			"currentHelper": "normal",
+			"pathVariables": {},
+			"version": 2,
+			"name": "http://{{host}}:{{port}}/api/tag/removeTagTopic",
+			"description": "",
+			"descriptionFormat": "html",
+			"collectionId": "e4f1b2f0-f59e-cd41-9e8e-c31b4d3a344d",
+			"rawModeData": "{\n     \"token\":\"99999999-9999-9999-9999-999999999999\",\n     \"tagId\":55,\n     \"topicId\":3422\n}"
+		}
+	]
+}

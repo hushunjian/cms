@@ -1,0 +1,33 @@
+{
+	"id": "3f137b67-682d-b3eb-a930-247979db9050",
+	"name": "api.kingdom.setKingdomRestTime",
+	"description": "",
+	"order": [
+		"54e753f8-1734-7751-5c1d-ba81c49dad49"
+	],
+	"folders": [],
+	"timestamp": 1513418147229,
+	"owner": "3117500",
+	"remoteLink": "",
+	"public": false,
+	"requests": [
+		{
+			"id": "54e753f8-1734-7751-5c1d-ba81c49dad49",
+			"url": "http://{{host}}:{{port}}/api/kingdom/setKingdomRestTime",
+			"method": "POST",
+			"headers": "Content-Type: application/json\n",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"preRequestScript": null,
+			"currentHelper": "normal",
+			"pathVariables": {},
+			"version": 2,
+			"name": "http://{{host}}:{{port}}/api/kingdom/setKingdomRestTime",
+			"description": "",
+			"descriptionFormat": "html",
+			"collectionId": "3f137b67-682d-b3eb-a930-247979db9050",
+			"rawModeData": "  { \r\n      \"token\":\"99999999-9999-9999-9999-999999999999\",\r\n      \"startAt\": 1511078400000,\r\n      \"endAt\": 1511078400000\r\n    }"
+		}
+	]
+}

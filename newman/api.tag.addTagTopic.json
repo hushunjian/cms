@@ -1,0 +1,33 @@
+{
+	"id": "048951a7-fcf1-be7f-cb1a-59de5aad7504",
+	"name": "api.tag.addTagTopic",
+	"description": "",
+	"order": [
+		"3b5581fd-c176-3be2-636d-fb313a5eec28"
+	],
+	"folders": [],
+	"timestamp": 1512960576432,
+	"owner": "3117500",
+	"remoteLink": "",
+	"public": false,
+	"requests": [
+		{
+			"id": "3b5581fd-c176-3be2-636d-fb313a5eec28",
+			"url": "http://{{host}}:{{port}}/api/tag/addTagTopic",
+			"method": "POST",
+			"headers": "Content-Type: application/json\n",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"preRequestScript": null,
+			"currentHelper": "normal",
+			"pathVariables": {},
+			"version": 2,
+			"name": "http://{{host}}:{{port}}/api/tag/addTagTopic",
+			"description": "",
+			"descriptionFormat": "html",
+			"collectionId": "048951a7-fcf1-be7f-cb1a-59de5aad7504",
+			"rawModeData": "{\n     \"token\":\"99999999-9999-9999-9999-999999999999\",\n     \"tagId\":55,\n     \"topicId\":[2929,2933,3416,3417,3418,3419]\n}"
+		}
+	]
+}

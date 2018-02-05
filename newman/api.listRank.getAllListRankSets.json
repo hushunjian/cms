@@ -1,0 +1,32 @@
+{
+	"id": "ed4bf199-98fe-9c7c-dfc1-fcd502cc9d70",
+	"name": "api.listRank.getAllListRankSets",
+	"description": "",
+	"order": [
+		"7be8a34d-7f4f-12e8-9638-f3716533e005"
+	],
+	"folders": [],
+	"timestamp": 1514009569462,
+	"owner": "3117500",
+	"remoteLink": "",
+	"public": false,
+	"requests": [
+		{
+			"id": "7be8a34d-7f4f-12e8-9638-f3716533e005",
+			"url": "http://{{host}}:{{port}}/api/listRank/getAllListRankSets?token=a3fd6d23-edfd-4f70-ab16-bbaa94403024&sourceId=38",
+			"method": "GET",
+			"headers": "",
+			"data": null,
+			"dataMode": "params",
+			"tests": null,
+			"preRequestScript": null,
+			"currentHelper": "normal",
+			"pathVariables": {},
+			"version": 2,
+			"name": "http://{{host}}:{{port}}/api/listRank/getAllListRankSets?token=a3fd6d23-edfd-4f70-ab16-bbaa94403024&sourceId=38",
+			"description": "",
+			"descriptionFormat": "html",
+			"collectionId": "ed4bf199-98fe-9c7c-dfc1-fcd502cc9d70"
+		}
+	]
+}

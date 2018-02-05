@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.m2m.mapper.ExtBehaviourMapper">
+    <select id="getRegisteredUserCount" resultType="java.lang.Long">
+    	SELECT 
+		count(1) AS total
+		FROM 
+		user_profile t1
+		LEFT JOIN
+		(select i.uid,group_concat(DISTINCT i.device_code) as deviceInfo
+		from user_device_info i
+		where i.device_code is not NULL
+		and i.device_code!=''
+		group by i.uid
+		) t2
+		ON
+		t1.uid = t2.uid 
+		WHERE t1.create_time &gt;=DATE_SUB(now(),INTERVAL 1 WEEK)
+    </select>
+    
+    <select id="getRegisteredUserByPage" resultType="com.m2m.entity.ExtRegisteredUser">
+        SELECT 
+		t1.uid,
+		t1.nick_name as nickName,
+		t1.channel as registerChannel,
+		t2.deviceInfo as logonDevice,
+		t1.create_time as registerTime
+		FROM 
+		user_profile t1
+		LEFT JOIN
+		(select i.uid,group_concat(DISTINCT i.device_code) as deviceInfo
+		from user_device_info i
+		where i.device_code is not NULL
+		and i.device_code!=''
+		group by i.uid
+		) t2
+		ON
+		t1.uid = t2.uid
+		WHERE t1.create_time &gt;=DATE_SUB(now(),INTERVAL 1 WEEK)
+		ORDER BY create_time DESC
+		limit #{start},#{pageSize}
+    </select>
+    
+    <select id="getRegisteredUserCountByCondition" resultType="java.lang.Long">
+    	SELECT 
+		count(1) AS total
+		FROM 
+		user_profile t1
+		LEFT JOIN
+		(select i.uid,group_concat(DISTINCT i.device_code) as deviceInfo
+		from user_device_info i
+		where i.device_code is not NULL
+		and i.device_code!=''
+		group by i.uid
+		) t2
+		ON
+		t1.uid = t2.uid 
+		WHERE 1=1
+		<if test="createdBegin!=null">
+			and t1.create_time &gt;=#{createdBegin}
+		</if>
+		<if test="createdEnd!=null">
+			and t1.create_time &lt;=#{createdEnd}
+		</if>
+		<if test="createdBegin==null and createdEnd==null">
+			and t1.create_time &gt;=DATE_SUB(now(),INTERVAL 1 WEEK)
+		</if>
+		<if test="registerChannelCode!=null and registerChannelCode!='-1'">
+			and t1.channel = #{registerChannelCode}
+		</if>
+    </select>
+    
+    <select id="getRegisteredUserByCondition" resultType="com.m2m.entity.ExtRegisteredUser">
+    	SELECT 
+		t1.uid,
+		t1.nick_name as nickName,
+		t1.channel as registerChannel,
+		t2.deviceInfo as logonDevice,
+		t1.create_time as registerTime
+		FROM 
+		user_profile t1
+		LEFT JOIN
+		(select i.uid,group_concat(DISTINCT i.device_code) as deviceInfo
+		from user_device_info i
+		where i.device_code is not NULL
+		and i.device_code!=''
+		group by i.uid
+		) t2
+		ON
+		t1.uid = t2.uid 
+		WHERE 1=1
+		<if test="createdBegin!=null">
+			and t1.create_time &gt;=#{createdBegin}
+		</if>
+		<if test="createdEnd!=null">
+			and t1.create_time &lt;=#{createdEnd}
+		</if>
+		<if test="createdBegin==null and createdEnd==null">
+			and t1.create_time &gt;=DATE_SUB(now(),INTERVAL 1 WEEK)
+		</if>
+		<if test="registerChannelCode!=null and registerChannelCode!='-1'">
+			and t1.channel = #{registerChannelCode}
+		</if>
+		ORDER BY create_time DESC
+		limit ${(pageIndex-1)*pageSize},#{pageSize}
+    </select>
+    
+    <select id="getUserBehaviorsCount" resultType="java.lang.Long">
+    	SELECT 
+		count(1) as total
+		FROM 
+		daily_active_user t1,
+		user_profile t2,
+		app_feature t3
+		WHERE 
+		t1.uid = t2.uid 
+		AND t1.feature_id = t3.id
+		AND t1.create_time >=DATE_SUB(NOW(),INTERVAL 1 DAY)
+    </select>
+    
+    <select id="getUserBehaviorsByPage" resultType="com.m2m.entity.ExtUserBehaviour">
+    	SELECT 
+		t1.uid,
+		t2.nick_name as nickName,
+		t3.feature_name as interview,
+		t2.create_time as createdAt,
+		t1.access_count as visitTimes,
+		t1.access_hour as visitTimeQuantum,
+		t1.access_sum_time as duration
+		FROM 
+		daily_active_user t1,
+		user_profile t2,
+		app_feature t3
+		WHERE 
+		t1.uid = t2.uid 
+		AND t1.feature_id = t3.id
+		AND t1.create_time >=DATE_SUB(NOW(),INTERVAL 1 DAY)
+		ORDER BY uid ASC
+		LIMIT #{start},#{pageSize}
+    </select>
+    
+    <select id="getUserBehaviorsCountByCondition" resultType="java.lang.Long">
+    	SELECT COUNT(1) AS total 
+    	FROM 
+		daily_active_user t1,
+		user_profile t2,
+		app_feature t3
+		WHERE 
+		t1.uid = t2.uid 
+		AND t1.feature_id = t3.id
+		<if test="createdBegin!=null">
+			and t1.access_date &gt;=#{createdBegin}
+		</if>
+		<if test="createdEnd!=null">
+			and t1.access_date &lt;=#{createdEnd}
+		</if>
+		<if test="timeQuantum!=null">
+			and t1.access_hour &gt;=${timeQuantum[0]}
+			and t1.access_hour &lt;${timeQuantum[1]}
+		</if>
+		<if test="interviewId!=null and interviewId!=-1">
+			and t1.feature_id = #{interviewId}
+		</if>
+		<if test="duration!=null">
+			and t1.access_sum_time &gt;= #{duration}
+		</if>
+    </select>
+    
+    <select id="getUserBehaviorsByCondition" resultType="com.m2m.entity.ExtUserBehaviour">
+    	SELECT 
+    	t1.uid,
+		t2.nick_name as nickName,
+		t3.feature_name as interview,
+		t2.create_time as createdAt,
+		t1.access_count as visitTimes,
+		t1.access_hour as visitTimeQuantum,
+		t1.access_sum_time as duration
+    	FROM 
+		daily_active_user t1,
+		user_profile t2,
+		app_feature t3
+		WHERE 
+		t1.uid = t2.uid 
+		AND t1.feature_id = t3.id
+		<if test="createdBegin!=null">
+			and t1.access_date &gt;=#{createdBegin}
+		</if>
+		<if test="createdEnd!=null">
+			and t1.access_date &lt;=#{createdEnd}
+		</if>
+		<if test="timeQuantum!=null">
+			and t1.access_hour &gt;=${timeQuantum[0]}
+			and t1.access_hour &lt;${timeQuantum[1]}
+		</if>
+		<if test="interviewId!=null and interviewId!=-1">
+			and t1.feature_id = #{interviewId}
+		</if>
+		<if test="duration!=null">
+			and t1.access_sum_time &gt;= #{duration}
+		</if>
+		ORDER BY uid ASC
+		limit ${(pageIndex-1)*pageSize},#{pageSize}
+    </select>
+    
+    <select id="getUserBehaviorsTotal" resultType="com.m2m.entity.ExtCmsUserBehaviourTotal">
+    	SELECT 
+		count(DISTINCT t1.uid) AS totalVisits,
+		sum(access_count) AS totalVisitTimes
+		FROM 
+		daily_active_user t1,
+		user_profile t2,
+		app_feature t3
+		WHERE 
+		t1.uid = t2.uid 
+		AND t1.feature_id = t3.id
+		AND t1.create_time >=DATE_SUB(NOW(),INTERVAL 1 DAY)
+    </select>
+    
+    <select id="getUserBehaviorsTotalByCondition" resultType="com.m2m.entity.ExtCmsUserBehaviourTotal">
+    	SELECT 
+		count(DISTINCT t1.uid) AS totalVisits,
+		sum(access_count) AS totalVisitTimes
+		FROM 
+		daily_active_user t1,
+		user_profile t2,
+		app_feature t3
+		WHERE 
+		t1.uid = t2.uid 
+		AND t1.feature_id = t3.id
+		<if test="createdBegin!=null">
+			and t1.access_date &gt;=#{createdBegin}
+		</if>
+		<if test="createdEnd!=null">
+			and t1.access_date &lt;=#{createdEnd}
+		</if>
+		<if test="timeQuantum!=null">
+			and t1.access_hour &gt;=${timeQuantum[0]}
+			and t1.access_hour &lt;${timeQuantum[1]}
+		</if>
+		<if test="interviewId!=null and interviewId!=-1">
+			and t1.feature_id = #{interviewId}
+		</if>
+    </select>
+    
+    <select id="getAppAllPages" resultType="com.m2m.entity.ExtAppPage">
+    	SELECT 
+		id,
+		feature_name AS pageName
+		FROM app_feature
+    </select>
+    
+    <select id="getUsersRegisterChannel" resultType="com.m2m.entity.ExtUserRegisterChannel">
+    	SELECT
+		id,
+		name AS channelName,
+		code 
+		FROM t_channel
+    </select>
+</mapper>

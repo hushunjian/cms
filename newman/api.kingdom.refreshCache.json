@@ -1,0 +1,32 @@
+{
+	"id": "aa83af3a-5e76-f9df-c4fe-fec04db7084e",
+	"name": "api.kingdom.refreshCache",
+	"description": "",
+	"order": [
+		"905c89ad-8bf7-18cb-3966-69058e8072d2"
+	],
+	"folders": [],
+	"timestamp": 1513418136757,
+	"owner": "3117500",
+	"remoteLink": "",
+	"public": false,
+	"requests": [
+		{
+			"id": "905c89ad-8bf7-18cb-3966-69058e8072d2",
+			"url": "http://{{host}}:{{port}}/api/kingdom/refreshCache?token=99999999-9999-9999-9999-999999999999",
+			"method": "GET",
+			"headers": "",
+			"data": null,
+			"dataMode": "params",
+			"tests": null,
+			"preRequestScript": null,
+			"currentHelper": "normal",
+			"pathVariables": {},
+			"version": 2,
+			"name": "http://{{host}}:{{port}}/api/kingdom/refreshCache?token=99999999-9999-9999-9999-999999999999",
+			"description": "",
+			"descriptionFormat": "html",
+			"collectionId": "aa83af3a-5e76-f9df-c4fe-fec04db7084e"
+		}
+	]
+}

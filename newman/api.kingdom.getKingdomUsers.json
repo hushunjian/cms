@@ -1,0 +1,32 @@
+{
+	"id": "8186374a-e37f-27d6-837f-c2737d073a7b",
+	"name": "api.kingdom.getKingdomUsers",
+	"description": "",
+	"order": [
+		"5d44a8ab-19ab-c73d-5b30-93f34f869bb7"
+	],
+	"folders": [],
+	"timestamp": 1513417989645,
+	"owner": "3117500",
+	"remoteLink": "",
+	"public": false,
+	"requests": [
+		{
+			"id": "5d44a8ab-19ab-c73d-5b30-93f34f869bb7",
+			"url": "http://{{host}}:{{port}}/api/kingdom/getKingdomUsers?token=99999999-9999-9999-9999-999999999999&pageIndex=1&pageSize=10&topicId=5",
+			"method": "GET",
+			"headers": "",
+			"data": null,
+			"dataMode": "params",
+			"tests": null,
+			"preRequestScript": null,
+			"currentHelper": "normal",
+			"pathVariables": {},
+			"version": 2,
+			"name": "http://{{host}}:{{port}}/api/kingdom/getKingdomUsers?token=99999999-9999-9999-9999-999999999999&pageIndex=1&pageSize=10&topicId=5",
+			"description": "",
+			"descriptionFormat": "html",
+			"collectionId": "8186374a-e37f-27d6-837f-c2737d073a7b"
+		}
+	]
+}

@@ -1,0 +1,32 @@
+{
+	"id": "1ef82fa3-d1c0-429a-10b1-5d60d62d9830",
+	"name": "api.tag.getAllTagKingdom",
+	"description": "",
+	"order": [
+		"a5f953c7-317f-e749-b0c5-c8b5e837c5db"
+	],
+	"folders": [],
+	"timestamp": 1512960314846,
+	"owner": "3117500",
+	"remoteLink": "",
+	"public": false,
+	"requests": [
+		{
+			"id": "a5f953c7-317f-e749-b0c5-c8b5e837c5db",
+			"url": "http://{{host}}:{{port}}/api/tag/getAllTagKingdom?token=99999999-9999-9999-9999-999999999999&tagId=51&pageIndex=1&pageSize=20",
+			"method": "GET",
+			"headers": "",
+			"data": null,
+			"dataMode": "params",
+			"tests": null,
+			"preRequestScript": null,
+			"currentHelper": "normal",
+			"pathVariables": {},
+			"version": 2,
+			"name": "http://{{host}}:{{port}}/api/tag/getAllTagKingdom?token=99999999-9999-9999-9999-999999999999&tagId=51&pageIndex=1&pageSize=20",
+			"description": "",
+			"descriptionFormat": "html",
+			"collectionId": "1ef82fa3-d1c0-429a-10b1-5d60d62d9830"
+		}
+	]
+}

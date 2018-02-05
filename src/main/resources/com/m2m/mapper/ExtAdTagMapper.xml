@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.m2m.mapper.ExtAdTagMapper">
+    <select id="findByBannerId" parameterType="java.lang.Long" resultType="com.m2m.entity.ExtAdTag">
+        select
+        t.id,
+        t.tag as name,
+        a.position,
+        a.banner_id as positionId
+        from
+        ad_tag a,
+        topic_tag t
+        where a.tag_id = t.id
+        and a.banner_id = #{id,jdbcType=BIGINT}
+    </select>
+    
+    <select id="getAdInfoList" resultType="com.m2m.entity.ExtAdInfo">
+    	SELECT 
+		a1.id,
+		a1.ad_title as name,
+		a1.ad_cover as cover,
+		a1.ad_cover_width as coverWidth,
+		a1.ad_cover_height as coverHeight,
+		a1.effective_time as validAt,
+		a1.create_time as createdAt, 
+		a1.display_probability as probability,
+		a1.type,
+		a1.topic_id as topicId,
+		a1.ad_url as url,
+		a1.banner_id as positionId,
+		a2.ad_banner_name as positionName
+		FROM 
+		ad_info a1,
+		ad_banner a2 
+		WHERE 
+		a1.banner_id = a2.id
+		<if test="bannerId!=0">
+			AND banner_id = #{bannerId}
+		</if>
+		ORDER BY effective_time desc 
+		LIMIT #{start},#{pageSize}
+    </select>
+    
+    <select id="getAllAdvertisementsCount" resultType="java.lang.Long">
+    	SELECT count(1) FROM ad_info
+    </select>
+    
+    <select id="getAllAdvertisements" resultType="com.m2m.entity.ExtAdInfo">
+    	SELECT 
+		a1.id,
+		a1.ad_title as name,
+		a1.ad_cover as cover,
+		a1.ad_cover_width as coverWidth,
+		a1.ad_cover_height as coverHeight,
+		a1.effective_time as validAt,
+		a1.create_time as createdAt, 
+		a1.display_probability as probability,
+		a1.type,
+		a1.topic_id as topicId,
+		a1.ad_url as url,
+		a1.banner_id as positionId,
+		a2.ad_banner_name as positionName
+		FROM 
+		ad_info a1,
+		ad_banner a2 
+		WHERE 
+		a1.banner_id = a2.id
+		ORDER BY effective_time desc 
+		LIMIT #{start},#{pageSize}
+    </select>
+</mapper>

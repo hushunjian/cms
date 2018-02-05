@@ -1,0 +1,32 @@
+{
+	"id": "0287048e-9c3d-764d-06fc-e6c58af30cb5",
+	"name": "api.appuser.getAllAppUsers",
+	"description": "",
+	"order": [
+		"6be2749e-8048-4ef4-ed03-14f9e111e612"
+	],
+	"folders": [],
+	"timestamp": 1513417677622,
+	"owner": "3117500",
+	"remoteLink": "",
+	"public": false,
+	"requests": [
+		{
+			"id": "6be2749e-8048-4ef4-ed03-14f9e111e612",
+			"url": "http://{{host}}:{{port}}/api/appuser/getAllAppUsers?token=99999999-9999-9999-9999-999999999999&pageIndex=1&pageSize=10",
+			"method": "GET",
+			"headers": "",
+			"data": null,
+			"dataMode": "params",
+			"tests": null,
+			"preRequestScript": null,
+			"currentHelper": "normal",
+			"pathVariables": {},
+			"version": 2,
+			"name": "http://{{host}}:{{port}}/api/appuser/getAllAppUsers?token=99999999-9999-9999-9999-999999999999&pageIndex=1&pageSize=10",
+			"description": "",
+			"descriptionFormat": "html",
+			"collectionId": "0287048e-9c3d-764d-06fc-e6c58af30cb5"
+		}
+	]
+}

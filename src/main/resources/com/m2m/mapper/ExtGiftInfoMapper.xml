@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.m2m.mapper.ExtGiftInfoMapper">
+    <resultMap type="com.m2m.entity.ExtGift" id="ExtGiftInfo">
+        <result column="id" property="giftId" jdbcType="INTEGER"/>
+        <result column="name" property="name" jdbcType="VARCHAR"/>
+        <result column="image" property="image" jdbcType="VARCHAR"/>
+        <result column="image_width" property="imageWidth" jdbcType="INTEGER"/>
+        <result column="image_height" property="imageHeight" jdbcType="INTEGER"/>
+        <result column="price" property="price" jdbcType="INTEGER"/>
+        <result column="add_price" property="addPrice" jdbcType="INTEGER"/>
+        <result column="gif_image" property="gifImage" jdbcType="INTEGER"/>
+        <result column="play_time" property="duration" jdbcType="INTEGER"/>
+        <result column="sort_number" property="sortNumber" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <select id="getAllGiftsByPage" resultMap="ExtGiftInfo">
+        SELECT 
+        id,
+        name,
+        image,
+        image_width,
+        image_height,
+        price,
+        add_price,
+        gif_image,
+        play_time,
+        sort_number 
+        FROM 
+        gift_info 
+        limit #{start},#{pageSize}
+    </select>
+
+
+</mapper>

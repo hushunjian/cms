@@ -1,0 +1,53 @@
+{
+  "id": "885b3c0d-9f8e-de0a-eb2b-d40914128cf6",
+  "name": "api.role.getRoleFeatures",
+  "description": "",
+  "order": [
+    "ff0dd2fe-db79-21ed-0258-555026de47a7"
+  ],
+  "folders": [],
+  "folders_order": [],
+  "timestamp": 1510206130782,
+  "owner": "2696738",
+  "public": false,
+  "requests": [
+    {
+      "id": "ff0dd2fe-db79-21ed-0258-555026de47a7",
+      "headers": "",
+      "headerData": [],
+      "url": "http://{{host}}:{{port}}/api/role/getRoleFeatures?token={{token}}&roleId=1",
+      "queryParams": [
+        {
+          "key": "token",
+          "value": "{{token}}",
+          "equals": true,
+          "description": "",
+          "enabled": true
+        },
+        {
+          "key": "roleId",
+          "value": "1",
+          "equals": true,
+          "description": "",
+          "enabled": true
+        }
+      ],
+      "preRequestScript": null,
+      "pathVariables": {},
+      "pathVariableData": [],
+      "method": "GET",
+      "data": [],
+      "dataMode": "raw",
+      "version": 2,
+      "tests": null,
+      "currentHelper": "normal",
+      "helperAttributes": {},
+      "time": 1510217693552,
+      "name": "api.role. getRoleFeatures",
+      "description": "",
+      "collectionId": "885b3c0d-9f8e-de0a-eb2b-d40914128cf6",
+      "responses": [],
+      "rawModeData": "{\n    \"token\":\"{{token}}\",\n    \"password\": \"s3cret\",\n    \"newPassword\":\"s3cret\"\n}"
+    }
+  ]
+}

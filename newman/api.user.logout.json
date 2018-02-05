@@ -1,0 +1,46 @@
+{
+  "id": "1734afba-ea5b-52d4-fee6-cc733bbe1716",
+  "name": "api.user.logout",
+  "description": "",
+  "order": [
+    "bb7c5a7e-e69b-f090-5264-d6635dc4d280"
+  ],
+  "folders": [],
+  "folders_order": [],
+  "timestamp": 1510195639429,
+  "owner": "2696738",
+  "public": false,
+  "requests": [
+    {
+      "id": "bb7c5a7e-e69b-f090-5264-d6635dc4d280",
+      "headers": "",
+      "headerData": [],
+      "url": "http://{{host}}:{{port}}/api/user/logout?token=403c9853-71b1-49c1-89fb-94056341576e",
+      "queryParams": [
+        {
+          "key": "token",
+          "value": "403c9853-71b1-49c1-89fb-94056341576e",
+          "equals": true,
+          "description": "",
+          "enabled": true
+        }
+      ],
+      "preRequestScript": null,
+      "pathVariables": {},
+      "pathVariableData": [],
+      "method": "GET",
+      "data": [],
+      "dataMode": "raw",
+      "version": 2,
+      "tests": null,
+      "currentHelper": "normal",
+      "helperAttributes": {},
+      "time": 1510217687039,
+      "name": "api.user.logout",
+      "description": "",
+      "collectionId": "1734afba-ea5b-52d4-fee6-cc733bbe1716",
+      "responses": [],
+      "rawModeData": "{\"name\":\"test\", \"password\":\"s3cret\"}"
+    }
+  ]
+}

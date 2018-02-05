@@ -1,0 +1,46 @@
+{
+  "id": "54e1791d-cd40-99b9-6872-d58aed6716a9",
+  "name": "api.user.getMyFeatures",
+  "description": "",
+  "order": [
+    "3ab50bbb-b0de-9c07-c18c-129d08c9c73b"
+  ],
+  "folders": [],
+  "folders_order": [],
+  "timestamp": 1510553113396,
+  "owner": "2696738",
+  "public": false,
+  "requests": [
+    {
+      "id": "3ab50bbb-b0de-9c07-c18c-129d08c9c73b",
+      "headers": "",
+      "headerData": [],
+      "url": "http://{{host}}:{{port}}/api/user/getMyFeatures?token={{token}}",
+      "queryParams": [
+        {
+          "key": "token",
+          "value": "{{token}}",
+          "equals": true,
+          "description": "",
+          "enabled": true
+        }
+      ],
+      "preRequestScript": null,
+      "pathVariables": {},
+      "pathVariableData": [],
+      "method": "GET",
+      "data": [],
+      "dataMode": "raw",
+      "version": 2,
+      "tests": null,
+      "currentHelper": "normal",
+      "helperAttributes": {},
+      "time": 1510621927447,
+      "name": "api.user. getMyFeatures",
+      "description": "",
+      "collectionId": "54e1791d-cd40-99b9-6872-d58aed6716a9",
+      "responses": [],
+      "rawModeData": "{\n    \"token\":\"{{token}}\",\n    \"password\": \"s3cret\",\n    \"newPassword\":\"s3cret\"\n}"
+    }
+  ]
+}

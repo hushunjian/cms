@@ -1,0 +1,858 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.m2m.mapper.ExtKingdomMapper">
+    <resultMap type="com.m2m.entity.ExtKingdom" id="ExtKingdomInfo">
+        <result column="topic_id" property="topicId" jdbcType="INTEGER"/>
+        <result column="title" property="topicName" jdbcType="VARCHAR"/>
+        <result column="create_time" property="createdAt" jdbcType="TIMESTAMP"/>
+        <result column="update_time" property="updatedAt" jdbcType="TIMESTAMP"/>
+        <result column="uid" property="userId" jdbcType="INTEGER"/>
+        <result column="nick_name" property="userName" jdbcType="VARCHAR"/>
+        <result column="v_lv" property="isV" jdbcType="INTEGER"/>
+        <result column="type" property="type" jdbcType="INTEGER"/>
+        <result column="review_count" property="reviewCount" jdbcType="INTEGER"/>
+        <result column="read_count" property="readCount" jdbcType="INTEGER"/>
+        <result column="like_count" property="likeCount" jdbcType="INTEGER"/>
+        <result column="favorite_count" property="memberCount" jdbcType="INTEGER"/>
+        <result column="updateCount" property="updateCount" jdbcType="INTEGER"/>
+        <result column="imgCount" property="imageCount" jdbcType="INTEGER"/>
+        <result column="audioCount" property="audioCount" jdbcType="INTEGER"/>
+        <result column="videoCount" property="videoCount" jdbcType="INTEGER"/>
+        <result column="textCount" property="wordCount" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <select id="getAllKingdomsInfoByPage" resultMap="ExtKingdomInfo">
+        SELECT
+			topic_id,
+			title,
+			create_time,
+			update_time,
+			uid,
+			nick_name,
+			v_lv,
+			type,
+			review_count,
+			read_count,
+			like_count,
+			favorite_count,
+			updateCount,
+			imgCount,
+			audioCount,
+			videoCount,
+			textCount
+		FROM
+			kingdom_count_day
+		ORDER BY
+			update_time DESC
+		LIMIT #{start,jdbcType=INTEGER},#{pageSize,jdbcType=INTEGER}
+    </select>
+
+
+    <select id="getKingdomInfoByCondition" resultMap="ExtKingdomInfo" parameterType="com.m2m.entity.ExtKingdomQuery">
+        SELECT 
+        topic_id,
+        title,
+        create_time,
+        update_time,
+        uid,
+        nick_name,
+        v_lv,
+        type,
+        review_count,
+        read_count,
+        like_count,
+        favorite_count,
+        updateCount,
+        imgCount,
+        audioCount,
+        videoCount,
+        textCount
+        FROM 
+        kingdom_count_day where 1=1
+        <if test="type!=null and type!=-1">
+            and type = #{type}
+        </if>
+        <if test="topicName!=null">
+            and title like CONCAT('%',#{topicName},'%')
+        </if>
+        <if test="userName!=null">
+            and nick_name like CONCAT('%',#{userName},'%')
+        </if>
+        <if test="isV!=null and isV!=-1">
+            and v_lv= #{isV}
+        </if>
+        <if test="createdBegin!=null">
+            and DATE_FORMAT(create_time,'%Y-%m-%d') &gt;= #{createdBegin}
+        </if>
+        <if test="createdEnd!=null">
+            and DATE_FORMAT(create_time,'%Y-%m-%d') &lt;= #{createdEnd}
+        </if>
+        <if test="updatedBegin!=null">
+            and DATE_FORMAT(update_time,'%Y-%m-%d') &gt;= #{updatedBegin}
+        </if>
+        <if test="updatedEnd!=null">
+            and DATE_FORMAT(update_time,'%Y-%m-%d') &lt;= #{updatedEnd}
+        </if>
+        <if test="readCountStart!=null">
+            and read_count &gt;= #{readCountStart}
+        </if>
+        <if test="readCountEnd!=null">
+            and read_count &lt;= #{readCountEnd}
+        </if>
+        <if test="reviewCountStart!=null">
+            and review_count &gt;= #{reviewCountStart}
+        </if>
+        <if test="reviewCountEnd!=null">
+            and review_count &lt;= #{reviewCountEnd}
+        </if>
+        <if test="likeCountStart!=null">
+            and like_count &gt;= #{likeCountStart}
+        </if>
+        <if test="likeCountEnd!=null">
+            and like_count &lt;= #{likeCountEnd}
+        </if>
+        <if test="memberCountStart!=null">
+            and favorite_count &gt;= #{memberCountStart}
+        </if>
+        <if test="memberCountEnd!=null">
+            and favorite_count &lt;= #{memberCountEnd}
+        </if>
+        <if test="updateCountStart!=null">
+            and updateCount &gt;= #{updateCountStart}
+        </if>
+        <if test="updateCountEnd!=null">
+            and updateCount &lt;= #{updateCountEnd}
+        </if>
+        <if test="imageCountStart!=null">
+            and imgCount &gt;= #{imageCountStart}
+        </if>
+        <if test="imageCountEnd!=null">
+            and imgCount &lt;= #{imageCountEnd}
+        </if>
+        <if test="audioCountStart!=null">
+            and audioCount &gt;= #{audioCountStart}
+        </if>
+        <if test="audioCountEnd!=null">
+            and audioCount &lt;= #{audioCountEnd}
+        </if>
+        <if test="videoCountStart!=null">
+            and videoCount &gt;= #{videoCountStart}
+        </if>
+        <if test="videoCountEnd!=null">
+            and videoCount &lt;= #{videoCountEnd}
+        </if>
+        <if test="wordCountStart!=null">
+            and textCount &gt;= #{wordCountStart}
+        </if>
+        <if test="wordCountEnd!=null">
+            and textCount &lt;= #{wordCountEnd}
+        </if>
+        ORDER BY update_time desc 
+        LIMIT ${(pageIndex-1)*pageSize},#{pageSize}
+    </select>
+
+    <select id="getKingdomCountByCondition" resultType="java.lang.Long"
+            parameterType="com.m2m.entity.ExtKingdomQuery">
+        SELECT count(*) FROM kingdom_count_day where 1=1
+        <if test="type!=null and type!=-1">
+            and type = #{type}
+        </if>
+        <if test="topicName!=null">
+            and title like CONCAT('%',#{topicName},'%')
+        </if>
+        <if test="userName!=null">
+            and nick_name like CONCAT('%',#{userName},'%')
+        </if>
+        <if test="isV!=null and isV!=-1">
+            and v_lv= #{isV}
+        </if>
+        <if test="createdBegin!=null">
+            and DATE_FORMAT(create_time,'%Y-%m-%d') &gt;= #{createdBegin}
+        </if>
+        <if test="createdEnd!=null">
+            and DATE_FORMAT(create_time,'%Y-%m-%d') &lt;= #{createdEnd}
+        </if>
+        <if test="updatedBegin!=null">
+            and DATE_FORMAT(update_time,'%Y-%m-%d') &gt;= #{updatedBegin}
+        </if>
+        <if test="updatedEnd!=null">
+            and DATE_FORMAT(update_time,'%Y-%m-%d') &lt;= #{updatedEnd}
+        </if>
+        <if test="readCountStart!=null">
+            and read_count &gt;= #{readCountStart}
+        </if>
+        <if test="readCountEnd!=null">
+            and read_count &lt;= #{readCountEnd}
+        </if>
+        <if test="reviewCountStart!=null">
+            and review_count &gt;= #{reviewCountStart}
+        </if>
+        <if test="reviewCountEnd!=null">
+            and review_count &lt;= #{reviewCountEnd}
+        </if>
+        <if test="likeCountStart!=null">
+            and like_count &gt;= #{likeCountStart}
+        </if>
+        <if test="likeCountEnd!=null">
+            and like_count &lt;= #{likeCountEnd}
+        </if>
+        <if test="memberCountStart!=null">
+            and favorite_count &gt;= #{memberCountStart}
+        </if>
+        <if test="memberCountEnd!=null">
+            and favorite_count &lt;= #{memberCountEnd}
+        </if>
+        <if test="updateCountStart!=null">
+            and updateCount &gt;= #{updateCountStart}
+        </if>
+        <if test="updateCountEnd!=null">
+            and updateCount &lt;= #{updateCountEnd}
+        </if>
+        <if test="imageCountStart!=null">
+            and imgCount &gt;= #{imageCountStart}
+        </if>
+        <if test="imageCountEnd!=null">
+            and imgCount &lt;= #{imageCountEnd}
+        </if>
+        <if test="audioCountStart!=null">
+            and audioCount &gt;= #{audioCountStart}
+        </if>
+        <if test="audioCountEnd!=null">
+            and audioCount &lt;= #{audioCountEnd}
+        </if>
+        <if test="videoCountStart!=null">
+            and videoCount &gt;= #{videoCountStart}
+        </if>
+        <if test="videoCountEnd!=null">
+            and videoCount &lt;= #{videoCountEnd}
+        </if>
+        <if test="wordCountStart!=null">
+            and textCount &gt;= #{wordCountStart}
+        </if>
+        <if test="wordCountEnd!=null">
+            and textCount &lt;= #{wordCountEnd}
+        </if>
+    </select>
+
+    <select id="truncateKingdomCountDay">
+        truncate table kingdom_count_day
+    </select>
+
+    <select id="statKingdomCountDay">
+        INSERT INTO kingdom_count_day( refresh_date,`content_type`, `forward_cid`, `person_count`, `review_count`, `like_count`, `favorite_count`, `read_count`, `read_count_dummy`, `title`, `create_time`, `update_time`, `type`, `live_image`, `uid`, `nick_name`, `v_lv`, `avatar`, `topic_id`, `textCount`, `imgCount`, `videoCount`, `audioCount`, `updateCount`)
+		SELECT now(),
+		       aa.*
+		FROM
+		  ( SELECT c.content_type,
+		           c.forward_cid,
+		           c.person_count,
+		           c.review_count,
+		           c.like_count,
+		           c.favorite_count,
+		           c.read_count,
+		           c.read_count_dummy,
+		           t.title,
+		           t.create_time,
+		           t.update_time,
+		           t.type,
+		           t.live_image,
+		           u.*,
+		           m.*
+		   FROM topic t,
+		        content c,
+		
+		     ( SELECT f.topic_id,
+		              count(if(f.type=0
+		                       AND f.content_type=0,TRUE, NULL)) AS textCount,
+		              count(if(f.type=0
+		                       AND f.content_type=1,TRUE, NULL)) AS imgCount,
+		              count(if(f.type=12, TRUE, NULL)) AS videoCount,
+		              count(if(f.type=13, TRUE, NULL)) AS audioCount,
+		              count(if(f.type IN (0,11,12,13,15,52,55), TRUE, NULL)) AS updateCount
+		      FROM topic_fragment f
+		      WHERE f.`status`=1
+		      GROUP BY f.topic_id ) m,
+		
+		     (SELECT UID,
+		             nick_name,
+		             v_lv,
+		             avatar
+		      FROM user_profile) u
+		   WHERE t.id=c.forward_cid
+		     AND c.type=3
+		     AND c.status=0
+		     AND t.id=m.topic_id
+		     AND u.uid=t.uid ) aa
+    </select>
+    
+    <select id="getKingdomValueCount" resultType="java.lang.Long">
+	    select COUNT(1) from topic t LEFT JOIN topic_data d on t.id=d.topic_id 
+    </select>
+    
+    <select id="getKingdomValuesByPage" resultType="com.m2m.entity.ExtKingdomValue">
+    	select 
+    	t.id as topicId,	
+    	t.title as topicName,
+    	t.uid,	
+    	u.nick_name as userName,
+    	t.create_time as createdAt,
+    	t.update_time as updatedAt,
+		IF(t.type=1000,0,1) as type,
+		t.price as value,
+		d.last_price_incr as lastAddValue,	
+		d.steal_price as stealValue,
+		d.diligently as careDegree,
+		d.approve as approvalDegree
+		from user_profile u, topic t
+		LEFT JOIN 
+		topic_data d 
+		on t.id=d.topic_id 
+		WHERE u.uid = t.uid	
+		order by t.create_time desc 
+		limit #{start},#{pageSize}
+    </select>
+    
+    <select id="getKingdomValueCountByCondition" resultType="java.lang.Long">
+	    select count(1)	from topic t
+		<if test="_parameter!=null">
+			WHERE t.title like CONCAT('%',#{_parameter},'%')
+		</if>
+    </select>
+    
+    <select id="getKingdomValuesByConditionAndByPage" resultType="com.m2m.entity.ExtKingdomValue">
+	    select 
+	    t.id as topicId,
+	    t.title as topicName,
+	    t.uid, 
+	    u.nick_name as userName,
+	    t.create_time as createdAt,
+	    t.update_time as updatedAt, 
+		IF(t.type=1000,0,1) as type, 
+		t.price as value,
+		d.last_price_incr as lastAddValue, 
+		d.steal_price as stealValue,
+		d.diligently as careDegree, 
+		d.approve as approvalDegree 
+		from user_profile u,topic t 
+		LEFT JOIN 
+		topic_data d 
+		on t.id=d.topic_id 
+		WHERE u.uid = t.uid 
+		<if test="topicName!=null">
+			AND t.title like CONCAT('%',#{topicName},'%') 
+		</if>
+		<if test="orderParam!=null and order!=null">
+			order by ${orderParam} ${order}
+		</if>
+		limit #{start},#{pageSize}
+    </select>
+	
+	<select id="getKingdomUserCountByTopicId" resultType="java.lang.Long">
+		select 
+		count(1) as total
+		from 
+		user_profile p,
+		user_no n,(
+		select 
+		DATE_FORMAT(f.create_time,'%Y-%m-%d') as dateStr,
+		f.uid,
+		count(1) as cc
+		from 
+		topic_fragment f
+		where 
+		f.topic_id=#{topicId}
+		and f.create_time&gt;=#{createTimeBegin,jdbcType=TIMESTAMP} 
+		and f.create_time&lt;=#{createTimeEnd,jdbcType=TIMESTAMP} 
+		and f.uid!=100
+		group by dateStr,f.uid
+		) m 
+		LEFT JOIN (
+		select 
+		i.uid,
+		group_concat(DISTINCT i.device_code) as deviceInfo
+		from user_device_info i
+		where i.device_code is not NULL
+		and i.device_code!=''
+		group by i.uid
+		) x 
+		on x.uid=m.uid
+		LEFT JOIN (
+		select 
+		f4.uid,
+		f4.topic_id,
+		DATE_FORMAT(f4.create_time,'%Y-%m-%d') as firstTime
+		from 
+		topic_fragment f4,(
+		select f2.uid,max(id) as minid
+		from 
+		topic_fragment f2
+		where 
+		f2.uid in 
+		<foreach collection="uids" index="index" item="item" separator="," open="(" close=")">
+			#{item}
+		</foreach>
+		group by f2.uid
+		) y
+		where f4.id = y.minid
+		) z 
+		on z.uid=m.uid
+		where 
+		p.uid=m.uid 
+		and n.uid=m.uid
+		order by m.dateStr,p.uid
+	</select>
+	
+	<select id="getKingdomUserByTopicAndPage" resultType="com.m2m.entity.ExtKingdomReview">
+		select 
+		m.dateStr as dateTime,
+		p.uid as uid,
+		p.nick_name as userNick,
+		n.me_number as meNumber,
+		p.create_time as joinAt,
+		p.channel as registerChannel,
+		x.deviceInfo as logonDevice,
+		m.cc as reviewCount,
+		if(z.topic_id=#{topicId} and z.firstTime=m.dateStr,1,2) as isFirstReview
+		from 
+		user_profile p,
+		user_no n,(
+		select 
+		DATE_FORMAT(f.create_time,'%Y-%m-%d') as dateStr,
+		f.uid,
+		count(1) as cc
+		from 
+		topic_fragment f
+		where 
+		f.topic_id=#{topicId}
+		and f.create_time&gt;=#{createTimeBegin,jdbcType=TIMESTAMP} 
+		and f.create_time&lt;=#{createTimeEnd,jdbcType=TIMESTAMP} 
+		and f.uid!=100
+		group by dateStr,f.uid
+		) m 
+		LEFT JOIN (
+		select 
+		i.uid,
+		group_concat(DISTINCT i.device_code) as deviceInfo
+		from user_device_info i
+		where i.device_code is not NULL
+		and i.device_code!=''
+		group by i.uid
+		) x 
+		on x.uid=m.uid
+		LEFT JOIN (
+		select 
+		f4.uid,
+		f4.topic_id,
+		DATE_FORMAT(f4.create_time,'%Y-%m-%d') as firstTime
+		from 
+		topic_fragment f4,(
+		select f2.uid,max(id) as minid
+		from 
+		topic_fragment f2
+		where 
+		f2.uid in 
+		<foreach collection="uids" index="index" item="item" separator="," open="(" close=")">
+			#{item}
+		</foreach>
+		group by f2.uid
+		) y
+		where f4.id = y.minid
+		) z 
+		on z.uid=m.uid
+		where 
+		p.uid=m.uid 
+		and n.uid=m.uid
+		order by m.dateStr,p.uid
+		limit #{start},#{pageSize}
+	</select>
+	
+	<select id="getKingdomUserCountByCondition" resultType="java.lang.Long">
+		select 
+		count(1) as total
+		from 
+		user_profile p,
+		user_no n,(
+		select 
+		DATE_FORMAT(f.create_time,'%Y-%m-%d') as dateStr,
+		f.uid,
+		count(1) as cc
+		from 
+		topic_fragment f
+		where 
+		f.topic_id=#{extKingdomUserQuery.topicId}
+		and f.create_time&gt;=#{extKingdomUserQuery.joinBegin,jdbcType=TIMESTAMP} 
+		and f.create_time&lt;=#{extKingdomUserQuery.joinEnd,jdbcType=TIMESTAMP} 
+		and f.uid!=100
+		<if test="extKingdomUserQuery.fragment!=null">
+			and f.fragment like CONCAT('%',#{extKingdomUserQuery.fragment},'%')
+		</if>
+		group by dateStr,f.uid
+		) m 
+		LEFT JOIN (
+		select 
+		i.uid,
+		group_concat(DISTINCT i.device_code) as deviceInfo
+		from user_device_info i
+		where i.device_code is not NULL
+		and i.device_code!=''
+		group by i.uid
+		) x 
+		on x.uid=m.uid
+		LEFT JOIN (
+		select 
+		f4.uid,
+		f4.topic_id,
+		DATE_FORMAT(f4.create_time,'%Y-%m-%d') as firstTime
+		from 
+		topic_fragment f4,(
+		select f2.uid,max(id) as minid
+		from 
+		topic_fragment f2
+		where 
+		f2.uid in 
+		<foreach collection="uids" index="index" item="item" separator="," open="(" close=")">
+			#{item}
+		</foreach>
+		group by f2.uid
+		) y
+		where f4.id = y.minid
+		<if test="extKingdomUserQuery.isFirstReview==1">
+			and f4.topic_id= #{extKingdomUserQuery.topicId}
+		</if>
+		<if test="extKingdomUserQuery.isFirstReview==2">
+			and f4.topic_id= #{extKingdomUserQuery.topicId}
+		</if>
+		) z 
+		on z.uid=m.uid
+		where 
+		p.uid=m.uid 
+		and n.uid=m.uid
+		order by m.dateStr,p.uid
+	</select>
+	
+	<select id="getKingdomUserByCondition" resultType="com.m2m.entity.ExtKingdomReview">
+		select 
+		m.dateStr as dateTime,
+		p.uid as uid,
+		p.nick_name as userNick,
+		n.me_number as meNumber,
+		p.create_time as joinAt,
+		p.channel as registerChannel,
+		x.deviceInfo as logonDevice,
+		m.cc as reviewCount,
+		if(z.topic_id=#{extKingdomUserQuery.topicId} and z.firstTime=m.dateStr,1,2) as isFirstReview
+		from 
+		user_profile p,
+		user_no n,(
+		select 
+		DATE_FORMAT(f.create_time,'%Y-%m-%d') as dateStr,
+		f.uid,
+		count(1) as cc
+		from 
+		topic_fragment f
+		where 
+		f.topic_id=#{extKingdomUserQuery.topicId}
+		and f.create_time&gt;=#{extKingdomUserQuery.joinBegin,jdbcType=TIMESTAMP} 
+		and f.create_time&lt;=#{extKingdomUserQuery.joinEnd,jdbcType=TIMESTAMP} 
+		and f.uid!=100
+		<if test="extKingdomUserQuery.fragment!=null">
+			and f.fragment like CONCAT('%',#{extKingdomUserQuery.fragment},'%')
+		</if>
+		group by dateStr,f.uid
+		) m 
+		LEFT JOIN (
+		select 
+		i.uid,
+		group_concat(DISTINCT i.device_code) as deviceInfo
+		from user_device_info i
+		where i.device_code is not NULL
+		and i.device_code!=''
+		group by i.uid
+		) x 
+		on x.uid=m.uid
+		LEFT JOIN (
+		select 
+		f4.uid,
+		f4.topic_id,
+		DATE_FORMAT(f4.create_time,'%Y-%m-%d') as firstTime
+		from 
+		topic_fragment f4,(
+		select f2.uid,max(id) as minid
+		from 
+		topic_fragment f2
+		where 
+		f2.uid in 
+		<foreach collection="uids" index="index" item="item" separator="," open="(" close=")">
+			#{item}
+		</foreach>
+		group by f2.uid
+		) y
+		where f4.id = y.minid
+		<if test="extKingdomUserQuery.isFirstReview==1">
+			and f4.topic_id= #{extKingdomUserQuery.topicId}
+		</if>
+		<if test="extKingdomUserQuery.isFirstReview==2">
+			and f4.topic_id= #{extKingdomUserQuery.topicId}
+		</if>
+		) z 
+		on z.uid=m.uid
+		where 
+		p.uid=m.uid 
+		and n.uid=m.uid
+		order by m.dateStr,p.uid
+		<if test="extKingdomUserQuery.pageIndex!=null and extKingdomUserQuery.pageSize!=null">
+			limit ${(extKingdomUserQuery.pageIndex-1)*extKingdomUserQuery.pageSize},#{extKingdomUserQuery.pageSize}
+		</if>
+	</select>
+	
+	<select id="getListedKingdomCount" resultType="java.lang.Long">
+		select 
+		count(1) as total 
+		from 
+		topic_listed t1 
+		LEFT JOIN 
+		topic t 
+		ON 	t1.topic_id = t.id  
+		where 1=1 
+		and (t1.status=0 or t1.status=1)  
+	</select>
+	
+	<select id="getListedKingdomsByPage" resultType="com.m2m.entity.ExtListedKingdom">
+		SELECT 
+		a.*,
+		b.nick_name as buyerName 
+		FROM 
+		(SELECT 
+		t1.id,	
+		t1.topic_id AS topicId,	
+		t2.title as topicName,
+		t1.price as topicValue,
+		t3.nick_name as topicOwnerName,
+		t2.uid as topicOwnerId,	
+		t1.create_time as listedAt,	
+		t1.buy_time as purchaseAt,
+		t1.buy_uid as buyerId,
+		t4.me_number as meNumber,
+		t1.status 
+		FROM 
+		topic t2,
+		user_profile t3,
+		topic_listed t1 
+		LEFT JOIN	
+		user_no t4 
+		ON t1.buy_uid = t4.uid 
+		WHERE	
+		t2.id = t1.topic_id	
+		AND t2.uid = t3.uid  
+		and (t1.status=0 or t1.status=1) 
+		order by t1.create_time desc 
+		LIMIT #{start},#{pageSize} ) a 
+		LEFT JOIN 
+		user_profile b 
+		ON b.uid = a.buyerId
+	</select>
+	
+	<select id="getListedKingdomCountByCondition" resultType="java.lang.Long">
+		select 
+		count(1) as total 
+		from 
+		topic_listed t1 
+		LEFT JOIN 
+		topic t 
+		ON t1.topic_id = t.id where 1=1   
+		<if test="topicName!=null">
+			and t.title like CONCAT('%',#{topicName},'%') 
+		</if>
+		<if test="status==-1">
+			and (t1.status=0 or t1.status=1) 
+		</if>			
+		<if test="status==0">
+			and t1.status = 0
+		</if>
+		<if test="status==1">
+			and t1.status = 1
+		</if>	 
+	</select>
+	
+	<select id="getListedKingdomsByConditionAndPage" resultType="com.m2m.entity.ExtListedKingdom">
+		SELECT 
+		a.*,
+		b.nick_name as buyerName 
+		FROM
+		(SELECT 
+		t1.id,
+		t1.topic_id AS topicId,
+		t2.title as topicName,
+		t1.price as topicValue,
+		t3.nick_name as topicOwnerName,
+		t2.uid as topicOwnerId,
+		t1.create_time as listedAt,
+		t1.buy_time as purchaseAt,
+		t1.buy_uid as buyerId,
+		t4.me_number as meNumber,
+		t1.status 
+		FROM 
+		topic t2,
+		user_profile t3,
+		topic_listed t1 
+		LEFT JOIN	
+		user_no t4 
+		ON t1.buy_uid = t4.uid 
+		WHERE 
+		t2.id = t1.topic_id	
+		AND t2.uid = t3.uid  
+		<if test="topicName!=null">
+			and t2.title like CONCAT('%',#{topicName},'%') 
+		</if>
+		<if test="status==-1">
+			and (t1.status=0 or t1.status=1) 
+		</if>			
+		<if test="status==0">
+			and t1.status = 0
+		</if>
+		<if test="status==1">
+			and t1.status = 1
+		</if>	   
+		order by t1.create_time desc 
+		LIMIT #{start},#{pageSize} ) a	
+		LEFT JOIN user_profile b 
+		ON	b.uid = a.buyerId
+	</select>
+	
+	<insert id="insertTopicChangeHis">
+		insert into topic_change_king_his(topic_id,opt_uid,target_uid,source_uid) 
+		values(#{topicId},#{optUid},#{targetUid},#{sourceUid});
+	</insert>
+	
+	<update id="setListedKingdomStatus">
+		UPDATE topic_listed SET status = #{status}
+		<if test="status==0">
+			, buy_uid = 0
+		</if>
+		WHERE id = #{id}
+	</update>
+	
+	<update id="updateContentUid">
+		update content set uid= #{uid} where type = 3 and forward_cid = #{topicId}
+	</update>
+	
+	<insert id="insertTransferRecord">
+		INSERT INTO topic_transfer_record (new_uid,old_uid,price,price_RMB,topic_id) 
+		VALUES (#{newUid},#{oldUid},#{price},#{priceRMB},#{topicId})
+	</insert>
+	
+	<delete id="deleteBlockTopicByTopicId">
+		DELETE FROM block_topic WHERE topic_id = #{topicId}
+	</delete>
+	
+	<select id="getPendingListedKingdomsCount" resultType="java.lang.Long">
+		select count(1) as total from topic_listed t1 LEFT JOIN topic t	ON t1.topic_id = t.id where t1.status=2
+	</select>
+	
+	<select id="getPendingListedKingdomsByPage" resultType="com.m2m.entity.ExtListedKingdom">
+		SELECT 
+		a.*,
+		b.nick_name as buyerName 
+		FROM 
+		(SELECT 
+		t1.id,	
+		t1.topic_id AS topicId,
+		t2.title as topicName,
+		t1.price as topicValue,
+		t3.nick_name as topicOwnerName,
+		t2.uid as topicOwnerId,
+		t1.create_time as listedAt,
+		t1.buy_time as purchaseAt,
+		t1.buy_uid as buyerId,
+		t4.me_number as meNumber,
+		t1.status 
+		FROM 
+		topic t2,
+		user_profile t3,
+		topic_listed t1 
+		LEFT JOIN 
+		user_no t4 
+		ON t1.buy_uid = t4.uid 
+		WHERE t2.id = t1.topic_id 
+		AND t2.uid = t3.uid 
+		and (t1.status=2) 
+		order by t1.create_time desc 
+		LIMIT #{start},#{pageSize} ) a 
+		LEFT JOIN	user_profile b 
+		ON b.uid = a.buyerId
+	</select>
+	
+	<select id="getPendingListedKingdomCountByCondition" resultType="java.lang.Long">
+		select 
+		count(1) as total 
+		from 
+		topic_listed t1 
+		LEFT JOIN 
+		topic t 
+		ON t1.topic_id = t.id 
+		where t1.status=2
+		<if test="_parameter!=null">
+			and t.title like CONCAT('%',#{_parameter},'%')
+		</if>
+	</select>
+	
+	<select id="getPendingListedKingdomByPageAndCondition" resultType="com.m2m.entity.ExtListedKingdom">
+		SELECT 
+		a.*,
+		b.nick_name as buyerName 
+		FROM 
+		(SELECT 
+		t1.id,	
+		t1.topic_id AS topicId,
+		t2.title as topicName,
+		t1.price as topicValue,
+		t3.nick_name as topicOwnerName,
+		t2.uid as topicOwnerId,
+		t1.create_time as listedAt,
+		t1.buy_time as purchaseAt,
+		t1.buy_uid as buyerId,
+		t4.me_number as meNumber,
+		t1.status 
+		FROM 
+		topic t2,
+		user_profile t3,
+		topic_listed t1 
+		LEFT JOIN 
+		user_no t4 
+		ON t1.buy_uid = t4.uid 
+		WHERE t2.id = t1.topic_id	
+		AND t2.uid = t3.uid	
+		AND t1.status = 2
+		<if test="topicName!=null">
+			and t2.title like CONCAT('%',#{topicName},'%') 
+		</if>
+		order by t1.create_time desc 
+		LIMIT #{start},#{pageSize} ) a	
+		LEFT JOIN 
+		user_profile b 
+		ON	b.uid = a.buyerId
+	</select>
+	
+	<select id="getUidsByTopicIdAndTime" resultType="java.lang.Long">
+		select 
+		DISTINCT uid 
+		from 
+		topic_fragment 
+		where 
+		topic_id=#{topicId}
+		and create_time&gt;=#{createTimeBegin,jdbcType=TIMESTAMP} 
+		and create_time&lt;=#{createTimeEnd,jdbcType=TIMESTAMP} 
+		and uid!=100
+		<if test="fragment!=null">
+			and fragment like CONCAT('%',#{fragment},'%')
+		</if>
+	</select>
+	
+	<select id="getUsersRegisterChannel" resultType="com.m2m.entity.ExtUserRegisterChannel">
+		SELECT
+		id,
+		name AS channelName,
+		code 
+		FROM t_channel
+	</select>
+</mapper>

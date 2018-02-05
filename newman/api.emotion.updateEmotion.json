@@ -1,0 +1,33 @@
+{
+	"id": "691dc316-8077-5602-5dd1-e86cba915193",
+	"name": "api.emotion.updateEmotion",
+	"description": "",
+	"order": [
+		"86fc449a-838c-8cd4-b8df-4c4697f206b0"
+	],
+	"folders": [],
+	"timestamp": 1513417890482,
+	"owner": "3117500",
+	"remoteLink": "",
+	"public": false,
+	"requests": [
+		{
+			"id": "86fc449a-838c-8cd4-b8df-4c4697f206b0",
+			"url": "http://{{host}}:{{port}}/api/emotion/updateEmotion",
+			"method": "POST",
+			"headers": "Content-Type: application/json\n",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"preRequestScript": null,
+			"currentHelper": "normal",
+			"pathVariables": {},
+			"version": 2,
+			"name": "http://{{host}}:{{port}}/api/emotion/updateEmotion",
+			"description": "",
+			"descriptionFormat": "html",
+			"collectionId": "691dc316-8077-5602-5dd1-e86cba915193",
+			"rawModeData": "  { \r\n      \"token\":\"99999999-9999-9999-9999-999999999999\",\r\n      \"packId\": 19,\r\n      \"id\":25,\r\n      \"name\":\"伤sss心\",\r\n      \"cover\":\"\",\r\n      \"order\": 4,\r\n      \"extra\": 1,\r\n      \"width\": 2,\r\n      \"height\": 2\r\n    }"
+		}
+	]
+}

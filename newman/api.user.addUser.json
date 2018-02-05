@@ -1,0 +1,45 @@
+{
+  "id": "4b7e5eea-09ae-59e9-3ec6-3c2dd355d97c",
+  "name": "api.user.addUser",
+  "description": "",
+  "order": [
+    "a55fccf9-3df7-5e9e-1202-aca7bcf1d351"
+  ],
+  "folders": [],
+  "folders_order": [],
+  "timestamp": 1510218697287,
+  "owner": "2696738",
+  "public": false,
+  "requests": [
+    {
+      "id": "a55fccf9-3df7-5e9e-1202-aca7bcf1d351",
+      "headers": "Content-Type: application/json\n",
+      "headerData": [
+        {
+          "key": "Content-Type",
+          "value": "application/json",
+          "description": "",
+          "enabled": true
+        }
+      ],
+      "url": "http://{{host}}:{{port}}/api/user/addUser",
+      "queryParams": [],
+      "preRequestScript": null,
+      "pathVariables": {},
+      "pathVariableData": [],
+      "method": "POST",
+      "data": [],
+      "dataMode": "raw",
+      "version": 2,
+      "tests": null,
+      "currentHelper": "normal",
+      "helperAttributes": {},
+      "time": 1510300010944,
+      "name": "api.user.addUser",
+      "description": "",
+      "collectionId": "4b7e5eea-09ae-59e9-3ec6-3c2dd355d97c",
+      "responses": [],
+      "rawModeData": "{\n\t\"token\": \"99999999-9999-9999-9999-999999999999\",\n\t\"name\":\"test\", \n\t\"password\":\"s3cret\"\n}"
+    }
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "id": "be21e7be-0045-99fd-5f7a-ff8041f8cc58",
+  "name": "api.user.getAllUsers",
+  "description": "",
+  "order": [
+    "cb8c308a-bd50-5828-695e-41cd87db693c"
+  ],
+  "folders": [],
+  "folders_order": [],
+  "timestamp": 1510218109162,
+  "owner": "2696738",
+  "public": false,
+  "requests": [
+    {
+      "id": "cb8c308a-bd50-5828-695e-41cd87db693c",
+      "headers": "",
+      "headerData": [],
+      "url": "http://{{host}}:{{port}}/api/user/getAllUsers?token={{token}}",
+      "queryParams": [
+        {
+          "key": "token",
+          "value": "{{token}}",
+          "equals": true,
+          "description": "",
+          "enabled": true
+        }
+      ],
+      "preRequestScript": null,
+      "pathVariables": {},
+      "pathVariableData": [],
+      "method": "GET",
+      "data": [],
+      "dataMode": "raw",
+      "version": 2,
+      "tests": null,
+      "currentHelper": "normal",
+      "helperAttributes": {},
+      "time": 1510218331804,
+      "name": "api.user. getAllUsers",
+      "description": "",
+      "collectionId": "be21e7be-0045-99fd-5f7a-ff8041f8cc58",
+      "responses": [],
+      "rawModeData": "{\n    \"token\":\"{{token}}\",\n    \"password\": \"s3cret\",\n    \"newPassword\":\"s3cret\"\n}"
+    }
+  ]
+}

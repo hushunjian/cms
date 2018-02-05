@@ -1,0 +1,33 @@
+{
+	"id": "f23a8262-ac79-c4b0-5723-458e037f7a3c",
+	"name": "api.advertisement.deleteAdvertisementPosition",
+	"description": "",
+	"order": [
+		"2aff76b5-6f61-de18-433e-3bd228bec700"
+	],
+	"folders": [],
+	"timestamp": 1513417309283,
+	"owner": "3117500",
+	"remoteLink": "",
+	"public": false,
+	"requests": [
+		{
+			"id": "2aff76b5-6f61-de18-433e-3bd228bec700",
+			"url": "http://{{host}}:{{port}}/api/advertisement/deleteAdvertisementPosition",
+			"method": "POST",
+			"headers": "Content-Type: application/json\n",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"preRequestScript": null,
+			"currentHelper": "normal",
+			"pathVariables": {},
+			"version": 2,
+			"name": "http://{{host}}:{{port}}/api/advertisement/deleteAdvertisementPosition",
+			"description": "",
+			"descriptionFormat": "html",
+			"collectionId": "f23a8262-ac79-c4b0-5723-458e037f7a3c",
+			"rawModeData": "{ \r\n      \"token\":\"99999999-9999-9999-9999-999999999999\",\r\n      \"id\":27\r\n    }"
+		}
+	]
+}

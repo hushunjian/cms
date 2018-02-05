@@ -1,0 +1,32 @@
+{
+	"id": "f3395444-1804-e59b-14ec-b2ec1757470c",
+	"name": "api.emotion.getAllEmotions",
+	"description": "",
+	"order": [
+		"752c467c-2353-3bca-7030-93257720f537"
+	],
+	"folders": [],
+	"timestamp": 1513417820855,
+	"owner": "3117500",
+	"remoteLink": "",
+	"public": false,
+	"requests": [
+		{
+			"id": "752c467c-2353-3bca-7030-93257720f537",
+			"url": "http://{{host}}:{{port}}/api/emotion/getAllEmotions?token=99999999-9999-9999-9999-999999999999&pageIndex=1&pageSize=10&packId=18",
+			"method": "GET",
+			"headers": "",
+			"data": null,
+			"dataMode": "params",
+			"tests": null,
+			"preRequestScript": null,
+			"currentHelper": "normal",
+			"pathVariables": {},
+			"version": 2,
+			"name": "http://{{host}}:{{port}}/api/emotion/getAllEmotions?token=99999999-9999-9999-9999-999999999999&pageIndex=1&pageSize=10&packId=18",
+			"description": "",
+			"descriptionFormat": "html",
+			"collectionId": "f3395444-1804-e59b-14ec-b2ec1757470c"
+		}
+	]
+}

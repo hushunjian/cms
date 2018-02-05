@@ -1,0 +1,33 @@
+{
+	"id": "ed646c6c-beb1-a12c-c310-26c45f7f91fe",
+	"name": ".api.advertisement.addAdvertisement",
+	"description": "",
+	"order": [
+		"b2c7317e-0ab9-d01b-b521-a65fb490bfb1"
+	],
+	"folders": [],
+	"timestamp": 1513417232118,
+	"owner": "3117500",
+	"remoteLink": "",
+	"public": false,
+	"requests": [
+		{
+			"id": "b2c7317e-0ab9-d01b-b521-a65fb490bfb1",
+			"url": "http://{{host}}:{{port}}/api/advertisement/addAdvertisement",
+			"method": "POST",
+			"headers": "Content-Type: application/json\n",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"preRequestScript": null,
+			"currentHelper": "normal",
+			"pathVariables": {},
+			"version": 2,
+			"name": "http://{{host}}:{{port}}/api/advertisement/addAdvertisement",
+			"description": "",
+			"descriptionFormat": "html",
+			"collectionId": "ed646c6c-beb1-a12c-c310-26c45f7f91fe",
+			"rawModeData": "    { \r\n      \"token\":\"99999999-9999-9999-9999-999999999999\",\r\n      \"name\":\"广告1234\",\r\n      \"cover\":\"07b12e0e6bd8d52283b013f468bf31c9\",\r\n      \"positionId\":25,\r\n      \"probability\":100,\r\n      \"coverWidth\":600,\r\n      \"coverHeight\":400,\r\n      \"validAt\":\"2017-11-07 09:32:09\",\r\n      \"type\":0,\r\n      \"topicId\":\"4\",\r\n      \"url\":\"www.baidu.com\"\r\n    }"
+		}
+	]
+}

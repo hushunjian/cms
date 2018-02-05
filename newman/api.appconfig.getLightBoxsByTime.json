@@ -1,0 +1,32 @@
+{
+	"id": "0b80836e-c94a-0574-2213-b85aab018173",
+	"name": "api.appconfig.getLightBoxsByTime",
+	"description": "",
+	"order": [
+		"19360377-61d7-198c-7e49-28f734a3a47a"
+	],
+	"folders": [],
+	"timestamp": 1513417533748,
+	"owner": "3117500",
+	"remoteLink": "",
+	"public": false,
+	"requests": [
+		{
+			"id": "19360377-61d7-198c-7e49-28f734a3a47a",
+			"url": "http://{{host}}:{{port}}/api/appconfig/getLightBoxsByTime?token=99999999-9999-9999-9999-999999999999&pageIndex=1&pageSize=10&searchTime=1511078400000",
+			"method": "GET",
+			"headers": "",
+			"data": null,
+			"dataMode": "params",
+			"tests": null,
+			"preRequestScript": null,
+			"currentHelper": "normal",
+			"pathVariables": {},
+			"version": 2,
+			"name": "http://{{host}}:{{port}}/api/appconfig/getLightBoxsByTime?token=99999999-9999-9999-9999-999999999999&pageIndex=1&pageSize=10&searchTime=1511078400000",
+			"description": "",
+			"descriptionFormat": "html",
+			"collectionId": "0b80836e-c94a-0574-2213-b85aab018173"
+		}
+	]
+}

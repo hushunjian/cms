@@ -1,0 +1,33 @@
+{
+	"id": "aab53c58-2e68-fd20-a9fe-692845eaa4fe",
+	"name": "api.emotion.deleteEmotionPack",
+	"description": "",
+	"order": [
+		"cad4225f-81e1-3fb4-1878-2e7dcc3cf04f"
+	],
+	"folders": [],
+	"timestamp": 1513417838575,
+	"owner": "3117500",
+	"remoteLink": "",
+	"public": false,
+	"requests": [
+		{
+			"id": "cad4225f-81e1-3fb4-1878-2e7dcc3cf04f",
+			"url": "http://{{host}}:{{port}}/api/emotion/deleteEmotionPack",
+			"method": "POST",
+			"headers": "Content-Type: application/json\n",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"preRequestScript": null,
+			"currentHelper": "normal",
+			"pathVariables": {},
+			"version": 2,
+			"name": "http://{{host}}:{{port}}/api/emotion/deleteEmotionPack",
+			"description": "",
+			"descriptionFormat": "html",
+			"collectionId": "aab53c58-2e68-fd20-a9fe-692845eaa4fe",
+			"rawModeData": "  { \r\n      \"token\":\"99999999-9999-9999-9999-999999999999\",\r\n      \"id\": 18\r\n    }"
+		}
+	]
+}

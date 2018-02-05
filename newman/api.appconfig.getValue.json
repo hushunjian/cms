@@ -1,0 +1,46 @@
+{
+	"id": "cfe5469c-b36d-5643-ae35-8b7bc5b244c3",
+	"name": "api.appconfig.getValue",
+	"description": "",
+	"order": [
+		"b04cae66-342c-06e2-b264-4137a4263063"
+	],
+	"folders": [],
+	"timestamp": 1512453692561,
+	"owner": "1422061",
+	"remoteLink": "",
+	"public": false,
+	"requests": [
+		{
+			"id": "b04cae66-342c-06e2-b264-4137a4263063",
+			"headers": "",
+			"url": "http://{{host}}:{{port}}/api/appconfig/getValue",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "POST",
+			"data": [
+				{
+					"key": "token",
+					"value": "{{token}}",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "key",
+					"value": "EXCHANGE_RATE",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1512453903709,
+			"name": "api.appconfig.getValue",
+			"description": "",
+			"collectionId": "cfe5469c-b36d-5643-ae35-8b7bc5b244c3"
+		}
+	]
+}

@@ -1,0 +1,45 @@
+{
+  "id": "deec0684-7a08-fea2-e2bf-412da13a8a09",
+  "name": "api.feature.deleteFeature",
+  "description": "",
+  "order": [
+    "e5bc8c11-7014-3670-1ad4-5085ad743f7c"
+  ],
+  "folders": [],
+  "folders_order": [],
+  "timestamp": 1510302132955,
+  "owner": "2696738",
+  "public": false,
+  "requests": [
+    {
+      "id": "e5bc8c11-7014-3670-1ad4-5085ad743f7c",
+      "headers": "Content-Type: application/json\n",
+      "headerData": [
+        {
+          "key": "Content-Type",
+          "value": "application/json",
+          "description": "",
+          "enabled": true
+        }
+      ],
+      "url": "http://{{host}}:{{port}}/api/feature/deleteFeature",
+      "queryParams": [],
+      "preRequestScript": null,
+      "pathVariables": {},
+      "pathVariableData": [],
+      "method": "POST",
+      "data": [],
+      "dataMode": "raw",
+      "version": 2,
+      "tests": null,
+      "currentHelper": "normal",
+      "helperAttributes": {},
+      "time": 1510302210778,
+      "name": "api.feature. deleteFeature",
+      "description": "",
+      "collectionId": "deec0684-7a08-fea2-e2bf-412da13a8a09",
+      "responses": [],
+      "rawModeData": "{\n    \"token\":\"{{token}}\",\n    \"id\": \"74\"\n}"
+    }
+  ]
+}

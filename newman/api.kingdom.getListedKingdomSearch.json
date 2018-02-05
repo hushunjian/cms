@@ -1,0 +1,32 @@
+{
+	"id": "ecf3124a-181f-0295-aa30-79423154d768",
+	"name": "api.kingdom.getListedKingdomSearch",
+	"description": "",
+	"order": [
+		"33e97405-7980-145f-3e7b-dd0011bfa5df"
+	],
+	"folders": [],
+	"timestamp": 1513648744225,
+	"owner": "3117500",
+	"remoteLink": "",
+	"public": false,
+	"requests": [
+		{
+			"id": "33e97405-7980-145f-3e7b-dd0011bfa5df",
+			"url": "http://{{host}}:{{port}}/api/kingdom/getListedKingdomSearch?token=99999999-9999-9999-9999-999999999999&pageIndex=1&pageSize=10&topicName=皮&status=-1",
+			"method": "GET",
+			"headers": "",
+			"data": null,
+			"dataMode": "params",
+			"tests": null,
+			"preRequestScript": null,
+			"currentHelper": "normal",
+			"pathVariables": {},
+			"version": 2,
+			"name": "http://{{host}}:{{port}}/api/kingdom/getListedKingdomSearch?token=99999999-9999-9999-9999-999999999999&pageIndex=1&pageSize=10&topicName=皮&status=-1",
+			"description": "",
+			"descriptionFormat": "html",
+			"collectionId": "ecf3124a-181f-0295-aa30-79423154d768"
+		}
+	]
+}

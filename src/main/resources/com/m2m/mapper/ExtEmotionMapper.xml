@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.m2m.mapper.ExtEmotionMapper">
+    <resultMap type="com.m2m.entity.ExtEmotionPack" id="ExtEmotionPack">
+        <result column="id" property="id" jdbcType="INTEGER"/>
+        <result column="name" property="name" jdbcType="VARCHAR"/>
+        <result column="cover" property="cover" jdbcType="VARCHAR"/>
+        <result column="emoji_type" property="type" jdbcType="INTEGER"/>
+        <result column="is_valid" property="isValid" jdbcType="INTEGER"/>
+        <result column="version" property="packVersion" jdbcType="INTEGER"/>
+        <result column="p_version" property="analyVersion" jdbcType="INTEGER"/>
+        <result column="order_num" property="order" jdbcType="INTEGER"/>
+        <result column="extra" property="extra" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <resultMap type="com.m2m.entity.ExtEmotion" id="ExtEmotion">
+        <result column="id" property="id" jdbcType="INTEGER"/>
+        <result column="pack_id" property="packId" jdbcType="INTEGER"/>
+        <result column="title" property="name" jdbcType="VARCHAR"/>
+        <result column="image" property="cover" jdbcType="VARCHAR"/>
+        <result column="order_num" property="order" jdbcType="INTEGER"/>
+        <result column="extra" property="extra" jdbcType="VARCHAR"/>
+        <result column="w" property="width" jdbcType="INTEGER"/>
+        <result column="h" property="height" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <select id="getAllEmotionPacksCount" resultType="java.lang.Long">
+        SELECT count(1) FROM emotion_pack
+    </select>
+    <select id="getAllEmotionPacksByPage" resultMap="ExtEmotionPack">
+        SELECT * FROM emotion_pack ORDER BY order_num asc limit  #{start},#{pageSize}
+    </select>
+    <select id="getAllEmotionsCountByPackId" parameterType="java.lang.Integer" resultType="java.lang.Long">
+        SELECT count(1) FROM emotion_pack_detail WHERE pack_id = #{packId}
+    </select>
+    <select id="getAllEmotionsByPackIdAndPage" resultMap="ExtEmotion">
+        SELECT 
+        id,
+        pack_id,
+        title,
+        image,
+        order_num,
+        extra,
+        w,
+        h
+        FROM 
+        emotion_pack_detail 
+        WHERE 
+        pack_id = #{packId}
+        ORDER BY order_num asc
+        LIMIT #{start},#{pageSize};
+    </select>
+</mapper>

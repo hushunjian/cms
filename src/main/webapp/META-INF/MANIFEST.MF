@@ -1,0 +1,11 @@
+Manifest-Version: 1.0
+Implementation-Title: cms
+Implementation-Version: 1.0
+Built-By: qwer
+Implementation-Vendor-Id: com.somenet
+Created-By: Apache Maven 3.3.9
+Build-Jdk: 1.8.0_65
+Implementation-URL: http://projects.spring.io/spring-boot/cms/
+Implementation-Vendor: Pivotal Software, Inc.
+Main-Class: com.m2m.Application
+

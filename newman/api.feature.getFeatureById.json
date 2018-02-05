@@ -1,0 +1,53 @@
+{
+  "id": "165417ba-6ace-37e8-85a8-c2cef7cead22",
+  "name": "api.feature.getFeatureById",
+  "description": "",
+  "order": [
+    "a38acaee-b8bd-ed9a-f390-a1ce97663c0b"
+  ],
+  "folders": [],
+  "folders_order": [],
+  "timestamp": 1510301913975,
+  "owner": "2696738",
+  "public": false,
+  "requests": [
+    {
+      "id": "a38acaee-b8bd-ed9a-f390-a1ce97663c0b",
+      "headers": "",
+      "headerData": [],
+      "url": "http://{{host}}:{{port}}/api/feature/getFeatureById?token={{token}}&featureId=1",
+      "queryParams": [
+        {
+          "key": "token",
+          "value": "{{token}}",
+          "equals": true,
+          "description": "",
+          "enabled": true
+        },
+        {
+          "key": "featureId",
+          "value": "1",
+          "equals": true,
+          "description": "",
+          "enabled": true
+        }
+      ],
+      "preRequestScript": null,
+      "pathVariables": {},
+      "pathVariableData": [],
+      "method": "GET",
+      "data": [],
+      "dataMode": "raw",
+      "version": 2,
+      "tests": null,
+      "currentHelper": "normal",
+      "helperAttributes": {},
+      "time": 1510301972001,
+      "name": "api.role. getFeatureById",
+      "description": "",
+      "collectionId": "165417ba-6ace-37e8-85a8-c2cef7cead22",
+      "responses": [],
+      "rawModeData": "{\n    \"token\":\"{{token}}\",\n    \"password\": \"s3cret\",\n    \"newPassword\":\"s3cret\"\n}"
+    }
+  ]
+}

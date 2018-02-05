@@ -1,0 +1,612 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.m2m.mapper.ExtListRankMapper">
+    <select id="getAllListRankModes" resultType="com.m2m.entity.ExtBillBoardMode">
+        SELECT 
+        mode_id as modeId,
+        name 
+        FROM 
+        billboard_mode
+    </select>
+
+    <select id="getAllListRankModeCount" resultType="java.lang.Long">
+        SELECT 
+        count(1) as total
+        FROM 
+        billboard_mode
+    </select>
+
+    <select id="getAllOnlineListRanksByType" parameterType="java.lang.Integer"
+            resultType="com.m2m.entity.ExtOnlineListRank">
+	    SELECT
+			b1.id,
+			b2.type AS listType,
+			b2. NAME,
+			b1.sort,
+			b1. STATUS
+		FROM
+			billboard_details b1,
+			billboard b2
+		WHERE
+			b1.bid = b2.id
+		AND b1.type = #{type} ORDER BY sort ASC
+    </select>
+	
+	<update id="sortOnlineListRankByList" parameterType="java.util.List">
+		update billboard_details 
+		set sort = case id 
+		<foreach collection="list" index="index" item="item" open=" " close=" " separator=" ">
+			WHEN #{item.id} THEN #{item.sort}
+		</foreach>
+		END
+		WHERE id in
+		<foreach collection="list" index="index" item="item" open="(" close=")" separator=",">
+			#{item.id}
+		</foreach>
+	</update>
+	
+	<select id="getAllListRanks" resultType="com.m2m.entity.ExtListRank">
+		SELECT
+			t1.id,
+			t1. NAME,
+			t1. MODE,
+			t1.type,
+			t1.summary,
+			t1.bg_color AS bgColor,
+			t1.image AS img,
+			t1.img_width AS imgWidth,
+			t1.img_height AS imgHeight,
+			IF (t2.bid IS NULL, 0, 1) AS onlineStatus
+		FROM
+			billboard t1
+		LEFT JOIN 
+		billboard_details t2 
+		ON t1.id = t2.bid
+		AND t2.type = #{type} 
+		ORDER BY t1.create_time desc  
+		limit ${(pageIndex-1)*pageSize},#{pageSize}
+	</select>
+	
+	<select id="getExtRankKingdomsByBillBoardId" parameterType="java.lang.Long" resultType="com.m2m.entity.ExtRankKingdom">
+		SELECT
+			t2.id,
+			t1.title AS NAME,
+			t1.type,
+			t2.sort
+		FROM
+			topic t1,
+			billboard_relation t2
+		WHERE
+			t1.id = t2.target_id
+		AND source_id = #{billBoardId} 
+		AND t2.type = 1	
+		ORDER BY sort,id ASC
+	</select>
+	
+	<select id="getHotInteractionTopics" resultType="com.m2m.entity.ExtRankKingdom">
+		SELECT
+			t.id,
+			t.title AS NAME,
+			t.type
+		FROM
+			topic t,
+			content c,
+			(
+				SELECT
+					f.topic_id
+				FROM
+					topic_fragment f
+				WHERE
+					f.type NOT IN (0, 12, 13)
+				AND f.create_time > date_add(now(), INTERVAL - 1 DAY)
+				GROUP BY
+					f.topic_id
+			) m
+		WHERE
+		t.id = c.forward_cid
+		AND c.type = 3
+		AND t.sub_type = 0
+		AND t.id = m.topic_id
+		LIMIT 100
+	</select>
+	
+	<select id="getTopicByConfig" resultType="com.m2m.entity.ExtRankKingdom">
+		SELECT
+			t1.id,
+			t2.title,
+			t2.type
+		FROM
+			billboard_list t1,
+			topic t2
+		WHERE
+			t1.target_id = t2.id
+		AND t1.list_key = #{_parameter}
+		ORDER BY
+			since_id ASC
+		LIMIT 100
+	</select>
+	
+	<select id="getTopicByUpdateTime" resultType="com.m2m.entity.ExtRankKingdom">
+		SELECT
+			t.id,
+			t.title AS NAME,
+			t.type
+		FROM
+			topic t
+		WHERE
+			t. STATUS = 0
+		AND t.sub_type = 0
+		ORDER BY
+			t.long_time DESC
+		LIMIT 100
+	</select>
+	
+	<select id="getTopicByPrice" resultType="com.m2m.entity.ExtRankKingdom">
+		SELECT
+			t.id,
+			t.title AS NAME,
+			t.type
+		FROM
+			topic t
+		ORDER BY
+			t.price DESC,
+			t.id DESC
+		LIMIT 100
+	</select>
+	
+	<select id="getFastIncrPriceTopic" resultType="com.m2m.entity.ExtRankKingdom">
+		SELECT
+			t2.id,
+			t2.title AS NAME,
+			t2.type
+		FROM
+			topic_data t1,
+			topic t2
+		WHERE
+			t1.topic_id = t2.id
+		ORDER BY
+			t1.last_price_incr DESC,
+			t2.id
+		LIMIT 100
+	</select>
+	
+	<select id="getTagIdByTagName" resultType="java.lang.Long">
+		SELECT
+			t2.id
+		FROM
+			topic_tag t1
+		LEFT JOIN 
+		topic_tag t2 
+		ON t1.id = t2.pid
+		OR t1.id = t2.id
+		WHERE
+		t1.tag = #{_parameter}
+	</select>
+	
+	<select id="getExtRankKingdomsMostRiceByTagIds" parameterType="java.util.List" resultType="com.m2m.entity.ExtRankKingdom">
+		select 	
+		t1.id,
+		t1.title AS name,	
+		t1.type,
+		max(t1.price) as pri 
+		from 
+		topic t1,	
+		topic_tag_detail t2 
+		where 
+		t2.topic_id=t1.id 
+		and t2.status=0 
+		and t2.tag_id in 
+		<foreach collection="list" index="index" item="item" open="(" close=")" separator=",">
+			#{item}
+		</foreach>
+		group by t1.id 
+		order by pri DESC,t1.id DESC
+		LIMIT 100
+	</select>
+	
+	<select id="getExtRankKingdomsFastIncrByTagIds" parameterType="java.util.List" resultType="com.m2m.entity.ExtRankKingdom">
+		select 
+		t1.id,
+		t1.title AS name,
+		t1.type,
+		max(t3.last_price_incr) as incrPri 
+		from topic t1,	
+		topic_tag_detail t2,
+		topic_data t3  
+		where 
+		t2.topic_id=t1.id 
+		and t1.id=t3.topic_id 
+		and t2.status=0 
+		and t2.tag_id in 
+		<foreach collection="list" index="index" item="item" open="(" close=")" separator=",">
+			#{item}
+		</foreach>
+		group by t1.id 
+		order by incrPri desc,t1.id desc 
+		LIMIT 100
+	</select>
+	
+	<select id="getOutReadKingdoms" resultType="com.m2m.entity.ExtRankKingdom">
+		select 
+		t.id,
+		t.title AS name,
+		t.type,	
+		m.tcount 
+		from 
+		topic t,
+		(select 
+		h.topic_id,
+		count(1) as tcount 
+		from 
+		topic_read_his h where 
+		h.create_time&gt;=<![CDATA['2017-08-07 00:00:00']]>	
+		and h.in_app=0 	
+		group by h.topic_id) m 	
+		where 
+		t.id=m.topic_id 
+		order by m.tcount desc,t.id 
+		LIMIT 100
+	</select>
+	
+	<select id="getLotteryKingdoms" resultType="com.m2m.entity.ExtRankKingdom">
+		SELECT
+			t1.topic_id,
+			t2.title AS NAME,
+			t2.type,
+			max(t1.id) AS maxid
+		FROM
+			lottery_info t1,
+			topic t2
+		WHERE
+			t1. STATUS = 0
+		AND t1.topic_id = t2.id
+		AND t1.end_time &gt;now()
+		GROUP BY
+			t1.topic_id
+		ORDER BY
+			maxid DESC
+		LIMIT 100
+	</select>
+	
+	<select id="getNewExcellentKingdoms" resultType="com.m2m.entity.ExtRankKingdom">
+		select 	
+		f.topic_id,	
+		t.title AS name,
+		t.type,	
+		count(DISTINCT DATE_FORMAT(f.create_time,'%Y-%m-%d')) as cc,
+		max(f.create_time) as maxtime,
+		max(t.price) as pp 	
+		from 
+		topic t,
+		topic_fragment f 
+		where 
+		t.id=f.topic_id 
+		and t.create_time &gt;=(SELECT DATE_ADD(str_to_date(DATE_FORMAT(NOW(),'%Y-%m-%d'),'%Y-%m-%d %H:%i:%s'),INTERVAL -5 DAY)) 
+		and t.create_time &lt;=(select DATE_ADD(DATE_ADD(str_to_date(DATE_FORMAT(NOW(),'%Y-%m-%d'),'%Y-%m-%d %H:%i:%s'),INTERVAL -4 DAY),INTERVAL -1 SECOND)) 
+		and f.extra not like  <![CDATA['%image_daycard%']]> 
+		and f.type in (0,3,11,12,13,15,52,55) 
+		and f.status=1 
+		group by f.topic_id 
+		having maxtime &gt;=(SELECT str_to_date(DATE_FORMAT(NOW(),'%Y-%m-%d'),'%Y-%m-%d %H:%i:%s')) 
+		and cc &gt;=4 
+		order by pp desc,f.topic_id ASC
+		LIMIT 100
+	</select>
+	
+	<select id="getExtRankUsersByBillBoardId" parameterType="java.lang.Long" resultType="com.m2m.entity.ExtRankUser">
+		SELECT t2.id,
+			   t1.uid,
+		       t1.nick_name AS userNick,
+		       t1.v_lv AS isV,
+		       t2.sort
+		FROM user_profile t1,
+		     billboard_relation t2
+		WHERE t1.uid = t2.target_id
+		  AND source_id = #{billBoardId}
+		  AND t2.type = 2
+		ORDER BY
+		SORT,id ASC
+	</select>
+	
+	<select id="getActiveUser" resultType="com.m2m.entity.ExtRankUser">
+		SELECT 	
+		t1.id,
+		t1.uid,
+		t1.nick_name as userNick,
+		t1.v_lv as isV 
+		FROM 
+		user_profile t1,
+		topic t2 
+		WHERE t2.status = 0
+		AND t1.nick_name not like <![CDATA['%米汤客服%']]> 
+		AND t2.uid = t1.uid 
+		GROUP BY  t1.uid,userNick,isV,t1.id	
+		ORDER BY t1.id desc
+		LIMIT 100
+	</select>
+	
+	<select id="getUserByConfig" resultType="com.m2m.entity.ExtRankUser">
+		SELECT 	
+		t1.id,
+		t2.nick_name as userNick,	
+		t2.v_lv as isV 
+		FROM 
+		billboard_list t1,
+		user_profile t2 
+		WHERE	
+		t1.target_id = t2.uid 
+		AND t1.list_key = #{_parameter}
+		ORDER BY since_id asc 
+		LIMIT 100
+	</select>
+	
+	<select id="getUserByGender" resultType="com.m2m.entity.ExtRankUser">
+		select 
+		u.id,
+		u.uid,
+		u.nick_name as userNick,
+		u.v_lv as isV 
+		from 
+		user_profile u,
+		(select 
+		t.uid,
+		count(1) as cc 
+		from 
+		topic t 
+		group by t.uid) m 
+		where 
+		u.uid=m.uid 
+		and u.nick_name not like <![CDATA['%米汤客服%']]> 	
+		and u.gender=#{gender}	
+		order by u.id DESC 
+		LIMIT 100
+	</select>
+	
+	<select id="getNewRegisterUsers" resultType="com.m2m.entity.ExtRankUser">
+		select 
+		p.id,
+		p.uid,
+		p.nick_name as userNick,
+		p.v_lv as isV	
+		from 
+		user_profile p 
+		where 
+		p.nick_name not like <![CDATA['%米汤客服%']]> 
+		order by p.id desc
+		LIMIT 100
+	</select>
+	
+	<select id="getHotRiceUsers" resultType="com.m2m.entity.ExtRankUser">
+		select 
+		u.uid,
+		u.nick_name as userNick,
+		u.v_lv as isV,
+		m.fanscount 
+		from 
+		user_profile u, 
+		(select	
+		f.target_uid, 
+		count(DISTINCT f.source_uid) as fanscount 
+		from 
+		user_follow f 
+		group by f.target_uid) m 
+		where 
+		u.uid=m.target_uid 
+		and u.nick_name not like <![CDATA['%米汤客服%']]> 
+		order by m.fanscount desc,uid desc 
+		LIMIT 100
+	</select>
+	
+	<select id="getUserByCoins" resultType="com.m2m.entity.ExtRankUser">
+		select 
+		u.uid,
+		u.nick_name as userNick,
+		u.v_lv as isV,	
+		u.available_coin as coin 
+		from 
+		user_profile u 
+		where 	
+		u.nick_name not like <![CDATA['%米汤客服%']]> 
+		order by u.available_coin desc,u.id desc 
+		LIMIT 100
+	</select>
+	
+	<select id="getUserByShareCount" resultType="com.m2m.entity.ExtRankUser">
+		select 
+		p.uid,
+		p.nick_name as userNick,
+		p.v_lv as isV,	
+		m.hcount 
+		from 
+		user_profile p,
+		(select 
+		h.uid,	
+		count(1) as hcount 
+		from	
+		content_share_history h  
+		where h.create_time &gt;= <![CDATA['2017-08-07 00:00:00']]> 
+		group by h.uid) m 
+		where 
+		p.uid=m.uid 
+		and p.nick_name not like <![CDATA['%米汤客服%']]> 
+		order by m.hcount desc,p.uid  
+		LIMIT 100
+	</select>
+	
+	<select id="getTagNameByMode" resultType="java.lang.String">
+		SELECT 	
+		t2.tag as tagName 
+		FROM 
+		billboard_mode t1,
+		topic_tag t2 
+		WHERE 
+		t1.mode_id = #{mode} 
+		AND t1.tag_id = t2.id
+	</select>
+	
+	<select id="getRankSet" resultType="com.m2m.entity.ExtRankSet">
+		SELECT 
+		t1.id,
+		t1.sort,
+		t2.name,
+		t2.type 
+		FROM 
+		billboard_relation t1 
+		LEFT JOIN 
+		billboard t2 
+		ON t1.target_id = t2.id 
+		WHERE 
+		source_id = #{billBoardId} 
+		ORDER BY t1.sort ASC
+	</select>
+	
+	<select id="getTargetId" resultType="java.lang.Long">
+		SELECT 
+		target_id as targetId 
+		FROM 
+		billboard_relation 
+		WHERE 
+		type = #{type} 
+		AND source_id = #{sourceId}
+	</select>
+	
+	<insert id="insertBillboardRelation" parameterType="java.util.List">
+		INSERT INTO billboard_relation (source_id,target_id,type,sort) VALUES
+		<foreach collection="list" close="" index="index" item="item" open="" separator=",">
+			(#{item.sourceId},#{item.targetId},#{item.type},#{item.sort})
+		</foreach>
+	</insert>
+	
+	<update id="sortBillboardRelation" parameterType="java.util.List">
+		update billboard_relation set sort = case id 
+		<foreach collection="list" index="index" item="item" open=" " close=" " separator=" ">
+			WHEN #{item.id} THEN #{item.sort}
+		</foreach>
+		END
+		WHERE id in
+		<foreach collection="list" index="index" item="item" open="(" close=")" separator=",">
+			#{item.id}
+		</foreach>
+	</update>
+	
+	<select id="getRightTopicId" parameterType="java.util.List" resultType="java.lang.Long">
+		SELECT id FROM topic WHERE id in 
+		<foreach collection="list" index="index" item="item" close=")" open="(" separator=",">
+			#{item}
+		</foreach>
+	</select>
+	
+	<select id="getRightUid" parameterType="java.util.List" resultType="java.lang.Long">
+		SELECT uid FROM user_profile WHERE uid in
+		<foreach collection="list" index="index" item="item" close=")" open="(" separator=",">
+			#{item}
+		</foreach>
+	</select>
+	
+	<select id="getRightBillBoardId" parameterType="java.util.List" resultType="java.lang.Long">
+		SELECT id FROM billboard WHERE id in
+		<foreach collection="list" index="index" item="item" close=")" open="(" separator=",">
+			#{item}
+		</foreach>
+	</select>
+	
+	<select id="getAppUsersCount" resultType="java.lang.Long">
+		SELECT count(1) AS total FROM user_count_day 
+	</select>
+	
+	<select id="getAppUsersByPage" resultType="com.m2m.entity.ExtListRankAppUser">
+		SELECT
+			uid,
+			nick_name AS nickName,
+			create_time AS createdAt,
+			v_lv AS isV,
+			kingdomCount AS topicCount,
+			focusCount AS followCount,
+			fansCount
+		FROM
+			user_count_day
+		ORDER BY
+			createdAt DESC
+		LIMIT #{start},#{pageSize}
+	</select>
+	
+	<select id="getAppUserCountByCondition" resultType="java.lang.Long">
+		SELECT count(1) AS total FROM user_count_day where 1=1 
+		<if test="nickName!=null">
+			and nick_name like CONCAT('%',#{nickName},'%')
+		</if>
+		<if test="isV!=null and isV!=-1">
+			and v_lv = #{isV}
+		</if>
+		<if test="createdBegin!=null">
+			and create_time &gt;= #{createdBegin}
+		</if>
+		<if test="createdEnd!=null">
+			and create_time &lt;= #{createdEnd}
+		</if>
+		<if test="topicCountStart!=null">
+			and kingdomCount &gt;= #{topicCountStart}
+		</if>
+		<if test="topicCountEnd!=null">
+			and kingdomCount &lt;= #{topicCountEnd}
+		</if>
+		<if test="followCountStart!=null">
+			and focusCount &gt;= #{followCountStart}
+		</if>
+		<if test="followCountEnd!=null">
+			and focusCount &lt;= #{followCountEnd}
+		</if>
+		<if test="fansCountStart!=null">
+			and fansCount &gt;= #{fansCountStart}
+		</if>
+		<if test="fansCountEnd!=null">
+			and fansCount &lt;= #{fansCountEnd}
+		</if>
+	</select>
+	
+	<select id="getAppUsersByCondition" resultType="com.m2m.entity.ExtListRankAppUser">
+		SELECT 
+		uid,
+		nick_name AS nickName,
+		create_time AS createdAt,
+		v_lv AS isV,
+		kingdomCount AS topicCount,
+		focusCount AS followCount,
+		fansCount 
+		FROM 
+		user_count_day where 1=1
+		<if test="nickName!=null">
+			and nick_name like CONCAT('%',#{nickName},'%')
+		</if>
+		<if test="isV!=null and isV!=-1">
+			and v_lv = #{isV}
+		</if>
+		<if test="createdBegin!=null">
+			and create_time &gt;= #{createdBegin}
+		</if>
+		<if test="createdEnd!=null">
+			and create_time &lt;= #{createdEnd}
+		</if>
+		<if test="topicCountStart!=null">
+			and kingdomCount &gt;= #{topicCountStart}
+		</if>
+		<if test="topicCountEnd!=null">
+			and kingdomCount &lt;= #{topicCountEnd}
+		</if>
+		<if test="followCountStart!=null">
+			and focusCount &gt;= #{followCountStart}
+		</if>
+		<if test="followCountEnd!=null">
+			and focusCount &lt;= #{followCountEnd}
+		</if>
+		<if test="fansCountStart!=null">
+			and fansCount &gt;= #{fansCountStart}
+		</if>
+		<if test="fansCountEnd!=null">
+			and fansCount &lt;= #{fansCountEnd}
+		</if>
+		ORDER BY createdAt desc 
+		LIMIT ${(pageIndex-1)*pageSize},#{pageSize}
+	</select>
+	
+</mapper>

@@ -1,0 +1,32 @@
+{
+	"id": "31c4dbe5-f729-269b-9966-cb43f7e97fea",
+	"name": "api.kingdom.getPendingListedKingdoms",
+	"description": "",
+	"order": [
+		"fc40d494-5c67-bb22-14d1-b8fdec3295cb"
+	],
+	"folders": [],
+	"timestamp": 1513650631086,
+	"owner": "3117500",
+	"remoteLink": "",
+	"public": false,
+	"requests": [
+		{
+			"id": "fc40d494-5c67-bb22-14d1-b8fdec3295cb",
+			"url": "http://{{host}}:{{port}}/api/kingdom/getPendingListedKingdoms?token=99999999-9999-9999-9999-999999999999&pageIndex=1&pageSize=10&topicName=皮&status=-1",
+			"method": "GET",
+			"headers": "",
+			"data": null,
+			"dataMode": "params",
+			"tests": null,
+			"preRequestScript": null,
+			"currentHelper": "normal",
+			"pathVariables": {},
+			"version": 2,
+			"name": "http://{{host}}:{{port}}/api/kingdom/getPendingListedKingdoms?token=99999999-9999-9999-9999-999999999999&pageIndex=1&pageSize=10&topicName=皮&status=-1",
+			"description": "",
+			"descriptionFormat": "html",
+			"collectionId": "31c4dbe5-f729-269b-9966-cb43f7e97fea"
+		}
+	]
+}

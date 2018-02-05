@@ -1,0 +1,33 @@
+{
+	"id": "ec542e8e-04bd-b7cb-7996-06a9a509f104",
+	"name": "api.kingdom.getKingdomUserSearch",
+	"description": "",
+	"order": [
+		"948bb40a-a431-90ff-8608-fd911ae5cdbe"
+	],
+	"folders": [],
+	"timestamp": 1513418001460,
+	"owner": "3117500",
+	"remoteLink": "",
+	"public": false,
+	"requests": [
+		{
+			"id": "948bb40a-a431-90ff-8608-fd911ae5cdbe",
+			"url": "http://{{host}}:{{port}}/api/kingdom/getKingdomUserSearch",
+			"method": "POST",
+			"headers": "Content-Type: application/json\n",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"preRequestScript": null,
+			"currentHelper": "normal",
+			"pathVariables": {},
+			"version": 2,
+			"name": "http://{{host}}:{{port}}/api/kingdom/getKingdomUserSearch",
+			"description": "",
+			"descriptionFormat": "html",
+			"collectionId": "ec542e8e-04bd-b7cb-7996-06a9a509f104",
+			"rawModeData": "  { \r\n      \"token\":\"99999999-9999-9999-9999-999999999999\",\r\n      \"pageIndex\":1,\r\n      \"pageSize\":10,\r\n      \"fragment\":\"\",\r\n      \"isFirstReview\":0\r\n    }"
+		}
+	]
+}

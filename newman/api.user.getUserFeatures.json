@@ -1,0 +1,54 @@
+{
+  "id": "f5f948e6-72f3-3acb-3b17-4789856eec68",
+  "name": "api.user.getUserFeatures",
+  "description": "",
+  "order": [
+    "3ef1d8fd-3ab1-8ed8-5d06-efcf5bed3dec"
+  ],
+  "folders": [],
+  "folders_order": [],
+  "timestamp": 1510218501864,
+  "owner": "2696738",
+  "public": false,
+  "hasRequests": true,
+  "requests": [
+    {
+      "id": "3ef1d8fd-3ab1-8ed8-5d06-efcf5bed3dec",
+      "headers": "",
+      "headerData": [],
+      "url": "http://{{host}}:{{port}}/api/user/getUserFeatures?token={{token}}&userId=1",
+      "queryParams": [
+        {
+          "key": "token",
+          "value": "{{token}}",
+          "equals": true,
+          "description": "",
+          "enabled": true
+        },
+        {
+          "key": "userId",
+          "value": "1",
+          "equals": true,
+          "description": "",
+          "enabled": true
+        }
+      ],
+      "preRequestScript": null,
+      "pathVariables": {},
+      "pathVariableData": [],
+      "method": "GET",
+      "data": [],
+      "dataMode": "raw",
+      "version": 2,
+      "tests": null,
+      "currentHelper": "normal",
+      "helperAttributes": {},
+      "time": 1510553015244,
+      "name": "api.user. getUserFeatures",
+      "description": "",
+      "collectionId": "f5f948e6-72f3-3acb-3b17-4789856eec68",
+      "responses": [],
+      "rawModeData": "{\n    \"token\":\"{{token}}\",\n    \"password\": \"s3cret\",\n    \"newPassword\":\"s3cret\"\n}"
+    }
+  ]
+}

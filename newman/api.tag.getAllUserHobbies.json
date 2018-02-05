@@ -1,0 +1,32 @@
+{
+	"id": "4be26508-1b23-81fa-e1b1-68ae60d24979",
+	"name": "api.tag.getAllUserHobbies",
+	"description": "",
+	"order": [
+		"af99c67a-4b00-b084-f8fd-9390705f8f22"
+	],
+	"folders": [],
+	"timestamp": 1512960383570,
+	"owner": "3117500",
+	"remoteLink": "",
+	"public": false,
+	"requests": [
+		{
+			"id": "af99c67a-4b00-b084-f8fd-9390705f8f22",
+			"url": "http://{{host}}:{{port}}/api/tag/getAllUserHobbies?token=99999999-9999-9999-9999-999999999999",
+			"method": "GET",
+			"headers": "",
+			"data": null,
+			"dataMode": "params",
+			"tests": null,
+			"preRequestScript": null,
+			"currentHelper": "normal",
+			"pathVariables": {},
+			"version": 2,
+			"name": "http://{{host}}:{{port}}/api/tag/getAllUserHobbies?token=99999999-9999-9999-9999-999999999999",
+			"description": "",
+			"descriptionFormat": "html",
+			"collectionId": "4be26508-1b23-81fa-e1b1-68ae60d24979"
+		}
+	]
+}

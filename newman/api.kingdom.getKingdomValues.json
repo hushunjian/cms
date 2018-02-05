@@ -1,0 +1,32 @@
+{
+	"id": "9c475e74-be52-af00-bfaf-56fc65b64185",
+	"name": "api.kingdom.getKingdomValues",
+	"description": "",
+	"order": [
+		"ce3a8e4b-1324-dffe-4dea-8fde58a575df"
+	],
+	"folders": [],
+	"timestamp": 1513418014274,
+	"owner": "3117500",
+	"remoteLink": "",
+	"public": false,
+	"requests": [
+		{
+			"id": "ce3a8e4b-1324-dffe-4dea-8fde58a575df",
+			"url": "http://{{host}}:{{port}}/api/kingdom/getKingdomValues?token=99999999-9999-9999-9999-999999999999&pageIndex=1&pageSize=10",
+			"method": "GET",
+			"headers": "",
+			"data": null,
+			"dataMode": "params",
+			"tests": null,
+			"preRequestScript": null,
+			"currentHelper": "normal",
+			"pathVariables": {},
+			"version": 2,
+			"name": "http://{{host}}:{{port}}/api/kingdom/getKingdomValues?token=99999999-9999-9999-9999-999999999999&pageIndex=1&pageSize=10",
+			"description": "",
+			"descriptionFormat": "html",
+			"collectionId": "9c475e74-be52-af00-bfaf-56fc65b64185"
+		}
+	]
+}

@@ -1,0 +1,32 @@
+{
+	"id": "40ffebf2-6e35-b136-dc97-a49d5cac9aa4",
+	"name": "api.kingdom.getLotteryUsers",
+	"description": "",
+	"order": [
+		"8c00b766-1556-75e8-84fd-04fb1f038f99"
+	],
+	"folders": [],
+	"timestamp": 1513418100629,
+	"owner": "3117500",
+	"remoteLink": "",
+	"public": false,
+	"requests": [
+		{
+			"id": "8c00b766-1556-75e8-84fd-04fb1f038f99",
+			"url": "http://{{host}}:{{port}}/api/kingdom/getLotteryUsers?token=99999999-9999-9999-9999-999999999999&pageIndex=1&pageSize=10&lotteryId=5",
+			"method": "GET",
+			"headers": "",
+			"data": null,
+			"dataMode": "params",
+			"tests": null,
+			"preRequestScript": null,
+			"currentHelper": "normal",
+			"pathVariables": {},
+			"version": 2,
+			"name": "http://{{host}}:{{port}}/api/kingdom/getLotteryUsers?token=99999999-9999-9999-9999-999999999999&pageIndex=1&pageSize=10&lotteryId=5",
+			"description": "",
+			"descriptionFormat": "html",
+			"collectionId": "40ffebf2-6e35-b136-dc97-a49d5cac9aa4"
+		}
+	]
+}

@@ -1,0 +1,45 @@
+{
+  "id": "a5d2cdc3-7414-2ec2-ef68-346d1b6e4b60",
+  "name": "api.role.deleteRole",
+  "description": "",
+  "order": [
+    "2df38dd9-bb72-ee51-2185-ec17ec04aa3a"
+  ],
+  "folders": [],
+  "folders_order": [],
+  "timestamp": 1510292031660,
+  "owner": "2696738",
+  "public": false,
+  "requests": [
+    {
+      "id": "2df38dd9-bb72-ee51-2185-ec17ec04aa3a",
+      "headers": "Content-Type: application/json\n",
+      "headerData": [
+        {
+          "key": "Content-Type",
+          "value": "application/json",
+          "description": "",
+          "enabled": true
+        }
+      ],
+      "url": "http://{{host}}:{{port}}/api/role/deleteRole",
+      "queryParams": [],
+      "preRequestScript": null,
+      "pathVariables": {},
+      "pathVariableData": [],
+      "method": "POST",
+      "data": [],
+      "dataMode": "raw",
+      "version": 2,
+      "tests": null,
+      "currentHelper": "normal",
+      "helperAttributes": {},
+      "time": 1510292120582,
+      "name": "api.role. deleteRole",
+      "description": "",
+      "collectionId": "a5d2cdc3-7414-2ec2-ef68-346d1b6e4b60",
+      "responses": [],
+      "rawModeData": "{\n    \"token\":\"{{token}}\",\n    \"id\": \"4\"\n}"
+    }
+  ]
+}

@@ -1,0 +1,472 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.m2m.mapper.ExtAppAnchorMapper">
+	<select id="getAppAnchorCount" resultType="java.lang.Long">
+		SELECT 
+		count(1) as total 
+		FROM 
+		app_anchor t1,
+		user_profile t2 
+		where t1.uid = t2.uid 
+	</select>
+	
+	<select id="getAppAnchorByPage" resultType="com.m2m.entity.ExtAnchor">
+		SELECT 
+		t1.id,
+		t1.uid,
+		t1.real_name as realName,
+		t1.comment,
+		t2.nick_name as nickName,
+		t3.me_number as meNumber 
+		FROM 
+		app_anchor t1,
+		user_profile t2,
+		user_no t3 
+		WHERE 
+		t1.uid = t2.uid
+		AND t2.uid = t3.uid
+		LIMIT #{start},#{pageSize}
+	</select>
+	
+	<select id="getAnchorsCountByCondition" resultType="java.lang.Long">
+		SELECT 
+		count(1) as total 
+		FROM 
+		app_anchor t1,
+		user_profile t2 
+		where t1.uid = t2.uid
+		<if test="uid!=null">
+			and t1.uid = #{uid}
+		</if>
+		<if test="realName!=null">
+			and t1.real_name like CONCAT('%',#{realName},'%')
+		</if>
+		<if test="comment!=null">
+			and t1.comment like CONCAT('%',#{comment},'%')
+		</if>
+	</select>
+	
+	<select id="getAnchorsByCondition" resultType="com.m2m.entity.ExtAnchor">
+		SELECT 
+		t1.id,
+		t1.uid,
+		t1.real_name as realName,
+		t1.comment,
+		t2.nick_name as nickName,
+		t3.me_number as meNumber 
+		FROM 
+		app_anchor t1,
+		user_profile t2,
+		user_no t3 
+		WHERE 
+		t1.uid = t2.uid
+		AND t2.uid = t3.uid
+		<if test="uid!=null">
+			and t1.uid = #{uid}
+		</if>
+		<if test="realName!=null">
+			and t1.real_name like CONCAT('%',#{realName},'%')
+		</if>
+		<if test="comment!=null">
+			and t1.comment like CONCAT('%',#{comment},'%')
+		</if>
+		LIMIT ${(pageIndex-1)*pageSize},#{pageSize}
+	</select>
+	
+	<select id="getValidUids" resultType="java.lang.Long">
+		SELECT 
+		t1.uid
+		FROM 
+		app_anchor t1,
+		user_profile t2 
+		where t1.uid = t2.uid 
+	</select>
+	
+	<select id="isValidUid" resultType="com.m2m.domain.UserProfile">
+		SELECT * FROM user_profile WHERE uid = #{uid}
+	</select>
+	
+	<select id="getAnchorInviteCount" resultType="java.lang.Long">
+		SELECT 
+		count(1) as total
+		FROM 
+		user_profile t4,
+		app_anchor t1
+		LEFT JOIN
+		(
+			SELECT 
+			t2.referee_uid,
+			count(1) as total
+			FROM 
+			user_profile t2 
+			WHERE
+			t2.is_activate = 1
+			AND t2.create_time &gt;=#{timeBegin,jdbcType=TIMESTAMP}
+			AND t2.create_time &lt;#{timeEnd,jdbcType=TIMESTAMP}
+			AND t2.referee_uid in 
+			<foreach collection="uids" index="index" item="item" open="(" close=")" separator=",">
+				#{item}
+			</foreach>
+			GROUP BY t2.referee_uid
+		) t3
+		ON
+		t1.uid = t3.referee_uid
+		WHERE 
+		t1.uid = t4.uid
+	</select>
+	
+	<select id="getAnchorInviteByPage" resultType="com.m2m.entity.ExtAnchorInvite">
+		SELECT 
+		t1.uid,
+		t1.real_name as realName,
+		IFNULL(t3.total,0) as inviteCounts,
+		t4.nick_name as nickName
+		FROM 
+		user_profile t4,
+		app_anchor t1
+		LEFT JOIN
+		(
+			SELECT 
+			t2.referee_uid,
+			count(1) as total
+			FROM 
+			user_profile t2 
+			WHERE
+			t2.is_activate = 1
+			AND t2.create_time &gt;=#{timeBegin,jdbcType=TIMESTAMP}
+			AND t2.create_time &lt;#{timeEnd,jdbcType=TIMESTAMP}
+			AND t2.referee_uid in 
+			<foreach collection="uids" index="index" item="item" open="(" close=")" separator=",">
+				#{item}
+			</foreach>
+			GROUP BY t2.referee_uid
+		) t3
+		ON
+		t1.uid = t3.referee_uid
+		WHERE 
+		t1.uid = t4.uid
+		LIMIT #{start},#{pageSize}
+	</select>
+	
+	<select id="getAppAnchorCountByCondition" resultType="java.lang.Long">
+		select 
+		count(1) 
+		from 
+		app_anchor 
+		where 1=1
+		<choose>
+			<when test="extGetAnchorInviteQuery.uid!=null">
+				and uid = #{extGetAnchorInviteQuery.uid}
+			</when>
+			<otherwise>
+				and uid in 
+				<foreach collection="uids" index="index" item="item" open="(" close=")" separator=",">
+					#{item}
+				</foreach>
+			</otherwise>
+		</choose>
+	</select>
+	
+	<select id="getAnchorInviteByCondition" resultType="com.m2m.entity.ExtAnchorInvite">
+		SELECT 
+		t1.uid,
+		t1.real_name as realName,
+		IFNULL(t3.total,0) as inviteCounts,
+		t4.nick_name as nickName
+		FROM 
+		user_profile t4,
+		app_anchor t1
+		LEFT JOIN
+		(
+			SELECT 
+			t2.referee_uid,
+			count(1) as total
+			FROM 
+			user_profile t2 
+			WHERE
+			t2.is_activate = 1
+			AND t2.create_time &gt;=#{extGetAnchorInviteQuery.createdBegin,jdbcType=TIMESTAMP}
+			AND t2.create_time &lt;#{extGetAnchorInviteQuery.createdEnd,jdbcType=TIMESTAMP}
+			<choose>
+				<when test="extGetAnchorInviteQuery.uid!=null">
+					and t2.referee_uid = #{extGetAnchorInviteQuery.uid}
+				</when>
+				<otherwise>
+					and t2.referee_uid in 
+					<foreach collection="uids" index="index" item="item" open="(" close=")" separator=",">
+						#{item}
+					</foreach>
+				</otherwise>
+			</choose>
+			GROUP BY t2.referee_uid
+		) t3
+		ON
+		t1.uid = t3.referee_uid
+		WHERE 
+		t1.uid = t4.uid
+		<choose>
+				<when test="extGetAnchorInviteQuery.uid!=null">
+					and t4.uid = #{extGetAnchorInviteQuery.uid}
+				</when>
+				<otherwise>
+					and t4.uid in 
+					<foreach collection="uids" index="index" item="item" open="(" close=")" separator=",">
+						#{item}
+					</foreach>
+				</otherwise>
+			</choose>
+		LIMIT ${(extGetAnchorInviteQuery.pageIndex-1)*extGetAnchorInviteQuery.pageSize},#{extGetAnchorInviteQuery.pageSize}
+	</select>
+	
+	<select id="getAnchorInviteDetailCount" resultType="java.lang.Long">
+		SELECT 
+		count(1) as total
+		FROM 
+		app_anchor t1, 
+		user_profile t2
+		LEFT JOIN
+		(
+			SELECT
+				i.uid,
+				group_concat(DISTINCT i.device_code) AS deviceInfo
+			FROM
+				user_device_info i
+			WHERE
+				i.device_code IS NOT NULL
+				AND i.device_code != ''
+			GROUP BY
+				i.uid
+		) t3 
+		ON
+		t2.uid = t3.uid
+		LEFT JOIN
+		(
+			SELECT 
+			DISTINCT lc.uid
+			FROM
+				lottery_content lc,
+				lottery_info li
+			WHERE
+			lc.lottery_id = li.id
+			AND li.topic_id = 61263
+			AND lc.create_time &gt;=#{timeBegin,jdbcType=TIMESTAMP}
+			AND lc.create_time &lt;#{timeEnd,jdbcType=TIMESTAMP}
+		) t4
+		ON
+		t3.uid = t4.uid
+		WHERE 
+		t1.uid = t2.referee_uid
+		AND t2.is_activate = 1
+		AND t2.create_time &gt;=#{timeBegin,jdbcType=TIMESTAMP}
+		AND t2.create_time &lt;#{timeEnd,jdbcType=TIMESTAMP}
+		AND t1.uid in 
+		<foreach collection="uids" index="index" item="item" open="(" close=")" separator=",">
+			#{item}
+		</foreach>
+	</select>
+	
+	<select id="getAnchorInviteDetailByPage" resultType="com.m2m.entity.ExtAnchorInviteDetail">
+		SELECT 
+		t1.uid,
+		t1.real_name as realName,
+		u.nick_name as nickName,
+		t2.nick_name as invitedNickName,
+		DATE_FORMAT(t2.create_time,'%Y-%m-%d') as dateTime,
+		t2.uid as invitedUid,
+		t2.create_time as createdAt,
+		t2.channel as registerChannel,
+		t3.deviceInfo as logonDevice,
+		if(t4.uid is null,0,1) as isJoinRaffle
+		FROM 
+		app_anchor t1, 
+		user_profile u,
+		user_profile t2
+		LEFT JOIN
+		(
+			SELECT
+				i.uid,
+				group_concat(DISTINCT i.device_code) AS deviceInfo
+			FROM
+				user_device_info i
+			WHERE
+				i.device_code IS NOT NULL
+				AND i.device_code != ''
+			GROUP BY
+				i.uid
+		) t3 
+		ON
+		t2.uid = t3.uid
+		LEFT JOIN
+		(
+			SELECT 
+			DISTINCT lc.uid
+			FROM
+				lottery_content lc,
+				lottery_info li
+			WHERE
+			lc.lottery_id = li.id
+			AND li.topic_id = 61263
+			AND lc.create_time &gt;=#{timeBegin,jdbcType=TIMESTAMP}
+			AND lc.create_time &lt;#{timeEnd,jdbcType=TIMESTAMP}
+		) t4
+		ON
+		t3.uid = t4.uid
+		WHERE 
+		t1.uid = t2.referee_uid
+		AND t2.is_activate = 1
+		AND t1.uid = u.uid
+		AND t2.create_time &gt;=#{timeBegin,jdbcType=TIMESTAMP}
+		AND t2.create_time &lt;#{timeEnd,jdbcType=TIMESTAMP}
+		AND t1.uid in 
+		<foreach collection="uids" index="index" item="item" open="(" close=")" separator=",">
+			#{item}
+		</foreach>
+		ORDER BY t1.uid,t2.create_time
+		LIMIT #{start},#{pageSize}
+	</select>
+	
+	<select id="getAnchorInviteDetailCountByCondition" resultType="java.lang.Long">
+		SELECT 
+		count(1) as total
+		FROM 
+		app_anchor t1, 
+		user_profile t2
+		LEFT JOIN
+		(
+			SELECT
+				i.uid,
+				group_concat(DISTINCT i.device_code) AS deviceInfo
+			FROM
+				user_device_info i
+			WHERE
+				i.device_code IS NOT NULL
+				AND i.device_code != ''
+			GROUP BY
+				i.uid
+		) t3 
+		ON
+		t2.uid = t3.uid
+		LEFT JOIN
+		(
+			SELECT 
+			DISTINCT lc.uid
+			FROM
+				lottery_content lc,
+				lottery_info li
+			WHERE
+			lc.lottery_id = li.id
+			<choose>
+				<when test="extAnchorInviteDetailQuery.raffleTopicId!=null">
+					and li.topic_id=#{extAnchorInviteDetailQuery.raffleTopicId}
+				</when>
+				<otherwise>
+					and li.topic_id=61263
+				</otherwise>
+			</choose>
+			AND lc.create_time &gt;=#{extAnchorInviteDetailQuery.joinBegin,jdbcType=TIMESTAMP}
+			AND lc.create_time &lt;#{extAnchorInviteDetailQuery.joinEnd,jdbcType=TIMESTAMP}
+		) t4
+		ON
+		t3.uid = t4.uid
+		WHERE 
+		t1.uid = t2.referee_uid
+		AND t2.is_activate = 1
+		AND t2.create_time &gt;=#{extAnchorInviteDetailQuery.joinBegin,jdbcType=TIMESTAMP}
+		AND t2.create_time &lt;#{extAnchorInviteDetailQuery.joinEnd,jdbcType=TIMESTAMP}
+		<choose>
+			<when test="extAnchorInviteDetailQuery.uid!=null and extAnchorInviteDetailQuery.uid!=0">
+				and t1.uid = #{extAnchorInviteDetailQuery.uid}
+			</when>
+			<otherwise>
+				and t1.uid in 
+				<foreach collection="uids" index="index" item="item" open="(" close=")" separator=",">
+					#{item}
+				</foreach>
+			</otherwise>
+		</choose>
+	</select>
+	
+	<select id="getAnchorInviteDetailByCondition" resultType="com.m2m.entity.ExtAnchorInviteDetail">
+		SELECT 
+		t1.uid,
+		t1.real_name as realName,
+		u.nick_name as nickName,
+		t2.nick_name as invitedNickName,
+		DATE_FORMAT(t2.create_time,'%Y-%m-%d') as dateTime,
+		t2.uid as invitedUid,
+		t2.create_time as createdAt,
+		t2.channel as registerChannel,
+		t3.deviceInfo as logonDevice,
+		if(t4.uid is null,0,1) as isJoinRaffle
+		FROM 
+		app_anchor t1, 
+		user_profile u,
+		user_profile t2
+		LEFT JOIN
+		(
+			SELECT
+				i.uid,
+				group_concat(DISTINCT i.device_code) AS deviceInfo
+			FROM
+				user_device_info i
+			WHERE
+				i.device_code IS NOT NULL
+				AND i.device_code != ''
+			GROUP BY
+				i.uid
+		) t3 
+		ON
+		t2.uid = t3.uid
+		LEFT JOIN
+		(
+			SELECT 
+			DISTINCT lc.uid
+			FROM
+				lottery_content lc,
+				lottery_info li
+			WHERE
+			lc.lottery_id = li.id
+			<choose>
+				<when test="extAnchorInviteDetailQuery.raffleTopicId!=null">
+					and li.topic_id=#{extAnchorInviteDetailQuery.raffleTopicId}
+				</when>
+				<otherwise>
+					and li.topic_id=61263
+				</otherwise>
+			</choose>
+			AND lc.create_time &gt;=#{extAnchorInviteDetailQuery.joinBegin,jdbcType=TIMESTAMP}
+			AND lc.create_time &lt;#{extAnchorInviteDetailQuery.joinEnd,jdbcType=TIMESTAMP}
+		) t4
+		ON
+		t3.uid = t4.uid
+		WHERE 
+		t1.uid = t2.referee_uid
+		AND t2.is_activate = 1
+		AND t1.uid = u.uid
+		AND t2.create_time &gt;=#{extAnchorInviteDetailQuery.joinBegin,jdbcType=TIMESTAMP}
+		AND t2.create_time &lt;#{extAnchorInviteDetailQuery.joinEnd,jdbcType=TIMESTAMP}
+		<choose>
+			<when test="extAnchorInviteDetailQuery.uid!=null and extAnchorInviteDetailQuery.uid!=0">
+				and t1.uid = #{extAnchorInviteDetailQuery.uid}
+			</when>
+			<otherwise>
+				and t1.uid in 
+				<foreach collection="uids" index="index" item="item" open="(" close=")" separator=",">
+					#{item}
+				</foreach>
+			</otherwise>
+		</choose>
+		ORDER BY t1.uid,t2.create_time
+		<if test="extAnchorInviteDetailQuery.pageIndex!=null and extAnchorInviteDetailQuery.pageSize!=null">
+			LIMIT ${(extAnchorInviteDetailQuery.pageIndex-1)*extAnchorInviteDetailQuery.pageSize},#{extAnchorInviteDetailQuery.pageSize}
+		</if>
+	</select>
+	
+	<select id="getUsersRegisterChannel" resultType="com.m2m.entity.ExtUserRegisterChannel">
+		SELECT
+		id,
+		name AS channelName,
+		code 
+		FROM t_channel
+	</select>
+</mapper>

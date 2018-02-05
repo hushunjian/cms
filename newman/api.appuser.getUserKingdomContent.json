@@ -1,0 +1,32 @@
+{
+	"id": "7cbdc8c8-d8e6-a4cf-cd60-d1864347888a",
+	"name": "api.appuser.getUserKingdomContent",
+	"description": "",
+	"order": [
+		"b055afcd-8c36-a852-3ad3-f0087cbca396"
+	],
+	"folders": [],
+	"timestamp": 1513417647251,
+	"owner": "3117500",
+	"remoteLink": "",
+	"public": false,
+	"requests": [
+		{
+			"id": "b055afcd-8c36-a852-3ad3-f0087cbca396",
+			"url": "http://{{host}}:{{port}}/api/appuser/getUserKingdomContent?token=99999999-9999-9999-9999-999999999999&uid=204498&pageIndex=1&pageSize=10",
+			"method": "GET",
+			"headers": "",
+			"data": null,
+			"dataMode": "params",
+			"tests": null,
+			"preRequestScript": null,
+			"currentHelper": "normal",
+			"pathVariables": {},
+			"version": 2,
+			"name": "http://{{host}}:{{port}}/api/appuser/getUserKingdomContent?token=99999999-9999-9999-9999-999999999999&uid=204498&pageIndex=1&pageSize=10",
+			"description": "",
+			"descriptionFormat": "html",
+			"collectionId": "7cbdc8c8-d8e6-a4cf-cd60-d1864347888a"
+		}
+	]
+}

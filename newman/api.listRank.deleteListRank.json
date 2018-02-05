@@ -1,0 +1,33 @@
+{
+	"id": "fb5ed86f-dc37-727a-e323-ee15970df003",
+	"name": "api.listRank.deleteListRank",
+	"description": "",
+	"order": [
+		"d2d7d7af-cbbb-7ae3-cfac-dc11769196de"
+	],
+	"folders": [],
+	"timestamp": 1514007037384,
+	"owner": "3117500",
+	"remoteLink": "",
+	"public": false,
+	"requests": [
+		{
+			"id": "d2d7d7af-cbbb-7ae3-cfac-dc11769196de",
+			"url": "http://{{host}}:{{port}}/api/listRank/deleteListRank",
+			"method": "POST",
+			"headers": "Content-Type: application/json\n",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"preRequestScript": null,
+			"currentHelper": "normal",
+			"pathVariables": {},
+			"version": 2,
+			"name": "http://{{host}}:{{port}}/api/listRank/deleteListRank",
+			"description": "",
+			"descriptionFormat": "html",
+			"collectionId": "fb5ed86f-dc37-727a-e323-ee15970df003",
+			"rawModeData": "{\n    \"token\":\"a3fd6d23-edfd-4f70-ab16-bbaa94403024\",\n    \"id\":41\n}"
+		}
+	]
+}

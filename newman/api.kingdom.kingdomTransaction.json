@@ -1,0 +1,33 @@
+{
+	"id": "cf68f706-96fd-2572-c229-159431dfd793",
+	"name": "api.kingdom.kingdomTransaction",
+	"description": "",
+	"order": [
+		"7af21361-4138-f196-6a0f-9f567670fb45"
+	],
+	"folders": [],
+	"timestamp": 1513418123868,
+	"owner": "3117500",
+	"remoteLink": "",
+	"public": false,
+	"requests": [
+		{
+			"id": "7af21361-4138-f196-6a0f-9f567670fb45",
+			"url": "http://{{host}}:{{port}}/api/kingdom/kingdomTransaction",
+			"method": "POST",
+			"headers": "Content-Type: application/json\n",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"preRequestScript": null,
+			"currentHelper": "normal",
+			"pathVariables": {},
+			"version": 2,
+			"name": "http://{{host}}:{{port}}/api/kingdom/kingdomTransaction",
+			"description": "",
+			"descriptionFormat": "html",
+			"collectionId": "cf68f706-96fd-2572-c229-159431dfd793",
+			"rawModeData": "  { \r\n      \"token\":\"99999999-9999-9999-9999-999999999999\",\r\n      \"id\": 36,\r\n      \"meNumber\": 30153218\r\n    }"
+		}
+	]
+}

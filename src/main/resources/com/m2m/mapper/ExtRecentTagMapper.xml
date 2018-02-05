@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.m2m.mapper.ExtRecentTagMapper">
+    <delete id="reset">
+        delete from tmp_recent_tag
+    </delete>
+
+    <insert id="init" parameterType="java.util.Date">
+        insert into tmp_recent_tag
+        select distinct
+        t.id
+        from topic_tag t join topic_tag_detail d on (
+        t.status = 0
+        and d.status = 0
+        and d.tag_id = t.id
+        ) join topic_fragment tf on (
+        d.topic_id = tf.topic_id
+        and tf.status = 1
+        and tf.create_time > #{date}
+        )
+    </insert>
+</mapper>

@@ -1,0 +1,33 @@
+{
+	"id": "50e83d92-edcb-f273-9616-f91034b1ef89",
+	"name": "api.kingdom.setListedKingdomStatus",
+	"description": "",
+	"order": [
+		"a9a84c7b-202f-f916-b852-a2ab711f6c11"
+	],
+	"folders": [],
+	"timestamp": 1513418160178,
+	"owner": "3117500",
+	"remoteLink": "",
+	"public": false,
+	"requests": [
+		{
+			"id": "a9a84c7b-202f-f916-b852-a2ab711f6c11",
+			"url": "http://{{host}}:{{port}}/api/kingdom/setListedKingdomStatus",
+			"method": "POST",
+			"headers": "Content-Type: application/json\n",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"preRequestScript": null,
+			"currentHelper": "normal",
+			"pathVariables": {},
+			"version": 2,
+			"name": "http://{{host}}:{{port}}/api/kingdom/setListedKingdomStatus",
+			"description": "",
+			"descriptionFormat": "html",
+			"collectionId": "50e83d92-edcb-f273-9616-f91034b1ef89",
+			"rawModeData": "  { \r\n      \"token\":\"99999999-9999-9999-9999-999999999999\",\r\n      \"id\": 35,\r\n      \"status\": 1\r\n    }"
+		}
+	]
+}

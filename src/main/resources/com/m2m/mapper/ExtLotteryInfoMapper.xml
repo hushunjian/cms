@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.m2m.mapper.ExtLotteryInfoMapper">
+    <resultMap type="com.m2m.entity.ExtLottery" id="ExtLotteryInfo">
+        <result column="topic_id" property="topicId" jdbcType="INTEGER"/>
+        <result column="topicName" property="topicName" jdbcType="VARCHAR"/>
+        <result column="id" property="lotteryId" jdbcType="INTEGER"/>
+        <result column="lotteryName" property="lotteryName" jdbcType="VARCHAR"/>
+        <result column="create_time" property="createdAt" jdbcType="TIMESTAMP"/>
+        <result column="end_time" property="validAt" jdbcType="TIMESTAMP"/>
+        <result column="status" property="status" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <resultMap type="com.m2m.entity.ExtLotteryUser" id="ExtLotteryUserInfo">
+        <result column="id" property="lotteryId" jdbcType="INTEGER"/>
+        <result column="title" property="lotteryName" jdbcType="VARCHAR"/>
+        <result column="nick_name" property="userNick" jdbcType="INTEGER"/>
+        <result column="uid" property="userId" jdbcType="VARCHAR"/>
+        <result column="mintime" property="joinTime" jdbcType="TIMESTAMP"/>
+        <result column="appoint" property="isAppoint" jdbcType="TIMESTAMP"/>
+        <result column="status" property="status" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <select id="getAllLotteriesByPage" resultMap="ExtLotteryInfo">
+        SELECT 
+        t1.topic_id,
+        t2.title as topicName, 
+        t1.id,
+        t1.title as lotteryName,
+        t1.create_time,
+        t1.end_time,
+        t1.status
+        FROM 
+        lottery_info t1,
+        topic t2 
+        WHERE 
+        t1.topic_id = t2.id 
+        and t1.status != -1 
+        ORDER BY create_time desc 
+        limit #{start,jdbcType=INTEGER},#{pageSize,jdbcType=INTEGER}
+    </select>
+
+    <select id="getAllLotteriesCount" resultType="java.lang.Long">
+        select count(*) from lottery_info t1,topic t2 WHERE t1.topic_id = t2.id and t1.status != -1
+    </select>
+
+    <select id="getLotteriesCountByCondition" resultType="java.lang.Long">
+        SELECT count(*) FROM lottery_info t1,topic t2 WHERE t1.topic_id = t2.id and t1.status != -1
+        <if test="topicName!=null">
+            and t2.title like CONCAT('%',#{topicName},'%')
+        </if>
+        <if test="lotteryName!=null">
+            and t1.title like CONCAT('%',#{lotteryName},'%')
+        </if>
+    </select>
+
+    <select id="getLotteriesByCondition" resultMap="ExtLotteryInfo">
+        SELECT 
+        t1.topic_id,
+        t2.title as topicName,
+        t1.id,
+        t1.title as lotteryName,
+        t1.create_time,
+        t1.end_time,
+        t1.status
+        FROM 
+        lottery_info t1,
+        topic t2 
+        WHERE 
+        t1.topic_id = t2.id 
+        and t1.status != -1 
+        <if test="topicName!=null">
+            and t2.title like CONCAT('%',#{topicName},'%')
+        </if>
+        <if test="lotteryName!=null">
+            and t1.title like CONCAT('%',#{lotteryName},'%')
+        </if>
+        ORDER BY create_time desc 
+        limit #{start},#{pageSize}
+    </select>
+
+    <select id="getLotteryUsersCountByLotteryId" resultType="java.lang.Long">
+        SELECT
+		count(1)
+		FROM
+		user_profile u,
+		(
+		SELECT
+		l.uid,
+		min(l.create_time) AS mintime
+		FROM
+		lottery_content l
+		WHERE
+		l.lottery_id = #{lotteryId} 
+		group by l.uid) m 
+		LEFT JOIN 
+		lottery_prohibit p 
+		on p.lottery_id=#{lotteryId}
+		AND p.uid = m.uid
+		LEFT JOIN 
+		lottery_appoint a 
+		ON a.lottery_id = #{lotteryId} 
+		and a.uid=m.uid 
+		LEFT JOIN
+		lottery_win w 
+		ON w.lottery_id = #{lotteryId} 
+		and w.uid=m.uid 
+		where u.uid=m.uid
+    </select>
+
+    <select id="getLotteryUsersInfoByLotteryIdAndPage" resultMap="ExtLotteryUserInfo">
+        select 
+        b.id,
+        b.title,
+        u.nick_name,
+        u.uid,
+        m.mintime,
+        IF(IFNULL(a.uid,0)>0,1,0) as appoint,
+        IF(IFNULL(p.uid,0)>0,0,IF(IFNULL(w.uid,0)>0,1,2)) as status
+        from 
+        user_profile u,
+        lottery_info b,
+        (select 
+        l.uid,
+        min(l.create_time) as mintime 
+        from lottery_content l 
+        where 
+        l.lottery_id=#{lotteryId} 
+        group by l.uid ) m
+        LEFT JOIN 
+        lottery_prohibit p 
+        on p.lottery_id=#{lotteryId} 
+        and p.uid=m.uid
+        LEFT JOIN 
+        lottery_appoint a 
+        on a.lottery_id=#{lotteryId} 
+        and a.uid=m.uid
+        LEFT JOIN 
+        lottery_win w 
+        on w.lottery_id=#{lotteryId} 
+        and w.uid=m.uid 
+        where u.uid=m.uid 
+        and b.id = #{lotteryId}
+        order by m.mintime asc
+        limit #{start},#{pageSize}
+    </select>
+
+    <select id="getLotteryUsersSearchCountByCondition" resultType="java.lang.Long">
+        select 
+        count(1) 
+        from 
+        user_profile u,
+        (select 
+        l.uid,
+        min(l.create_time) as mintime 
+        from 
+        lottery_content l
+        where 
+        l.lottery_id=#{lotteryId} 
+        group by l.uid) m 
+        LEFT JOIN 
+        lottery_prohibit p 
+        on p.lottery_id=#{lotteryId}
+        and p.uid=m.uid 
+        LEFT JOIN 
+        lottery_appoint a 
+        on a.lottery_id=#{lotteryId} 
+        and a.uid=m.uid 
+        LEFT JOIN
+        lottery_win w 
+        on w.lottery_id=#{lotteryId} 
+        and w.uid=m.uid 
+        where u.uid=m.uid
+        <if test="userNick!=null">
+            and u.nick_name like CONCAT('%',#{userNick},'%')
+        </if>
+        <if test="isAppoint==1">
+            and a.uid is not null
+        </if>
+        <if test="isAppoint==2">
+            and a.uid is null
+        </if>
+    </select>
+
+    <select id="getLotteryUsersSearchInfoByCondition" resultMap="ExtLotteryUserInfo">
+        select 
+        b.id,
+        b.title,
+        u.nick_name,
+        u.uid, 
+        m.mintime,
+        IF(IFNULL(a.uid,0)>0,1,0) as appoint,
+        IF(IFNULL(p.uid,0)>0,0,IF(IFNULL(w.uid,0)>0,1,2)) as status
+        from 
+        user_profile u,
+        lottery_info b, 
+        (select 
+        l.uid,
+        min(l.create_time) as mintime 
+        from 
+        lottery_content l 
+        where 
+        l.lottery_id=#{lotteryId} 
+        group by l.uid ) m
+        LEFT JOIN 
+        lottery_prohibit p 
+        on p.lottery_id=#{lotteryId} 
+        and p.uid=m.uid
+        LEFT JOIN 
+        lottery_appoint a 
+        on a.lottery_id=#{lotteryId} 
+        and a.uid=m.uid
+        LEFT JOIN 
+        lottery_win w 
+        on w.lottery_id=#{lotteryId} 
+        and w.uid=m.uid 
+        where u.uid=m.uid
+        <if test="userNick!=null">
+            and u.nick_name like CONCAT('%',#{userNick},'%')
+        </if>
+        <if test="isAppoint==1">
+            and a.uid is not null
+        </if>
+        <if test="isAppoint==2">
+            and a.uid is null
+        </if>
+        and b.id = #{lotteryId} order by m.mintime asc limit #{start},#{pageSize}
+    </select>
+
+    <select id="getInvitationNumByUids" resultType="com.m2m.entity.ExtInvitationNum" parameterType="java.util.List">
+        select 
+        u.referee_uid as uid,
+        count(1) as invitationNum 
+        from 
+        user_profile u 
+        where 
+        u.is_activate=1 
+        and u.referee_uid in
+        <foreach collection="list" index="index" item="item" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+        group by u.referee_uid
+    </select>
+
+
+</mapper>

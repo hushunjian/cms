@@ -1,0 +1,33 @@
+{
+	"id": "f58a1000-53cf-6540-9800-e44aa23ca976",
+	"name": "api.appuser.setUserSilentStatus",
+	"description": "",
+	"order": [
+		"943cd3de-ca55-4ded-7637-cf5ae4becb60"
+	],
+	"folders": [],
+	"timestamp": 1513417714415,
+	"owner": "3117500",
+	"remoteLink": "",
+	"public": false,
+	"requests": [
+		{
+			"id": "943cd3de-ca55-4ded-7637-cf5ae4becb60",
+			"url": "http://{{host}}:{{port}}/api/appuser/setUserSilentStatus",
+			"method": "POST",
+			"headers": "Content-Type: application/json\n",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"preRequestScript": null,
+			"currentHelper": "normal",
+			"pathVariables": {},
+			"version": 2,
+			"name": "http://{{host}}:{{port}}/api/appuser/setUserSilentStatus",
+			"description": "",
+			"descriptionFormat": "html",
+			"collectionId": "f58a1000-53cf-6540-9800-e44aa23ca976",
+			"rawModeData": "  { \r\n      \"token\":\"99999999-9999-9999-9999-999999999999\",\r\n      \"uid\": 204595,\r\n      \"silentStatus\":1\r\n    }"
+		}
+	]
+}

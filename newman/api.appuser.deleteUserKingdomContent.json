@@ -1,0 +1,33 @@
+{
+	"id": "c786b238-0657-2476-9fb0-795a41083ba7",
+	"name": "api.appuser.deleteUserKingdomContent",
+	"description": "",
+	"order": [
+		"5f70ba3d-1a7a-cb89-7ed8-029632170741"
+	],
+	"folders": [],
+	"timestamp": 1513417664910,
+	"owner": "3117500",
+	"remoteLink": "",
+	"public": false,
+	"requests": [
+		{
+			"id": "5f70ba3d-1a7a-cb89-7ed8-029632170741",
+			"url": "http://{{host}}:{{port}}/api/appuser/deleteUserKingdomContent",
+			"method": "POST",
+			"headers": "Content-Type: application/json\n",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"preRequestScript": null,
+			"currentHelper": "normal",
+			"pathVariables": {},
+			"version": 2,
+			"name": "http://{{host}}:{{port}}/api/appuser/deleteUserKingdomContent",
+			"description": "",
+			"descriptionFormat": "html",
+			"collectionId": "c786b238-0657-2476-9fb0-795a41083ba7",
+			"rawModeData": "{ \r\n      \"token\":\"99999999-9999-9999-9999-999999999999\",\r\n      \"id\": 3422\r\n    }"
+		}
+	]
+}

@@ -1,0 +1,33 @@
+{
+	"id": "b709b864-aad9-a6b9-c5be-874e36bec89b",
+	"name": "api.gift.getAllGifts",
+	"description": "",
+	"order": [
+		"367da73e-0c8c-2db1-3a5f-c699b17c7395"
+	],
+	"folders": [],
+	"timestamp": 1512959239809,
+	"owner": "3117500",
+	"remoteLink": "",
+	"public": false,
+	"requests": [
+		{
+			"id": "367da73e-0c8c-2db1-3a5f-c699b17c7395",
+			"url": "http://{{host}}:{{port}}/api/gift/getAllGifts?token=99999999-9999-9999-9999-999999999999&pageIndex=1&pageSize=10",
+			"method": "GET",
+			"headers": "",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"preRequestScript": null,
+			"currentHelper": "normal",
+			"pathVariables": {},
+			"version": 2,
+			"name": "http://{{host}}:{{port}}/api/gift/getAllGifts?token=99999999-9999-9999-9999-999999999999&pageIndex=1&pageSize=10",
+			"description": "",
+			"descriptionFormat": "html",
+			"collectionId": "b709b864-aad9-a6b9-c5be-874e36bec89b",
+			"rawModeData": "{\n    \"token\":\"99999999-9999-9999-9999-999999999999\",\n    \"lotteryId\":2,\n    \"userId\":327,\n    \"isAppoint\":1\n}"
+		}
+	]
+}

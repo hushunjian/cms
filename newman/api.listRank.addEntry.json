@@ -1,0 +1,33 @@
+{
+	"id": "98e1356f-2f65-e45c-1e61-56e2aaa81f2f",
+	"name": "api.listRank.addEntry",
+	"description": "",
+	"order": [
+		"0435296c-1428-45a2-e2e3-35d99884fc6b"
+	],
+	"folders": [],
+	"timestamp": 1514016742598,
+	"owner": "3117500",
+	"remoteLink": "",
+	"public": false,
+	"requests": [
+		{
+			"id": "0435296c-1428-45a2-e2e3-35d99884fc6b",
+			"url": "http://{{host}}:{{port}}/api/listRank/addEntry",
+			"method": "POST",
+			"headers": "Content-Type: application/json\n",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"preRequestScript": null,
+			"currentHelper": "normal",
+			"pathVariables": {},
+			"version": 2,
+			"name": "http://{{host}}:{{port}}/api/listRank/addEntry",
+			"description": "",
+			"descriptionFormat": "html",
+			"collectionId": "98e1356f-2f65-e45c-1e61-56e2aaa81f2f",
+			"rawModeData": "{\n    \"token\":\"a3fd6d23-edfd-4f70-ab16-bbaa94403024\",\n    \"sourceId\":3,\n    \"type\":2,\n    \"targetData\":[\n            {\n                \"targetId\":208,\n                \"sort\":5\n            },\n             {\n                \"targetId\":209,\n                \"sort\":6\n            },\n             {\n                \"targetId\":210,\n                \"sort\":7\n            },\n             {\n                \"targetId\":211,\n                \"sort\":8\n             },\n              {\n                \"targetId\":212,\n                \"sort\":9\n            },\n             {\n                \"targetId\":330,\n                \"sort\":10\n             }\n        ]\n    \n}"
+		}
+	]
+}

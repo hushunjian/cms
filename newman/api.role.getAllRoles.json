@@ -1,0 +1,46 @@
+{
+  "id": "3ae2912c-a0dd-1c2f-e138-db507de41974",
+  "name": "api.role.getAllRoles",
+  "description": "",
+  "order": [
+    "12130f62-a531-71b2-9c6f-b13e9160ac6c"
+  ],
+  "folders": [],
+  "folders_order": [],
+  "timestamp": 1510204317005,
+  "owner": "2696738",
+  "public": false,
+  "requests": [
+    {
+      "id": "12130f62-a531-71b2-9c6f-b13e9160ac6c",
+      "headers": "",
+      "headerData": [],
+      "url": "http://{{host}}:{{port}}/api/role/getAllRoles?token={{token}}",
+      "queryParams": [
+        {
+          "key": "token",
+          "value": "{{token}}",
+          "equals": true,
+          "description": "",
+          "enabled": true
+        }
+      ],
+      "preRequestScript": null,
+      "pathVariables": {},
+      "pathVariableData": [],
+      "method": "GET",
+      "data": [],
+      "dataMode": "raw",
+      "version": 2,
+      "tests": null,
+      "currentHelper": "normal",
+      "helperAttributes": {},
+      "time": 1510217691585,
+      "name": "api.role. getAllRoles",
+      "description": "",
+      "collectionId": "3ae2912c-a0dd-1c2f-e138-db507de41974",
+      "responses": [],
+      "rawModeData": "{\n    \"token\":\"{{token}}\",\n    \"password\": \"s3cret\",\n    \"newPassword\":\"s3cret\"\n}"
+    }
+  ]
+}

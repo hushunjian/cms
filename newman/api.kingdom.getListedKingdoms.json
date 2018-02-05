@@ -1,0 +1,32 @@
+{
+	"id": "8ffbb15d-dd50-1687-ca32-75c44c1b7a42",
+	"name": "api.kingdom.getListedKingdoms",
+	"description": "",
+	"order": [
+		"7442ed96-a6e1-2928-7708-9b63350af6f5"
+	],
+	"folders": [],
+	"timestamp": 1513418048713,
+	"owner": "3117500",
+	"remoteLink": "",
+	"public": false,
+	"requests": [
+		{
+			"id": "7442ed96-a6e1-2928-7708-9b63350af6f5",
+			"url": "http://{{host}}:{{port}}/api/kingdom/getListedKingdoms?token=99999999-9999-9999-9999-999999999999&pageIndex=1&pageSize=10",
+			"method": "GET",
+			"headers": "",
+			"data": null,
+			"dataMode": "params",
+			"tests": null,
+			"preRequestScript": null,
+			"currentHelper": "normal",
+			"pathVariables": {},
+			"version": 2,
+			"name": "http://{{host}}:{{port}}/api/kingdom/getListedKingdoms?token=99999999-9999-9999-9999-999999999999&pageIndex=1&pageSize=10",
+			"description": "",
+			"descriptionFormat": "html",
+			"collectionId": "8ffbb15d-dd50-1687-ca32-75c44c1b7a42"
+		}
+	]
+}

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.m2m.mapper.ExtTagInHomeMapper">
+    <insert id="append">
+        insert into tmp_tag_in_home(tag_id, tag_name, is_sys, cover_img, topic_count, user_count, created_at)
+        select
+        tt.id as tag_id,
+        tt.tag as tag_name,
+        tt.is_sys,
+        tt.cover_img,
+        tttc.topic_count as topic_count,
+        ttuc.user_count as user_count,
+        now() as created_at
+        from topic_tag tt, tmp_tag_topic_count tttc, tmp_tag_user_count ttuc
+        where 1=1
+        and tt.id = tttc.id
+        and tt.id = ttuc.id
+        and tt.status = 0
+        group by
+        tt.id,
+        tt.tag,
+        tt.is_sys,
+        tt.cover_img
+    </insert>
+
+    <select id="getMaxCreatedAt" resultType="java.util.Date">
+        select max(t.created_at)
+        from tmp_tag_in_home t
+    </select>
+
+    <delete id="clear" parameterType="java.util.Date">
+        delete from tmp_tag_in_home
+        where created_at &lt; #{date}
+    </delete>
+</mapper>

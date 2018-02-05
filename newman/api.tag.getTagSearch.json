@@ -1,0 +1,33 @@
+{
+	"id": "263ea33d-ee44-bcf5-2123-d03f9055c0bf",
+	"name": "api.tag.getTagSearch",
+	"description": "",
+	"order": [
+		"c0a1e089-8c30-1f74-3e42-7b5e24a53017"
+	],
+	"folders": [],
+	"timestamp": 1512960810591,
+	"owner": "3117500",
+	"remoteLink": "",
+	"public": false,
+	"requests": [
+		{
+			"id": "c0a1e089-8c30-1f74-3e42-7b5e24a53017",
+			"url": "http://{{host}}:{{port}}/api/tag/getTagSearch",
+			"method": "POST",
+			"headers": "Content-Type: application/json\n",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"preRequestScript": null,
+			"currentHelper": "normal",
+			"pathVariables": {},
+			"version": 2,
+			"name": "http://{{host}}:{{port}}/api/tag/getTagSearch",
+			"description": "",
+			"descriptionFormat": "html",
+			"collectionId": "263ea33d-ee44-bcf5-2123-d03f9055c0bf",
+			"rawModeData": "{\n     \"token\":\"99999999-9999-9999-9999-999999999999\",\n     \"pageIndex\":1,\n     \"pageSize\":10,\n     \"tagName\":\"v\",\n     \"startTime\":\"2017-1-2\",\n     \"endTime\":\"2017-12-2\",\n     \"noParentTag\":0,\n     \"isSystem\":0,\n     \"isRecommend\":0,\n     \"topicCountEnd\":2\n}"
+		}
+	]
+}

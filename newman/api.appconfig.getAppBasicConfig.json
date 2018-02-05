@@ -1,0 +1,32 @@
+{
+	"id": "31f05065-3d30-6a06-691e-504566de7a82",
+	"name": "api.appconfig.getAppBasicConfig",
+	"description": "",
+	"order": [
+		"9f7e3f5b-2835-f57e-b518-e44027ad6e8e"
+	],
+	"folders": [],
+	"timestamp": 1513417502904,
+	"owner": "3117500",
+	"remoteLink": "",
+	"public": false,
+	"requests": [
+		{
+			"id": "9f7e3f5b-2835-f57e-b518-e44027ad6e8e",
+			"url": "http://{{host}}:{{port}}/api/appconfig/getAppBasicConfig?token=99999999-9999-9999-9999-999999999999",
+			"method": "GET",
+			"headers": "",
+			"data": null,
+			"dataMode": "params",
+			"tests": null,
+			"preRequestScript": null,
+			"currentHelper": "normal",
+			"pathVariables": {},
+			"version": 2,
+			"name": "http://{{host}}:{{port}}/api/appconfig/getAppBasicConfig?token=99999999-9999-9999-9999-999999999999",
+			"description": "",
+			"descriptionFormat": "html",
+			"collectionId": "31f05065-3d30-6a06-691e-504566de7a82"
+		}
+	]
+}

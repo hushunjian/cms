@@ -1,0 +1,32 @@
+{
+	"id": "cb38ca09-e6ae-d4a3-5560-902b61084eee",
+	"name": "api.tag.getAllParentTags",
+	"description": "",
+	"order": [
+		"e028fa36-b911-6504-3edf-7b19b90578a7"
+	],
+	"folders": [],
+	"timestamp": 1512960176705,
+	"owner": "3117500",
+	"remoteLink": "",
+	"public": false,
+	"requests": [
+		{
+			"id": "e028fa36-b911-6504-3edf-7b19b90578a7",
+			"url": "http://{{host}}:{{port}}/api/tag/getAllParentTags?token=99999999-9999-9999-9999-999999999999",
+			"method": "GET",
+			"headers": "",
+			"data": null,
+			"dataMode": "params",
+			"tests": null,
+			"preRequestScript": null,
+			"currentHelper": "normal",
+			"pathVariables": {},
+			"version": 2,
+			"name": "http://{{host}}:{{port}}/api/tag/getAllParentTags?token=99999999-9999-9999-9999-999999999999",
+			"description": "",
+			"descriptionFormat": "html",
+			"collectionId": "cb38ca09-e6ae-d4a3-5560-902b61084eee"
+		}
+	]
+}

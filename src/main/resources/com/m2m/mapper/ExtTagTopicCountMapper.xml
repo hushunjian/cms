@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.m2m.mapper.ExtTagTopicCountMapper">
+    <delete id="reset">
+        truncate tmp_tag_topic_count
+    </delete>
+
+    <insert id="init" parameterType="java.lang.Integer">
+        insert into tmp_tag_topic_count
+        select
+        ttd.tag_id,
+        count(distinct ttd.topic_id) topic_count
+        from topic_tag_detail ttd, tmp_recent_tag trt
+        where ttd.tag_id = trt.id
+        and ttd.status = 0
+        group by ttd.tag_id
+        having count(ttd.topic_id) > #{count}
+    </insert>
+</mapper>

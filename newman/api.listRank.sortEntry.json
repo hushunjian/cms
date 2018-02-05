@@ -1,0 +1,33 @@
+{
+	"id": "5df2d220-08de-d8ce-c8ff-827d3d2f4129",
+	"name": "api.listRank.sortEntry",
+	"description": "",
+	"order": [
+		"5ca677f6-bdd2-7048-a9e7-06d5b0a8ecef"
+	],
+	"folders": [],
+	"timestamp": 1514017063930,
+	"owner": "3117500",
+	"remoteLink": "",
+	"public": false,
+	"requests": [
+		{
+			"id": "5ca677f6-bdd2-7048-a9e7-06d5b0a8ecef",
+			"url": "http://{{host}}:{{port}}/api/listRank/sortEntry",
+			"method": "POST",
+			"headers": "Content-Type: application/json\n",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"preRequestScript": null,
+			"currentHelper": "normal",
+			"pathVariables": {},
+			"version": 2,
+			"name": "http://{{host}}:{{port}}/api/listRank/sortEntry",
+			"description": "",
+			"descriptionFormat": "html",
+			"collectionId": "5df2d220-08de-d8ce-c8ff-827d3d2f4129",
+			"rawModeData": "{\n    \"token\":\"a3fd6d23-edfd-4f70-ab16-bbaa94403024\",\n    \"targetData\":[\n            {\n                \"id\":16,\n                \"sort\":10\n            },\n             {\n                \"id\":96,\n                \"sort\":1\n            }\n        ]\n    \n}"
+		}
+	]
+}

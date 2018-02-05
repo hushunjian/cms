@@ -1,0 +1,32 @@
+{
+	"id": "13230ff2-4ec1-7963-4f75-777e75d52ae3",
+	"name": "api.advertisement.getAllAdvertisementPositions",
+	"description": "",
+	"order": [
+		"3cd4f66c-43e5-aabf-153e-e373c34cfac4"
+	],
+	"folders": [],
+	"timestamp": 1513417348102,
+	"owner": "3117500",
+	"remoteLink": "",
+	"public": false,
+	"requests": [
+		{
+			"id": "3cd4f66c-43e5-aabf-153e-e373c34cfac4",
+			"url": "http://{{host}}:{{port}}/api/advertisement/getAllAdvertisementPositions?token=99999999-9999-9999-9999-999999999999&pageIndex=1&pageSize=10",
+			"method": "GET",
+			"headers": "",
+			"data": null,
+			"dataMode": "params",
+			"tests": null,
+			"preRequestScript": null,
+			"currentHelper": "normal",
+			"pathVariables": {},
+			"version": 2,
+			"name": "http://{{host}}:{{port}}/api/advertisement/getAllAdvertisementPositions?token=99999999-9999-9999-9999-999999999999&pageIndex=1&pageSize=10",
+			"description": "",
+			"descriptionFormat": "html",
+			"collectionId": "13230ff2-4ec1-7963-4f75-777e75d52ae3"
+		}
+	]
+}

@@ -1,0 +1,33 @@
+{
+	"id": "d91f7122-82e5-aa29-cd8f-e810badfbc86",
+	"name": "api.kingdom.updateKing",
+	"description": "",
+	"order": [
+		"151b8c42-6559-5884-7473-726dadd2a971"
+	],
+	"folders": [],
+	"timestamp": 1513418183917,
+	"owner": "3117500",
+	"remoteLink": "",
+	"public": false,
+	"requests": [
+		{
+			"id": "151b8c42-6559-5884-7473-726dadd2a971",
+			"url": "http://{{host}}:{{port}}/api/kingdom/updateKing",
+			"method": "POST",
+			"headers": "Content-Type: application/json\n",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"preRequestScript": null,
+			"currentHelper": "normal",
+			"pathVariables": {},
+			"version": 2,
+			"name": "http://{{host}}:{{port}}/api/kingdom/updateKing",
+			"description": "",
+			"descriptionFormat": "html",
+			"collectionId": "d91f7122-82e5-aa29-cd8f-e810badfbc86",
+			"rawModeData": "  { \r\n      \"token\":\"99999999-9999-9999-9999-999999999999\",\r\n      \"topicId\": 3423,\r\n      \"sourceUid\": 1118,\r\n      \"targetUid\": 204604,\r\n      \"optUid\": 4\r\n    }"
+		}
+	]
+}

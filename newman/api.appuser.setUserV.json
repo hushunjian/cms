@@ -1,0 +1,33 @@
+{
+	"id": "48530abb-4af0-1311-120a-aeaf425b7af2",
+	"name": "api.appuser.setUserV",
+	"description": "",
+	"order": [
+		"f2701a6c-51e3-8587-c379-039ad4e915a5"
+	],
+	"folders": [],
+	"timestamp": 1513417738486,
+	"owner": "3117500",
+	"remoteLink": "",
+	"public": false,
+	"requests": [
+		{
+			"id": "f2701a6c-51e3-8587-c379-039ad4e915a5",
+			"url": "http://{{host}}:{{port}}/api/appuser/setUserV",
+			"method": "POST",
+			"headers": "Content-Type: application/json\n",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"preRequestScript": null,
+			"currentHelper": "normal",
+			"pathVariables": {},
+			"version": 2,
+			"name": "http://{{host}}:{{port}}/api/appuser/setUserV",
+			"description": "",
+			"descriptionFormat": "html",
+			"collectionId": "48530abb-4af0-1311-120a-aeaf425b7af2",
+			"rawModeData": "  { \r\n      \"token\":\"99999999-9999-9999-9999-999999999999\",\r\n      \"uid\": 204595,\r\n      \"isV\":1\r\n    }"
+		}
+	]
+}

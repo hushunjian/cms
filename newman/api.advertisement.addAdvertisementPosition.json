@@ -1,0 +1,33 @@
+{
+	"id": "7f5ae94a-ba69-f883-3bbe-4304538f9d89",
+	"name": "api.advertisement.addAdvertisementPosition",
+	"description": "",
+	"order": [
+		"e0df9eaf-2d18-7817-9f75-e92550008b9a"
+	],
+	"folders": [],
+	"timestamp": 1513417250792,
+	"owner": "3117500",
+	"remoteLink": "",
+	"public": false,
+	"requests": [
+		{
+			"id": "e0df9eaf-2d18-7817-9f75-e92550008b9a",
+			"url": "http://{{host}}:{{port}}/api/advertisement/addAdvertisementPosition",
+			"method": "POST",
+			"headers": "Content-Type: application/json\n",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"preRequestScript": null,
+			"currentHelper": "normal",
+			"pathVariables": {},
+			"version": 2,
+			"name": "http://{{host}}:{{port}}/api/advertisement/addAdvertisementPosition",
+			"description": "",
+			"descriptionFormat": "html",
+			"collectionId": "7f5ae94a-ba69-f883-3bbe-4304538f9d89",
+			"rawModeData": "{\r\n\t\t\t\"token\":\"99999999-9999-9999-9999-999999999999\",\r\n\t\t\t\"name\":\"testabc\", \r\n\t\t\t\"position\":\"4-3\",\r\n\t\t \t\"height\":20,\r\n\t\t\t\"width\":48,\r\n\t\t\t\"type\":2\r\n\t\t}"
+		}
+	]
+}

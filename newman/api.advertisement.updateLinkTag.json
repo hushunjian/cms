@@ -1,0 +1,45 @@
+{
+  "id": "1ee25582-89ea-aee9-a0a2-f679de4664e2",
+  "name": "api.advertisement.updateLinkTag",
+  "description": "",
+  "order": [
+    "b17e5cbb-b18a-1b57-b5e4-7a3eeaff64a7"
+  ],
+  "folders": [],
+  "folders_order": [],
+  "timestamp": 1510725649178,
+  "owner": "2696738",
+  "public": false,
+  "requests": [
+    {
+      "id": "b17e5cbb-b18a-1b57-b5e4-7a3eeaff64a7",
+      "headers": "Content-Type: application/json\n",
+      "headerData": [
+        {
+          "key": "Content-Type",
+          "value": "application/json",
+          "description": "",
+          "enabled": true
+        }
+      ],
+      "url": "http://{{host}}:{{port}}/api/advertisement/updateLinkTag",
+      "queryParams": [],
+      "preRequestScript": null,
+      "pathVariables": {},
+      "pathVariableData": [],
+      "method": "POST",
+      "data": [],
+      "dataMode": "raw",
+      "version": 2,
+      "tests": null,
+      "currentHelper": "normal",
+      "helperAttributes": {},
+      "time": 1510725687669,
+      "name": "api. advertisement. updateLinkTag",
+      "description": "",
+      "collectionId": "1ee25582-89ea-aee9-a0a2-f679de4664e2",
+      "responses": [],
+      "rawModeData": "{\n\t\"id\":1,\n\t\"positionId\": 1\n}"
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+	"id": "8052f88c-3433-2439-3301-d45d6fd47e1b",
+	"name": "api.tag.addTag",
+	"description": "",
+	"order": [
+		"0866f15a-0e8d-07a9-bbe4-7c2cebe96912"
+	],
+	"folders": [],
+	"timestamp": 1512960491731,
+	"owner": "3117500",
+	"remoteLink": "",
+	"public": false,
+	"requests": [
+		{
+			"id": "0866f15a-0e8d-07a9-bbe4-7c2cebe96912",
+			"url": "http://{{host}}:{{port}}/api/tag/addTag",
+			"method": "POST",
+			"headers": "Content-Type: application/json\n",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"preRequestScript": null,
+			"currentHelper": "normal",
+			"pathVariables": {},
+			"version": 2,
+			"name": "http://{{host}}:{{port}}/api/tag/addTag",
+			"description": "",
+			"descriptionFormat": "html",
+			"collectionId": "8052f88c-3433-2439-3301-d45d6fd47e1b",
+			"rawModeData": "{\n     \"token\":\"99999999-9999-9999-9999-999999999999\",\n     \"tagName\":\"ceshiAddTag\",\n     \"parentTagId\":64,\n     \"sortNumber\":2,\n     \"isSystem\":0,\n     \"isRecommend\":1,\n     \"status\":0,\n     \"coverImage\":\"7a1e957f9f1074c383bda7fb66f083bf\",\n     \"userHobbyIds\":[81,82,83,84]\n}"
+		}
+	]
+}

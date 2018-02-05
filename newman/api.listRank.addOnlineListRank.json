@@ -1,0 +1,33 @@
+{
+	"id": "0e3175b8-9921-24f7-1a5a-43060357d72e",
+	"name": "api.listRank.addOnlineListRank",
+	"description": "",
+	"order": [
+		"1caab65e-b0f8-86ae-001a-deadd620c7f5"
+	],
+	"folders": [],
+	"timestamp": 1514007573447,
+	"owner": "3117500",
+	"remoteLink": "",
+	"public": false,
+	"requests": [
+		{
+			"id": "1caab65e-b0f8-86ae-001a-deadd620c7f5",
+			"url": "http://{{host}}:{{port}}/api/listRank/addOnlineListRank",
+			"method": "POST",
+			"headers": "Content-Type: application/json\n",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"preRequestScript": null,
+			"currentHelper": "normal",
+			"pathVariables": {},
+			"version": 2,
+			"name": "http://{{host}}:{{port}}/api/listRank/addOnlineListRank",
+			"description": "",
+			"descriptionFormat": "html",
+			"collectionId": "0e3175b8-9921-24f7-1a5a-43060357d72e",
+			"rawModeData": "{\n    \"token\":\"a3fd6d23-edfd-4f70-ab16-bbaa94403024\",\n    \"id\":40,\n    \"type\":1,\n    \"sort\":25\n}"
+		}
+	]
+}

@@ -1,0 +1,33 @@
+{
+	"id": "7c6f32a1-0c93-ebd4-eec4-4dfd5298fc8a",
+	"name": "api.appconfig.updateAppBasicConfig",
+	"description": "",
+	"order": [
+		"06c25224-2f72-5438-b52c-579a5a1efe58"
+	],
+	"folders": [],
+	"timestamp": 1513417575549,
+	"owner": "3117500",
+	"remoteLink": "",
+	"public": false,
+	"requests": [
+		{
+			"id": "06c25224-2f72-5438-b52c-579a5a1efe58",
+			"url": "http://{{host}}:{{port}}/api/appconfig/updateAppBasicConfig",
+			"method": "POST",
+			"headers": "Content-Type: application/json\n",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"preRequestScript": null,
+			"currentHelper": "normal",
+			"pathVariables": {},
+			"version": 2,
+			"name": "http://{{host}}:{{port}}/api/appconfig/updateAppBasicConfig",
+			"description": "",
+			"descriptionFormat": "html",
+			"collectionId": "7c6f32a1-0c93-ebd4-eec4-4dfd5298fc8a",
+			"rawModeData": "{\r\n        \"token\":\"99999999-9999-9999-9999-999999999999\",\r\n        \"des\":\"汇率(1RMB=?MB)\",\r\n        \"itemGroupId\":1,\r\n        \"key\":\"EXCHANGE_RATE\",\r\n        \"value\":\"1000\"\r\n    }"
+		}
+	]
+}

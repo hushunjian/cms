@@ -1,0 +1,32 @@
+{
+	"id": "c0ebd292-7baf-3c4e-54c8-29a565fde172",
+	"name": "api.appconfig.refreshCache",
+	"description": "",
+	"order": [
+		"c2238bc2-cc71-a9d8-2449-bf901a2b4129"
+	],
+	"folders": [],
+	"timestamp": 1513417549292,
+	"owner": "3117500",
+	"remoteLink": "",
+	"public": false,
+	"requests": [
+		{
+			"id": "c2238bc2-cc71-a9d8-2449-bf901a2b4129",
+			"url": "http://{{host}}:{{port}}/api/appconfig/refreshCache?token=99999999-9999-9999-9999-999999999999",
+			"method": "GET",
+			"headers": "",
+			"data": null,
+			"dataMode": "params",
+			"tests": null,
+			"preRequestScript": null,
+			"currentHelper": "normal",
+			"pathVariables": {},
+			"version": 2,
+			"name": "http://{{host}}:{{port}}/api/appconfig/refreshCache?token=99999999-9999-9999-9999-999999999999",
+			"description": "",
+			"descriptionFormat": "html",
+			"collectionId": "c0ebd292-7baf-3c4e-54c8-29a565fde172"
+		}
+	]
+}

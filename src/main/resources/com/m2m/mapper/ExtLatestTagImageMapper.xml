@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.m2m.mapper.ExtLatestTagImageMapper">
+    <delete id="reset">
+        truncate tmp_latest_tag_image
+    </delete>
+
+    <insert id="init">
+        insert into tmp_latest_tag_image(tag_id, topic_image_id)
+        select
+        tt.id as tag_id,
+        max(ti.id) as topic_image_id
+        from topic_tag tt, topic_tag_detail ttd, topic_image ti,topic t
+        where 1=1
+        and t.id = ti.topic_id
+        and t.rights != 2
+        and tt.id = ttd.tag_id
+        and ttd.topic_id = ti.topic_id
+        and ttd.status = 0
+        group by
+        tt.id
+    </insert>
+    <insert id="append">
+        insert into tmp_latest_tag_image(tag_id, topic_image_id)
+        select
+        tt.id as tag_id,
+        max(ti.id) as topic_image_id
+        from topic_tag tt join topic_tag_detail ttd on (
+        tt.id = ttd.tag_id
+        and ttd.status = 0
+        and tt.status = 0
+        ) join topic_image ti on (
+        ttd.topic_id = ti.topic_id
+        ) join topic t on(
+        t.id = ti.topic_id
+        and t.rights != 2
+        ) left join tmp_latest_tag_image tlti on (
+        tt.id = tlti.tag_id
+        and ti.id = tlti.topic_image_id
+        )
+        where 1=1
+        and tlti.topic_image_id is null
+        group by
+        tt.id
+    </insert>
+</mapper>

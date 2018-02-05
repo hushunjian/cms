@@ -1,0 +1,33 @@
+{
+	"id": "6dedbe11-07c4-8938-3226-dc6896a49577",
+	"name": "api.advertisement.updateAdvertisement",
+	"description": "",
+	"order": [
+		"c3e8db5f-ebc8-7351-8cfc-1440b8f55c2c"
+	],
+	"folders": [],
+	"timestamp": 1513417393368,
+	"owner": "3117500",
+	"remoteLink": "",
+	"public": false,
+	"requests": [
+		{
+			"id": "c3e8db5f-ebc8-7351-8cfc-1440b8f55c2c",
+			"url": "http://{{host}}:{{port}}/api/advertisement/updateAdvertisement",
+			"method": "POST",
+			"headers": "Content-Type: application/json\n",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"preRequestScript": null,
+			"currentHelper": "normal",
+			"pathVariables": {},
+			"version": 2,
+			"name": "http://{{host}}:{{port}}/api/advertisement/updateAdvertisement",
+			"description": "",
+			"descriptionFormat": "html",
+			"collectionId": "6dedbe11-07c4-8938-3226-dc6896a49577",
+			"rawModeData": "    { \r\n      \"token\":\"99999999-9999-9999-9999-999999999999\",\r\n      \"id\":37,\r\n      \"name\":\"广告22222\",\r\n      \"cover\":\"\",\r\n      \"positionId\":2,\r\n      \"probability\":100,\r\n      \"coverWidth\":600,\r\n      \"coverHeight\":400,\r\n      \"validAt\":\"2017-11-07 09:32:09\",\r\n      \"type\":0,\r\n      \"topicId\":\"433\",\r\n      \"url\":\"\"\r\n    }"
+		}
+	]
+}

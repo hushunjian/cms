@@ -1,0 +1,33 @@
+{
+	"id": "1f989540-238a-b017-d8cd-9e03a77c0d6a",
+	"name": "api.appconfig.addLightBox",
+	"description": "",
+	"order": [
+		"9a9a59e1-df0c-a674-46ae-2aad3072de30"
+	],
+	"folders": [],
+	"timestamp": 1513417454764,
+	"owner": "3117500",
+	"remoteLink": "",
+	"public": false,
+	"requests": [
+		{
+			"id": "9a9a59e1-df0c-a674-46ae-2aad3072de30",
+			"url": "http://{{host}}:{{port}}/api/appconfig/addLightBox",
+			"method": "POST",
+			"headers": "Content-Type: application/json\n",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"preRequestScript": null,
+			"currentHelper": "normal",
+			"pathVariables": {},
+			"version": 2,
+			"name": "http://{{host}}:{{port}}/api/appconfig/addLightBox",
+			"description": "",
+			"descriptionFormat": "html",
+			"collectionId": "1f989540-238a-b017-d8cd-9e03a77c0d6a",
+			"rawModeData": "{\r\n      \"token\":\"99999999-9999-9999-9999-999999999999\",\r\n      \"image\":\"zuimeijiaxiangdengxiangye\",\r\n      \"mainText\":\"最美家乡活动\",\r\n      \"subText\":\"123测试\",\r\n      \"mainColor\":\"#ffaec9\",\r\n      \"link\":\"http://testwebapp.me-to-me.com/app/static_page/kingdom.html?topicId=7597\",\r\n      \"beginAt\":1411078400000,\r\n      \"endAt\":1511078400000,\r\n      \"status\":0\r\n    }"
+		}
+	]
+}

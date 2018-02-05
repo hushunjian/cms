@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.m2m.mapper.ExtAppUserMapper">
+    <select id="getAllAppUserCount" resultType="java.lang.Long">
+        SELECT count(1) 
+        FROM 
+		user_profile 
+    </select>
+
+    <select id="getAllAppUserListByPage" resultType="com.m2m.entity.ExtUserProfile">
+        select 
+		p.uid,
+		n.me_number as meNumber,
+		p.mobile,
+		p.nick_name as nickName,
+		p.excellent as isInvited,
+		p.v_lv as isV,
+		p.level,
+		p.register_version as registerVersion,
+		u.disable_user as status,
+		u.create_time as registerTime,
+		p.channel as registerChannel,
+		IF(b.target_uid is null,0,1) as silentStatus
+		from user_profile p
+		LEFT JOIN user_no n on n.uid=p.uid
+		LEFT JOIN user_gag b ON p.uid = b.target_uid
+		LEFT JOIN user u on u.uid=p.uid
+		order by p.uid desc LIMIT #{start},#{pageSize}
+    </select>
+
+    <select id="getAllAppUserCountByCondition" parameterType="com.m2m.entity.ExtAppUserQuery"
+            resultType="java.lang.Long">
+        select 
+		count(1) as total
+		from user_profile p
+		LEFT JOIN user_no n on n.uid=p.uid
+		LEFT JOIN user_gag b ON p.uid = b.target_uid
+		LEFT JOIN user u on u.uid=p.uid
+		where 1=1
+        <if test="nickName!=null">
+            and p.nick_name like CONCAT('%',#{nickName},'%')
+        </if>
+        <if test="mobile!=null">
+            and p.mobile like CONCAT('%',#{mobile},'%')
+        </if>
+        <if test="meNumber!=null">
+            and n.me_number = #{meNumber}
+        </if>
+        <if test="isInvited!=null and isInvited!=-1">
+            and p.excellent = #{isInvited}
+        </if>
+        <if test="isV!=null and isV!=-1">
+            and p.v_lv = #{isV}
+        </if>
+        <if test="status!=null and status!=-1">
+            and u.disable_user = #{status}
+        </if>
+        <if test="createdBegin!=null">
+            and u.create_time &gt;= #{createdBegin}
+        </if>
+        <if test="createdEnd!=null">
+            and u.create_time &lt;= #{createdEnd}
+        </if>
+        <if test="registerChannelCode!=null and registerChannelCode!='-1'">
+        	and p.channel = #{registerChannelCode}
+        </if>
+    </select>
+
+    <select id="getAllAppUserListByCondition" parameterType="com.m2m.entity.ExtAppUserQuery"
+            resultType="com.m2m.entity.ExtUserProfile">
+        select 
+		p.uid,
+		n.me_number as meNumber,
+		p.mobile,
+		p.nick_name as nickName,
+		p.excellent as isInvited,
+		p.v_lv as isV,
+		p.level,
+		p.register_version as registerVersion,
+		u.disable_user as status,
+		u.create_time as registerTime,
+		p.channel as registerChannel,
+		IF(b.target_uid is null,0,1) as silentStatus
+		from user_profile p
+		LEFT JOIN user_no n on n.uid=p.uid
+		LEFT JOIN user_gag b ON p.uid = b.target_uid
+		LEFT JOIN user u on u.uid=p.uid
+		where 1=1
+        <if test="nickName!=null">
+            and p.nick_name like CONCAT('%',#{nickName},'%')
+        </if>
+        <if test="mobile!=null">
+            and p.mobile like CONCAT('%',#{mobile},'%')
+        </if>
+        <if test="meNumber!=null">
+            and n.me_number = #{meNumber}
+        </if>
+        <if test="isInvited!=null and isInvited!=-1">
+            and p.excellent = #{isInvited}
+        </if>
+        <if test="isV!=null and isV!=-1">
+            and p.v_lv = #{isV}
+        </if>
+        <if test="status!=null and status!=-1">
+            and u.disable_user = #{status}
+        </if>
+        <if test="createdBegin!=null">
+            and u.create_time &gt;= #{createdBegin}
+        </if>
+        <if test="createdEnd!=null">
+            and u.create_time &lt;= #{createdEnd}
+        </if>
+        <if test="registerChannelCode!=null and registerChannelCode!='-1'">
+        	and p.channel = #{registerChannelCode}
+        </if>
+        order by p.uid desc LIMIT ${(pageIndex-1)*pageSize},#{pageSize}
+    </select>
+
+    <update id="updateUserLevel">
+        UPDATE user_profile SET LEVEL = #{newLevel} WHERE uid = #{uid}
+    </update>
+
+    <update id="setUserV">
+        UPDATE user_profile SET v_lv = #{isV} WHERE uid = #{uid}
+    </update>
+
+    <update id="setUserStatus">
+        UPDATE user SET disable_user = #{status} WHERE uid = #{uid}
+    </update>
+
+    <update id="setUserInviteStatus">
+        UPDATE user_profile SET excellent = #{isInvited} WHERE uid = #{uid}
+    </update>
+
+    <insert id="setUserSilentStatus">
+        INSERT INTO user_gag (target_uid,uid,type,cid,gag_level) VALUES(#{uid},0,0,0,0)
+    </insert>
+
+    <delete id="deleteUserSilentStatus">
+        DELETE FROM user_gag WHERE target_uid = #{uid}
+    </delete>
+
+    <select id="checkUserExistByPhoneList" resultType="com.m2m.domain.User" parameterType="java.util.List">
+        select 
+        uid, 
+		user_name AS userName,
+		encrypt,
+		salt,
+		create_time AS createTime,
+		update_time AS updateTime,
+		status,
+		touristType AS touristtype,
+		disable_user AS disableUser
+		 from user where user_name in
+        <foreach collection="list" index="index" item="item" open="(" close=")" separator=",">
+            #{item}
+        </foreach>
+        and status = 0
+    </select>
+
+    <insert id="createUserByList"  useGeneratedKeys="true" keyProperty="uid" parameterType="java.util.List">
+        INSERT INTO user (user_name,encrypt,salt,create_time) values
+        <foreach collection="list" item="item" index="index" separator=",">
+            (#{item.userName},#{item.encrypt},#{item.salt},#{item.createTime})
+        </foreach>
+    </insert>
+
+    <insert id="createImConfigByList" parameterType="java.util.List">
+        INSERT INTO im_config (uid,token) values
+        <foreach collection="list" item="item" index="index" separator=",">
+            (#{item.userId},#{item.token})
+        </foreach>
+    </insert>
+
+    <insert id="createUserProfileByList" parameterType="java.util.List">
+        INSERT INTO user_profile (uid,mobile,nick_name) values
+        <foreach collection="list" item="item" index="index" separator=",">
+            (#{item.uid},#{item.userName},#{item.userName})
+        </foreach>
+    </insert>
+
+    <insert id="createUserTokeByList" parameterType="java.util.List">
+        INSERT INTO user_token (uid,token) values
+        <foreach collection="list" item="item" index="index" separator=",">
+            (#{item.uid},#{item.token})
+        </foreach>
+    </insert>
+
+    <select id="getUserKingdomContentCountByUid" resultType="java.lang.Long">
+        select count(1) as total from topic where uid = #{uid}
+    </select>
+
+    <select id="getUserKingdomContentByPageAndUid" resultType="com.m2m.entity.ExtUserKingdomContent">
+        select
+        id,
+        uid,
+        live_image as liveImage,
+        title,
+        status,
+        create_time as createdAt,
+        update_time as updateAt,
+        core_circle as coreCircle
+        from
+        topic
+        where
+        uid= #{uid}
+        order by id desc
+        limit #{start},#{pageSize}
+    </select>
+
+    <select id="getUserFragmentContentCountByUid" resultType="java.lang.Long">
+        select count(1) as total from topic_fragment where uid = #{uid}
+    </select>
+
+    <select id="getUserFragmentContentByUidAndPage" resultType="com.m2m.entity.ExtUserFragmentContent">
+        select
+        id,
+        topic_id as topicId,
+        uid,
+        fragment_image as fragmentImage,
+        fragment,
+        type,
+        content_type as contentType,
+        create_time as createdAt,
+        extra,
+        status
+        from
+        topic_fragment
+        where
+        uid= #{uid}
+        order by topic_id desc, id desc
+        limit #{start},#{pageSize}
+    </select>
+    
+    <delete id="deleteTopicFragmentById">
+    	update topic_fragment set status=0 where id=#{id}
+    </delete>
+    
+    <delete id="deleteTopicImageByFid">
+    	delete from topic_image where fid=#{id}
+    </delete>
+    
+    <delete id="deleteTopicBarrageByFid">
+    	update topic_barrage set status=0 where fid=#{id}
+    </delete>
+    
+    <insert id="insertDeleteLog">
+    	insert into delete_log(type,oid,uid,del_time) values(#{type},#{oid},#{uid},now())
+    </insert>
+    
+    <delete id="deleteTopicById">
+    	delete  from topic where id = #{forwardCid}
+    </delete>
+    
+    <update id="updateAkingdomByTopicId">
+    	update a_kingdom set status=1 where topic_id=#{forwardCid}
+    </update>
+    
+    <delete id="deleteAkingdomListByTopicId">
+    	delete from a_kingdom_list where topic_id=#{forwardCid}
+    </delete>
+    
+    <delete id="deleteAggregationTopic">
+    	delete from topic_aggregation where topic_id=#{forwardCid} or sub_topic_id= #{forwardCid}
+    </delete>
+    
+    <update id="updateTopicAggregationApply">
+    	update topic_aggregation_apply set result=3  where (topic_id=#{forwardCid} or target_topic_id=#{forwardCid}) and result in (0,1)
+    </update>
+    
+    <delete id="deleteBannerTopic">
+    	delete from activity where typ=2 and cid=#{forwardCid}
+    </delete>
+    
+    <delete id="deleteTopicTagByTopicId">
+    	update topic_tag_detail set status=1 where topic_id=#{forwardCid}
+    </delete>
+    
+    <delete id="deleteTopicBillboard">
+    	delete from billboard_relation where type=1 and target_id=#{forwardCid}
+    </delete>
+    
+    <delete id="deleteTopicListed">
+    	delete from topic_listed where topic_id=#{forwardCid}
+    </delete>
+    
+    <select id="getUsersRegisterChannel" resultType="com.m2m.entity.ExtUserRegisterChannel">
+    	SELECT
+		id,
+		name AS channelName,
+		code 
+		FROM t_channel
+    </select>
+    
+</mapper>

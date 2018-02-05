@@ -1,0 +1,33 @@
+{
+	"id": "058dc0f7-b570-7012-eb0d-bac12c7502b1",
+	"name": "api.emotion.updateEmotionPack",
+	"description": "",
+	"order": [
+		"0c042ee2-e7b9-1eda-5dc9-f77a3c2e5f79"
+	],
+	"folders": [],
+	"timestamp": 1513417854874,
+	"owner": "3117500",
+	"remoteLink": "",
+	"public": false,
+	"requests": [
+		{
+			"id": "0c042ee2-e7b9-1eda-5dc9-f77a3c2e5f79",
+			"url": "http://{{host}}:{{port}}/api/emotion/updateEmotionPack",
+			"method": "POST",
+			"headers": "Content-Type: application/json\n",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"preRequestScript": null,
+			"currentHelper": "normal",
+			"pathVariables": {},
+			"version": 2,
+			"name": "http://{{host}}:{{port}}/api/emotion/updateEmotionPack",
+			"description": "",
+			"descriptionFormat": "html",
+			"collectionId": "058dc0f7-b570-7012-eb0d-bac12c7502b1",
+			"rawModeData": "  { \r\n      \"token\":\"99999999-9999-9999-9999-999999999999\",\r\n      \"id\":19,\r\n      \"name\":\"中ni表ni情\",\r\n      \"cover\":\"\",\r\n      \"type\": 1,\r\n      \"isValid\": 1,\r\n      \"packVersion\": 1,\r\n      \"analyVersion\": 3,\r\n      \"order\": 4,\r\n      \"extra\": 1\r\n    }"
+		}
+	]
+}

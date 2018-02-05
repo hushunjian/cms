@@ -1,0 +1,33 @@
+{
+	"id": "eabceb47-29ef-8864-6c5d-190c60e2d98b",
+	"name": "api.tag.updateTag",
+	"description": "",
+	"order": [
+		"cafa3cc4-b9b6-2717-c148-eba134fa60ae"
+	],
+	"folders": [],
+	"timestamp": 1512961085100,
+	"owner": "3117500",
+	"remoteLink": "",
+	"public": false,
+	"requests": [
+		{
+			"id": "cafa3cc4-b9b6-2717-c148-eba134fa60ae",
+			"url": "http://{{host}}:{{port}}/api/tag/updateTag",
+			"method": "POST",
+			"headers": "Content-Type: application/json\n",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"preRequestScript": null,
+			"currentHelper": "normal",
+			"pathVariables": {},
+			"version": 2,
+			"name": "http://{{host}}:{{port}}/api/tag/updateTag",
+			"description": "",
+			"descriptionFormat": "html",
+			"collectionId": "eabceb47-29ef-8864-6c5d-190c60e2d98b",
+			"rawModeData": "{\n     \"token\":\"99999999-9999-9999-9999-999999999999\",\n     \"tagId\":91,\n     \"tagName\":\"ceshiAddTagaaaa\",\n     \"parentTagId\":64,\n     \"sortNumber\":2,\n     \"isSystem\":0,\n     \"isRecommend\":1,\n     \"status\":0,\n     \"coverImage\":\"7a1e957f9f1074c383bda7fb66f083bf\",\n     \"userHobbyIds\":[81,82,83]\n}"
+		}
+	]
+}

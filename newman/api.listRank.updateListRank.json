@@ -1,0 +1,33 @@
+{
+	"id": "f082e68b-7b8f-ba3f-7248-d6c59f80f66a",
+	"name": "api.listRank.updateListRank",
+	"description": "",
+	"order": [
+		"a53fa66e-9380-544d-f01f-ce8aedca0c6e"
+	],
+	"folders": [],
+	"timestamp": 1514001368008,
+	"owner": "3117500",
+	"remoteLink": "",
+	"public": false,
+	"requests": [
+		{
+			"id": "a53fa66e-9380-544d-f01f-ce8aedca0c6e",
+			"url": "http://{{host}}:{{port}}/api/listRank/updateListRank",
+			"method": "POST",
+			"headers": "Content-Type: application/json\n",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"preRequestScript": null,
+			"currentHelper": "normal",
+			"pathVariables": {},
+			"version": 2,
+			"name": "http://{{host}}:{{port}}/api/listRank/updateListRank",
+			"description": "",
+			"descriptionFormat": "html",
+			"collectionId": "f082e68b-7b8f-ba3f-7248-d6c59f80f66a",
+			"rawModeData": "{\n    \"token\":\"a3fd6d23-edfd-4f70-ab16-bbaa94403024\",\n    \"id\":41,\n    \"name\":\"测试update\"\n}"
+		}
+	]
+}
